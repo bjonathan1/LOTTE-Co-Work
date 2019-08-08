@@ -50,29 +50,29 @@ The above copyright notice and this permission notice shall be included in all c
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo"> 
+          <a href="http://lotteintern.shop" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../../../staticfiles/assets/img/logo-small.png">
           </div>
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="http://lotteintern.shop" class="simple-text logo-normal">
           Lotte Co-Work
           <!-- <div class="logo-image-big">
-            <img src="../../../staticfiles/assets/img/logo-big.png">
+            <img src="../assets/img/logo-big.png">
           </div> -->
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
-            <a href="./dashboard.html">
+          <li class="active">
+            <a href="http://lotteintern.shop">
               <i class="nc-icon nc-tile-56"></i>
               <p>백로그</p>
             </a>
           </li>
-          <li class="active">
-            <a href="./icons.html">
+          <li>
+            <a href="http://lotteintern.shop/dashboard">
               <i class="nc-icon nc-layout-11"></i>
               <p>대시보드</p>
             </a>
@@ -173,78 +173,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 </div> -->
-      <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
-        <div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
-	  <div style="padding:10px 15px 10px 25px;">
-		 <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
-	  </div>
-          <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-	      <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-		<div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-		  </div>
-		  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-		    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-		  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-		    <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-		</div>
-              </div>
-	      <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-	    </div>
-	  </div>
-	</div>
-
-	<div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-            </div>
-          </div>
-        </div>
-
-	<div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
+      <div class="content">
+        <div class="row" id="list1" style="flex-direction:row;">
+	<div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats" style="background-color:#e4e4e4">
+              <div style="background-color:white">
+	       <div class="card-body ">
+                <div>프로젝트 1</div>
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                     <div class="numbers">
@@ -270,185 +205,11 @@ The above copyright notice and this permission notice shall be included in all c
               <div>
                 <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
               </div>
+             </div>
             </div>
           </div>
         </div>
         </div>
-
-<div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
-    </div>
-          <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-        <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-      </div>
-    </div>
-  </div>
-
-  <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-
-<div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
-    </div>
-          <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-        <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
-    </div>
-          <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-        <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-      </div>
-    </div>
-  </div>
-
-  <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
-              </div>
-            </div>
-          </div>
-        </div>
-       </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -531,7 +292,10 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 <script type="text/javascript">
-	var a = $(".counter1").find("[id^=task]").length;
+	var a = $("#list1").find("[id^=task]").length;
+        var b = $("#list2").find("[id^=task]").length;
+        var c = $("#list3").find("[id^=task]").length;
+        var d = $("#list4").find("[id^=task]").length;
 	$(".counter1").append(a);
         $(".counter2").append(b);
         $(".counter3").append(c);
@@ -554,3 +318,53 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </html>
 
 
+div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
+    <div style="padding:10px 15px 10px 25px;">
+     <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
+    </div>
+          <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                    <div class="numbers">
+                      <p class="card-category">개발환경 구축</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
+              <div class="card-footer" style="display:flex; flex-direction:row;">
+    <div style="display:flex; flex-direction:row;">
+                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+      </div>
+      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
+        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+                  </div>
+      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                  </div>
+    </div>
+              </div>
+        <div>
+                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+              </div>
+      </div>
+    </div>
+  </div>
+
+  <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                    <div class="numbers">
+                      <p class="card-category">회의록 개발</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex; flex-direction:row; justify-content:space-between">
+              <div class="card-footer" style="display:flex; flex-direction:row;">
+                <div style="display:flex; flex-direction:row;">
