@@ -176,7 +176,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
         <div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
 	  <div style="padding:10px 15px 10px 25px;">
-		 <p  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 3</p>
+		 <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
 	  </div>
           <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
@@ -277,7 +277,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
     <div style="padding:10px 15px 10px 25px;">
-     <p  style="font-size:16px; font-weight:280; margin:0px;">진행중 2</p>
+     <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
     </div>
           <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
@@ -346,7 +346,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
     <div style="padding:10px 15px 10px 25px;">
-     <p  style="font-size:16px; font-weight:300; margin:0px;">리뷰 1</p>
+     <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
     </div>
           <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
@@ -383,7 +383,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 <div class="row" id="list" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
     <div style="padding:10px 15px 10px 25px;">
-     <p  style="font-size:16px; font-weight:300; margin:0px;">완료 2</p>
+     <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
     </div>
           <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
@@ -528,10 +528,17 @@ The above copyright notice and this permission notice shall be included in all c
   });  
 })
 </script>
+
+
 <script type="text/javascript">
-	var n = $("#ikjun").length();
-	$("#counter").text('해야할일');
+	var a = $(".counter1").find("[id^=task]").length;
+	$(".counter1").append(a);
+        $(".counter2").append(b);
+        $(".counter3").append(c);
+        $(".counter4").append(d);
 </script>
+
+
 <script type="text/javascript">
 function drag(target, task) {   //드래그 시작시 호출 할 함수
   task.dataTransfer.setData('Text', target.id);
