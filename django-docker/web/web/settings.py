@@ -45,26 +45,6 @@ INSTALLED_APPS = [
     'demoapp'
 ]
 
-LOGGING={
-    'version' : 1,
-    'disable_existing_loggers' : False,
-    'handlers': {
-        'file': {
-            'level': 'ERROR',
-            'class': 'logging.FileHandler',
-            'filename': 'debug.log', #저장할 파일 이름
-        },
-    },
-    'loggers':{
-        'django':{
-            'handlers': ['file'],
-            'level': 'ERROR', #레벨
-            'propagate': True,
-        },
-    },
-}
-
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -149,8 +129,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-
 STATIC_URL = '/staticfiles/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/assets')
-
-
