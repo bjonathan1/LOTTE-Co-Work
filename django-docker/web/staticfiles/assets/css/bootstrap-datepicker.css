@@ -12,11 +12,8 @@
 .datepicker {
   top: 0;
   left: 0;
-  padding: 4px;
-  margin-top: 1px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  padding: .375rem .75rem;; 
+  border-radius: 4px;
   z-index:2000;
   /*.dow {
     border-top: 1px solid #ddd !important;

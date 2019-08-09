@@ -257,22 +257,33 @@ The above copyright notice and this permission notice shall be included in all c
               </div>
             </div>
             <div class="modal-body">
-              <div style="display:flex; flex-direction:column;">
-                <p style="font-size:16px; margin-bottom:5px;"> 프로젝트명 </p>
-                <input type:"text" size="20">
+              <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
+                <input class="form-control" type:"text" size="20">
               </div>
-              <div style="display:flex; flex-direction:row;">
-		<div class="container">
-		  <div class="col-xs-3">
-		    <div class="controls">
-                      <input class="datepicker form-control" type="text"/>
+              <div style="display:flex; flex-direction:row; margin-top=5px;">
+		<div style="display:flex; flex-direction:column;width:100%;">
+		  <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 마감 날짜</p>
+		  
+		    <div class="col-xs-3" style="margin:5px">
+		      <div class="controls">
+                        <input class="datepicker form-control"style="margin:0;" type="text"/>
+		      </div>
 		    </div>
-		  </div>
-                </div>
+   
+		</div>
+		<div style="display:flex; flex-direction:column;width:100%">
+		  <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
+		  <input class="form-control" type:"text">
+		</div>
               </div>
+	      <div>
+	          <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
+                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
+	      </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">완료</button>
+              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
             </div>
           </div>
         </div>

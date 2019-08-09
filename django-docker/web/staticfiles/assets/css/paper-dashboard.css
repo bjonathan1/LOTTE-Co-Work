@@ -681,8 +681,8 @@ fieldset[disabled] .btn-primary:focus,
 fieldset[disabled] .btn-primary.focus,
 fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #51cbce;
-  border-color: #51cbce;
+  background-color: yellow;
+  border-color: yellow;
 }
 
 .btn-primary.btn-simple {
@@ -1799,6 +1799,7 @@ fieldset[disabled] .btn-link.active {
   color: #66615b;
   line-height: normal;
   font-size: 14px;
+  margin: 5px;
   -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   -o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -5040,7 +5041,7 @@ License - nucleoapp.com/license/
 
 .main-panel>.content {
   padding: 0 30px 30px;
-  min-height: calc(100vh - 163px);
+  min-height: calc(100vh - 203px);
   margin-top: 93px;
 }
 
