@@ -10,3 +10,7 @@ def index(request):
 def dashboard(request):
     context = {}
     return render(request, 'demoapp/dashboard.html', context)
+
+def meeting(request):
+    context = {}
+    return render(request, 'demoapp/meeting.html', context)
