@@ -43,6 +43,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="../../../staticfiles/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <link href="../../../staticfiles/assets/css/sports.css" rel="stylesheet" /> 
   <link href="../../../staticfiles/assets/css/bootstrap-datepicker.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../../staticfiles/assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -274,7 +275,15 @@ The above copyright notice and this permission notice shall be included in all c
 		</div>
 		<div style="display:flex; flex-direction:column;width:100%">
 		  <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
-		  <input class="form-control" type:"text">
+		  <div>
+		    <select class="js-example-basic-multiple" multiple="multiple">
+            	        <option value="1">박형준</option>
+                        <option value="2">박예은</option>
+                        <option value="3">정용원</option>
+                        <option value="4">김성우</option>
+                        <option value="5">한석환</option>
+                    </select>
+		  </div>
 		</div>
               </div>
 	      <div>
@@ -296,7 +305,8 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../../../staticfiles/assets/js/core/popper.min.js"></script>
   <script src="../../../staticfiles/assets/js/core/bootstrap.min.js"></script>
   <script src="../../../staticfiles/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Chart JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+   <!-- Chart JS -->
   <script src="../../../staticfiles/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../../../staticfiles/assets/js/plugins/bootstrap-notify.js"></script>
@@ -392,14 +402,11 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </script>
 
 <script type="text/javascript">
-( function($) {
-  $("td.day").click(function() {  
-    $(".datepicker.dropdown-menu").hide() 
-  });
-} )
+$(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
 </script>
 </body>
-
 </html>
 
 
