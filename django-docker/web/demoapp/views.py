@@ -1,6 +1,6 @@
-import random
-from django.shortcuts import render
 from . import tasks
+from django.shortcuts import render
+
 
 
 def index(request):

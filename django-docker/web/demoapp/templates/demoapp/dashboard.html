@@ -31,16 +31,20 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" integrity="sha384-wxqG4glGB3nlqX0bi23nmgwCSjWIW13BdLUEYC4VIMehfbcro/ATkyDsF/AbIOVe" crossorigin="anonymous">
   <style type="text/css">
-  	@font-face{
-		font-family:'Charlotte'; src:url("../../../staticfiles/assets/fonts/Charlotte Text M.ttf")
-  	}
-  	div, span, html, body, input, textarea {
-			font-family: 'Charlotte', sans-serif !important;
-  	}
+    @font-face{
+    font-family:'Charlotte'; src:url("../../../staticfiles/assets/fonts/Charlotte Text M.ttf")
+    }
+    div, span, html, body, input, textarea {
+      font-family: 'Charlotte', sans-serif !important;
+    }
   </style>
   <!-- CSS Files -->
   <link href="../../../staticfiles/assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../../staticfiles/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
+  <link href="../../../staticfiles/assets/css/sports.css" rel="stylesheet" /> 
+  <link href="../../../staticfiles/assets/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+  <link href="../../../staticfiles/assets/css/fSelect.css" rel="stylesheet">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../../staticfiles/assets/demo/demo.css" rel="stylesheet" />
 </head>
@@ -60,20 +64,20 @@ The above copyright notice and this permission notice shall be included in all c
         <a href="http://lotteintern.shop" class="simple-text logo-normal">
           Lotte Co-Work
           <!-- <div class="logo-image-big">
-            <img src="../assets/img/logo-big.png">
+            <img src="../../../../staticfiles/assets/img/logo-big.png">
           </div> -->
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="http://lotteintern.shop">
+            <a href="../">
               <i class="nc-icon nc-tile-56"></i>
               <p>백로그</p>
             </a>
           </li>
           <li class="active">
-            <a href="http://lotteintern.shop/dashboard">
+            <a href="/dashboard/">
               <i class="nc-icon nc-layout-11"></i>
               <p>대시보드</p>
             </a>
@@ -91,15 +95,15 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="/meeting/">
               <i class="nc-icon nc-paper"></i>
-              <p>회의록</p>
+              <p>회의</p>
             </a>
           </li>
           <li>
             <a href="./tables.html">
-              <i class="nc-icon nc-calendar-60"></i>
-              <p>캘린더</p>
+              <i class="nc-icon nc-bullet-list-67"></i>
+              <p>타임라인</p>
             </a>
           </li>
         </ul>
@@ -175,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </div> -->
       <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
-        <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
+        <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
 	  <div style="padding:10px 15px 10px 25px;">
 		 <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
 	  </div>
@@ -196,8 +200,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
 		  </div>
-		  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-		    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+		  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+		    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
 		  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
 		    <p style="margin: 2px 5px 0 5px;"> D-30 </p>
@@ -228,8 +232,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
                   <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
                     <p style="margin: 2px 5px 0 5px;"> D-4 </p>
@@ -260,8 +264,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
                   <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
                     <p style="margin: 2px 5px 0 5px;"> D-12 </p>
@@ -276,7 +280,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
         </div>
 
-<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
+<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
     </div>
@@ -297,8 +301,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+      <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
       <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
         <p style="margin: 2px 5px 0 5px;"> D-30 </p>
@@ -329,8 +333,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
                   <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
                     <p style="margin: 2px 5px 0 5px;"> D-4 </p>
@@ -345,7 +349,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
         </div>
 
-<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
+<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
     </div>
@@ -366,8 +370,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+      <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
       <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
         <p style="margin: 2px 5px 0 5px;"> D-30 </p>
@@ -382,7 +386,7 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
 </div>
 
-<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;">
+<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
     </div>
@@ -403,8 +407,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
-      <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+      <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
       <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
         <p style="margin: 2px 5px 0 5px;"> D-30 </p>
@@ -435,8 +439,8 @@ The above copyright notice and this permission notice shall be included in all c
                   <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:red; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fa fa-exclamation"></i>
+                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
                   <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
                     <p style="margin: 2px 5px 0 5px;"> D-4 </p>
@@ -460,16 +464,146 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="container-fluid">
           <div class="row">
             <div class="credits ml-auto">
-              <span class="copyright">
-                ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>, made by 롯데백화점 2019 하계 인턴십 디지털사업부문 3조
-              </span>
+              <span class="copyright"> made by 롯데백화점 2019 하계 인턴십 디지털사업부문  3조</span>
             </div>
           </div>
         </div>
       </footer>
+
+      <!-- 업무 추가 팝업창 -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">업무 생성하기</h5>
+              <div class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
+                <input class="form-control" type="text" size="20">
+              </div>
+              <div style="display:flex; flex-direction:row; margin-top=5px;">
+    <div style="display:flex; flex-direction:column;width:100%;">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
+      
+        <div class="col-xs-3" style="margin:5px">
+          <div class="controls">
+                        <input class="datepicker form-control"style="margin:0;" type="text"/>
+          </div>
+        </div>
+   
+    </div>
+    <div style="display:flex; flex-direction:column;width:100%">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
+      <div>
+        <select class="test">
+        <option value="" selected disabled>선택해주세요.</option>
+	<optgroup label="빅데이터팀">
+            <option value="1">박형준</option>
+        </optgroup>
+        <optgroup label="통합 App Proj. 팀">
+            <option value="2">박예은</option>
+            <option value="3">정용원</option>
+        </optgroup>
+        <optgroup label="디지털사업팀">
+            <option value="4">김성우</option>
+            <option value="5">한석환</option>
+        </optgroup>
+        <optgroup label="IT기획팀">
+            <option value="6">김동우</option>
+            <option value="7">김익준</option>
+            <option value="8">김정은</option>
+        </optgroup>
+        </select>
+      </div>
+    </div>
+              </div>
+        <div>
+            <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
+                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
+        </div>
+        <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
+                <input class="form-control" type="file" size="20" multiple>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- 업무 팝업창 -->
+      <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">업무 생성하기</h5>
+              <div class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
+                <input class="form-control" value="개발환경 구축" type="text" size="20">
+              </div>
+              <div style="display:flex; flex-direction:row; margin-top=5px;">
+    <div style="display:flex; flex-direction:column;width:100%;">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
+      
+        <div class="col-xs-3" style="margin:5px">
+          <div class="controls">
+                        <input class="datepicker form-control"style="margin:0;" value="2019-08-30" type="text"/>
+          </div>
+        </div>
+   
+    </div>
+    <div style="display:flex; flex-direction:column;width:100%">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
+      <div>
+        <select class="test">
+        <optgroup label="빅데이터팀">
+            <option value="1">박형준</option>
+        </optgroup>
+        <optgroup label="통합 App Proj. 팀">
+            <option value="2">박예은</option>
+            <option value="3">정용원</option>
+        </optgroup>
+        <optgroup label="디지털사업팀">
+            <option value="4">김성우</option>
+            <option value="5">한석환</option>
+        </optgroup>
+        <optgroup label="IT기획팀">
+            <option value="6">김동우</option>
+            <option value="7" selected>김익준</option>
+            <option value="8">김정은</option>
+        </optgroup>
+        </select>
+      </div>
+    </div>
+              </div>
+        <div>
+            <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
+                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">프론트개발, 도메인 생성, UI/UX기반 참고</textarea>
+        </div>
+        <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
+                <input class="form-control" type="file" size="20" multiple>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -477,9 +611,7 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../../../staticfiles/assets/js/core/popper.min.js"></script>
   <script src="../../../staticfiles/assets/js/core/bootstrap.min.js"></script>
   <script src="../../../staticfiles/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
+   <!-- Chart JS -->
   <script src="../../../staticfiles/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="../../../staticfiles/assets/js/plugins/bootstrap-notify.js"></script>
@@ -487,9 +619,16 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../../../staticfiles/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
   <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="../../../staticfiles/assets/demo/demo.js"></script>
-  <script>
+  <!-- datepicker js -->
+  <script src="../../../staticfiles/assets/js/datepicker/bootstrap.js" type="text/javascript"></script>
+  <script src="../../../staticfiles/assets/js/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
+  <!-- FSelect-->
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+  <script src="../../../staticfiles/assets/js/fSelect.js"></script>
+
+<script>
     $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      // Javascript method's body can be found in ../../../staticfiles/assets/assets-for-demo/js/demo.js
       demo.initChartsPages();
     });
   </script>
@@ -537,11 +676,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 <script type="text/javascript">
-	var a = $("#list1").find("[id^=task]").length;
+  var a = $("#list1").find("[id^=task]").length;
         var b = $("#list2").find("[id^=task]").length;
         var c = $("#list3").find("[id^=task]").length;
         var d = $("#list4").find("[id^=task]").length;
-	$(".counter1").append(a);
+  $(".counter1").append(a);
         $(".counter2").append(b);
         $(".counter3").append(c);
         $(".counter4").append(d);
@@ -558,9 +697,34 @@ function drop(target, task) {   //드롭시 호출 할 함수
   task.preventDefault();  
 };
 </script>
+
+<script type="text/javascript">
+   $('.datepicker').datepicker({
+       weekStart:1,
+       color: 'red'
+   });
+</script>
+
+<script type="text/javascript">
+(function($) {
+    $(function() {
+        window.fs_test = $('.test').fSelect();
+    });
+})(jQuery);
+</script> 
 </body>
 
 </html>
 
 
 
+			{
+                                        title: '',
+                                        start: new Date(y, m, 6),
+                                        className: 'success',
+                                },
+			{
+                                        title: '',
+                                        start: new Date(y, m, 6),
+                                        className: 'success',
+                                },

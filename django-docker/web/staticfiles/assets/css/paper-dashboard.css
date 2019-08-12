@@ -632,6 +632,28 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
   top: 1px;
 }
 
+/*이슈버튼*/
+.btn-issue {
+  background-color: #51cbce;
+  color: #FFFFFF;
+}
+
+.btn-issue:hover,
+.btn-issue:focus,
+.btn-issue:active,
+.btn-issue.active,
+.btn-issue:active:focus,
+.btn-issue:active:hover,
+.btn-issue.active:focus,
+.btn-issue.active:hover,
+.show>.btn-issue.dropdown-toggle,
+.show>.btn-issue.dropdown-toggle:focus,
+.show>.btn-issue.dropdown-toggle:hover {
+  background-color: #ffc107 !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
 .btn-primary {
   background-color: #51cbce;
   color: #FFFFFF;

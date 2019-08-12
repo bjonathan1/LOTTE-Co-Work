@@ -71,13 +71,13 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active">
-            <a href="http://lotteintern.shop">
+            <a href="">
               <i class="nc-icon nc-tile-56"></i>
               <p>백로그</p>
             </a>
           </li>
           <li>
-            <a href="http://lotteintern.shop/dashboard">
+            <a href="/dashboard/">
               <i class="nc-icon nc-layout-11"></i>
               <p>대시보드</p>
             </a>
@@ -95,15 +95,15 @@ The above copyright notice and this permission notice shall be included in all c
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="/meeting/">
               <i class="nc-icon nc-paper"></i>
-              <p>회의록</p>
+              <p>회의</p>
             </a>
           </li>
           <li>
             <a href="./tables.html">
-              <i class="nc-icon nc-calendar-60"></i>
-              <p>캘린더</p>
+              <i class="nc-icon nc-bullet-list-67"></i>
+              <p>타임라인</p>
             </a>
           </li>
         </ul>
@@ -180,7 +180,7 @@ The above copyright notice and this permission notice shall be included in all c
 </div> -->
       <div class="content">
         <div class="row" id="list1" style="flex-direction:row;">
-	<div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
+	<div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)" data-toggle="modal" data-target="#projectModal">
             <div class="card card-stats" style="background-color:#e4e4e4">
              <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;"> 프로젝트 1</div>
               <div style="background-color:white; border-radius:6px; margin:10px;">
@@ -238,17 +238,13 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="container-fluid">
           <div class="row">
             <div class="credits ml-auto">
-              <span class="copyright">
-                ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>, made by 롯데백화점 2019 하계 인턴십 디지털사업부문 3조
-              </span>
+              <span class="copyright"> made by 롯데백화점 2019 하계 인턴십 디지털사업부문  3조</span>
             </div>
           </div>
         </div>
       </footer>
 
+      <!-- 프로젝트 추가 팝업창 -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -310,6 +306,69 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
 
+       <!-- 프로젝트 팝업창 -->
+      <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">프로젝트 1</h5>
+              <div class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div style="display:flex; flex-direction:column;width:100%">
+                <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
+                <input class="form-control" value="롯데백화점 협업 툴 제작" type="text" size="20">
+              </div>
+              <div style="display:flex; flex-direction:row; margin-top=5px;">
+    <div style="display:flex; flex-direction:column;width:100%;">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 마감 날짜</p>
+      
+        <div class="col-xs-3" style="margin:5px">
+          <div class="controls">
+                        <input class="datepicker form-control"style="margin:0;" value="2019-08-29" type="text"/>
+          </div>
+        </div>
+   
+    </div>
+    <div style="display:flex; flex-direction:column;width:100%">
+      <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
+      <div>
+        <select class="test" multiple="multiple">
+        <optgroup label="빅데이터팀">
+            <option value="1" selected>박형준</option>
+        </optgroup>
+        <optgroup label="통합 App Proj. 팀">
+            <option value="2" selected>박예은</option>
+            <option value="3" selected>정용원</option>
+        </optgroup>
+        <optgroup label="디지털사업팀">
+            <option value="4" selected>김성우</option>
+            <option value="5">한석환</option>
+        </optgroup>
+        <optgroup label="IT기획팀">
+            <option value="6">김동우</option>
+            <option value="7">김익준</option>
+            <option value="8">김정은</option>
+        </optgroup>
+        </select>
+      </div>
+    </div>
+              </div>
+        <div>
+            <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
+                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">롯데백화점만의 협업 툴 LCW를 제작하기 위한 프로젝트</textarea>
+        </div>
+            </div>
+            <div class="modal-footer">
+	      <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -339,7 +398,7 @@ The above copyright notice and this permission notice shall be included in all c
 
   <script>
     $(document).ready(function() {
-      // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
+      // Javascript method's body can be found in ../../../staticfiles/assets/assets-for-demo/js/demo.js
       demo.initChartsPages();
     });
   </script>
@@ -424,9 +483,9 @@ function drop(target, task) {   //드롭시 호출 할 함수
 })(jQuery);
 </script>
 </body>
-</html>
-
-
-
-link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
- 
+</html> 
+			{
+                                        title: '',
+                                        start: new Date(y, m, 6),
+                                        className: 'success',
+                                },

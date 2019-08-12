@@ -29,11 +29,11 @@
         }
         else {
             var settings = $.extend({
-                placeholder: 'Select some options',
+                placeholder: '선택해주세요.',
                 numDisplayed: 3,
-                overflowText: '{n} selected',
-                searchText: 'Search',
-                noResultsText: 'No results found',
+                overflowText: '{n}개(명) 선택',
+                searchText: '검색',
+                noResultsText: '검색결과가 없습니다.',
                 showSearch: true,
                 optionFormatter: false
             }, options);
