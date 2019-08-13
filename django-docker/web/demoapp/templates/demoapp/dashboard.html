@@ -1,5 +1,5 @@
 <!--
-Paper Dashboard 2 - v2.0.0
+Pa per Dashboard 2 - v2.0.0
 =========================================================
 
  Product Page: https://www.creative-tim.com/product/paper-dashboard-2
@@ -179,7 +179,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 </div> -->
       <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
-        <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
+        <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
 	  <div style="padding:10px 15px 10px 25px;">
 		 <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
 	  </div>
@@ -188,8 +188,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
+                    <div class="numbers" style="cursor:pointer" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
                     </div>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ The above copyright notice and this permission notice shall be included in all c
 	      <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
 		<div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
 		  </div>
 		  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -220,8 +220,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
                     </div>
                   </div>
                 </div>
@@ -229,7 +229,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -252,8 +252,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">대시보드 디자인</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">대시보드 디자인</p>
                     </div>
                   </div>
                 </div>
@@ -261,7 +261,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -280,7 +280,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
         </div>
 
-<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
+<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
     </div>
@@ -289,8 +289,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
                     </div>
                   </div>
                 </div>
@@ -298,7 +298,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -321,8 +321,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
                     </div>
                   </div>
                 </div>
@@ -330,7 +330,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -349,7 +349,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
         </div>
 
-<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
+<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
     </div>
@@ -358,8 +358,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
                     </div>
                   </div>
                 </div>
@@ -367,7 +367,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -386,7 +386,7 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
 </div>
 
-<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" data-toggle="modal" data-target="#taskModal">
+<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
     </div>
@@ -395,8 +395,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">개발환경 구축</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
                     </div>
                   </div>
                 </div>
@@ -404,7 +404,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -427,8 +427,8 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-body ">
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <p class="card-category">회의록 개발</p>
+                    <div class="numbers" style="cursor:pointer">
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
                     </div>
                   </div>
                 </div>
@@ -436,7 +436,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div style="display:flex; flex-direction:row; justify-content:space-between">
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
-                  <div class="stats" style="text-align: center; width: 25px; background: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
@@ -648,8 +648,8 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>\
                   </div>\
                   <div class="col-7 col-md-8">\
-                    <div class="numbers">\
-                      <p class="card-category">Followers</p>\
+                    <div class="numbers" style="cursor:pointer">\
+                      <p class="card-category" data-toggle="modal" data-target="#taskModal">Followers</p>\
                       <p class="card-title">+45K\
                         <p>\
                     </div>\
@@ -712,19 +712,23 @@ function drop(target, task) {   //드롭시 호출 할 함수
     });
 })(jQuery);
 </script> 
+
+<script type="text/javascript">
+$('.bookmark').click(function() {
+    if($(this).css('background-color') =='rgb(251, 198, 88)') {
+      $(this).css('background-color', '#e4e4e4');
+    } else {
+      $(this).css('background-color', 'rgb(251, 198, 88)');
+    }
+});
+</script>
+
+
 </body>
 
 </html>
-
-
-
-			{
-                                        title: '',
-                                        start: new Date(y, m, 6),
-                                        className: 'success',
-                                },
-			{
-                                        title: '',
-                                        start: new Date(y, m, 6),
-                                        className: 'success',
-                                },
+               ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>, made by 롯데백화점 2019 하계 인턴십 디지털사업부문 3조
+              
