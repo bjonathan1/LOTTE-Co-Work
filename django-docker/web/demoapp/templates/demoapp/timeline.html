@@ -71,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="">
+            <a href="../">
               <i class="nc-icon nc-tile-56"></i>
               <p>백로그</p>
             </a>
@@ -178,62 +178,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 
 </div> -->
-      <div class="content">
+      <div class="content" style="padding-bottom:0;">
         <div class="row" id="list1" style="flex-direction:row;">
-	<div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats" style="background-color:#e4e4e4">
-             <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;"> 프로젝트 1</div>
-              <div style="background-color:white; border-radius:6px; margin:10px;">
-	       <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
-                      <div class="card-category" style="height:60px; cursor:pointer" data-toggle="modal" data-target="#projectModal">
-			<div style="margin-top:3px; line-height:1.5; padding:7px">롯데백화점<br> 협업 툴 제작</div>
-		      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:row-reverse; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row; padding: 0px 12px 5px 0px;">
-               <div style="background-color:#e4e4e4; border-radius:6px;display:flex;height:50%;  margin:5px 0 0 0; flex-direction:row; justify-content:space-evenly;  vertical-align: middle;margin-top: 19px;">
-		 <i style="color:black;font-size:15px;margin: 8px 5px 5px 5px;" class="far fa-clock"></i> 
-                 <p style="margin: 6px 3px 2px 3px;"> 08월 29일 </p>
-               </div>
-              </div>
-              
-		<div class="ss-section ss-featured-grid">
-			<div class="item item-3">
-				<div class="icons-wrap" style="padding-top: 15px; padding-left: 15px;">
-					<div class="sport-img">
-						<img src="../../../staticfiles/assets/img/yw.jpg" alt="">
-					</div>
-					<div class="sport-img">
-						<img src="../../../staticfiles/assets/img/sw.jpg" alt="">
-					</div>
-					<div class="sport-img">
-                                                <img src="../../../staticfiles/assets/img/hj.jpg" alt="">
-                                        </div>
-					<div class="sport-img">
-                                                <img src="../../../staticfiles/assets/img/ye.jpg" alt="">
-                                        </div>
-				</div>
-			</div>
-		</div>
-
-             </div>
-            </div>
-          </div>
-        </div>
+	  <div id="chartdiv" style="width:1100px; height: 550px; margin: 0 40px 0 40px;"></div>
         </div>
       </div>
-      <div style="text-align: -webkit-right;">
-	<div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
-	  <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
-	</div>
-      </div>  
-     
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -243,132 +192,6 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
       </footer>
-
-      <!-- 프로젝트 추가 팝업창 -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">프로젝트 생성하기</h5>
-              <div class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-                <input class="form-control" type:"text" size="20">
-              </div>
-              <div style="display:flex; flex-direction:row; margin-top=5px;">
-		<div style="display:flex; flex-direction:column;width:100%;">
-		  <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 마감 날짜</p>
-		  
-		    <div class="col-xs-3" style="margin:5px">
-		      <div class="controls">
-                        <input class="datepicker form-control"style="margin:0;" type="text"/>
-		      </div>
-		    </div>
-   
-		</div>
-		<div style="display:flex; flex-direction:column;width:100%">
-		  <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
-		  <div>
-		    <select class="test" multiple="multiple">
-        <optgroup label="빅데이터팀">
-            <option value="1">박형준</option>
-        </optgroup>
-        <optgroup label="통합 App Proj. 팀">
-            <option value="2">박예은</option>
-            <option value="3">정용원</option>
-        </optgroup>
-        <optgroup label="디지털사업팀">
-            <option value="4">김성우</option>
-            <option value="5">한석환</option>
-        </optgroup>
-        <optgroup label="IT기획팀">
-            <option value="6">김동우</option>
-            <option value="7">김익준</option>
-            <option value="8">김정은</option>
-        </optgroup>
-        </select>
-		  </div>
-		</div>
-              </div>
-	      <div>
-	          <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
-                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
-	      </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-       <!-- 프로젝트 팝업창 -->
-      <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">프로젝트 1</h5>
-              <div class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </div>
-            </div>
-            <div class="modal-body">
-              <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-                <input class="form-control" value="롯데백화점 협업 툴 제작" type="text" size="20">
-              </div>
-              <div style="display:flex; flex-direction:row; margin-top=5px;">
-    <div style="display:flex; flex-direction:column;width:100%;">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 마감 날짜</p>
-      
-        <div class="col-xs-3" style="margin:5px">
-          <div class="controls">
-                        <input class="datepicker form-control"style="margin:0;" value="2019-08-29" type="text"/>
-          </div>
-        </div>
-   
-    </div>
-    <div style="display:flex; flex-direction:column;width:100%">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
-      <div>
-        <select class="test" multiple="multiple">
-        <optgroup label="빅데이터팀">
-            <option value="1" selected>박형준</option>
-        </optgroup>
-        <optgroup label="통합 App Proj. 팀">
-            <option value="2" selected>박예은</option>
-            <option value="3" selected>정용원</option>
-        </optgroup>
-        <optgroup label="디지털사업팀">
-            <option value="4" selected>김성우</option>
-            <option value="5">한석환</option>
-        </optgroup>
-        <optgroup label="IT기획팀">
-            <option value="6">김동우</option>
-            <option value="7">김익준</option>
-            <option value="8">김정은</option>
-        </optgroup>
-        </select>
-      </div>
-    </div>
-              </div>
-        <div>
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
-                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">롯데백화점만의 협업 툴 LCW를 제작하기 위한 프로젝트</textarea>
-        </div>
-            </div>
-            <div class="modal-footer">
-	      <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
-              <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -390,11 +213,10 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- FSelect-->
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <script src="../../../staticfiles/assets/js/fSelect.js"></script>
-
-
-
-
-
+  <!-- Timeline -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="../../../staticfiles/assets/js/timeline.js"></script>
 
   <script>
     $(document).ready(function() {
@@ -484,8 +306,3 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </script>
 </body>
 </html> 
-			{
-                                        title: '',
-                                        start: new Date(y, m, 6),
-                                        className: 'success',
-                                },
