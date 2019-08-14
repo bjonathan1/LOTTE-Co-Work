@@ -68,6 +68,8 @@ The above copyright notice and this permission notice shall be included in all c
           </div> -->
         </a>
       </div>
+      
+      <!-- 사이드 바 -->
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
@@ -110,7 +112,8 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
     <div class="main-panel">
-      <!-- Navbar -->
+      
+      <!-- 상단 네비게이션 바 -->
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
@@ -174,15 +177,18 @@ The above copyright notice and this permission notice shall be included in all c
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-lg">
 
-  <canvas id="bigDashboardChart"></canvas>
+  <canvas id="bigDashboardChart"></canvas>-->
 
 
-</div> -->
+      <!-- 바디 부분 -->
       <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
+	<!-- 해야할 일 컬럼 -->
         <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
 	  <div style="padding:10px 15px 10px 25px;">
-		 <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
+		<p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
 	  </div>
+
+	  <!-- task 블럭 -->
           <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -215,6 +221,7 @@ The above copyright notice and this permission notice shall be included in all c
 	  </div>
 	</div>
 
+	<!-- task 블럭 -->
 	<div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -247,6 +254,7 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
 
+	<!-- task 블럭 -->
 	<div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -279,11 +287,13 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
         </div>
-
-<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+	
+	<!-- 진행중 컬럼 -->
+	<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
     </div>
+	<!-- task 블럭-->
           <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -315,8 +325,8 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
   </div>
-
-  <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+	<!-- task 블럭 -->
+	  <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -348,11 +358,14 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
         </div>
-
-<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+	
+	<!-- 리뷰 컬럼 -->
+	<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
     </div>
+	
+	<!-- task 블럭 -->
           <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -385,11 +398,13 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
 </div>
-
-<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+	
+	<!-- 완료 컬럼 -->
+	<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
     </div>
+	<!-- task 블럭-->
           <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -421,8 +436,8 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
   </div>
-
-  <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+	<!-- task 블럭 -->
+	  <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -455,11 +470,15 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
        </div>
       </div>
+
+	<!-- 추가 버튼 -->
       <div style="text-align: -webkit-right;">
         <div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
         </div>
       </div>
+
+	<!-- 하단 저작권 표기 -->
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -626,12 +645,7 @@ The above copyright notice and this permission notice shall be included in all c
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
   <script src="../../../staticfiles/assets/js/fSelect.js"></script>
 
-<script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in ../../../staticfiles/assets/assets-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-  </script>
+  <!-- 블럭 추가 기능 -->
   <script type="text/javascript">
     $(function(){
     $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
@@ -674,7 +688,7 @@ The above copyright notice and this permission notice shall be included in all c
 })
 </script>
 
-
+<!-- 블럭 카운팅 기능 -->
 <script type="text/javascript">
   var a = $("#list1").find("[id^=task]").length;
         var b = $("#list2").find("[id^=task]").length;
@@ -686,7 +700,7 @@ The above copyright notice and this permission notice shall be included in all c
         $(".counter4").append(d);
 </script>
 
-
+<!-- 드래그 앤 드랍 기능-->
 <script type="text/javascript">
 function drag(target, task) {   //드래그 시작시 호출 할 함수
   task.dataTransfer.setData('Text', target.id);
@@ -698,6 +712,7 @@ function drop(target, task) {   //드롭시 호출 할 함수
 };
 </script>
 
+<!-- 날짜 선택 미니 달력 기능 -->
 <script type="text/javascript">
    $('.datepicker').datepicker({
        weekStart:1,
@@ -705,6 +720,7 @@ function drop(target, task) {   //드롭시 호출 할 함수
    });
 </script>
 
+<!-- 다중 선택(팀원)  기능 -->
 <script type="text/javascript">
 (function($) {
     $(function() {
@@ -713,6 +729,7 @@ function drop(target, task) {   //드롭시 호출 할 함수
 })(jQuery);
 </script> 
 
+<!-- 북마크 기능-->
 <script type="text/javascript">
 $('.bookmark').click(function() {
     if($(this).css('background-color') =='rgb(251, 198, 88)') {
