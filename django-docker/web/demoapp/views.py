@@ -14,3 +14,15 @@ def dashboard(request):
 def meeting(request):
     context = {}
     return render(request, 'demoapp/meeting.html', context)
+
+def issue(request):
+    context = {}
+    return render(request, 'demoapp/issue.html', context)
+
+def drive(request):
+    context = {}
+    return render(request, 'demoapp/drive.html', context)
+
+def timeline(request):
+    context = {}
+    return render(request, 'demoapp/timeline.html', context)

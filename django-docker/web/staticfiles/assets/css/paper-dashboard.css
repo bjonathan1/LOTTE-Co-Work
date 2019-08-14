@@ -20,6 +20,15 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 
 Copyright (c) 2015 Daniel Eden
 */
+.tabletr{
+  cursor:pointer;
+}
+
+
+.tabletr:hover {
+  box-shadow: 0px 0px 30px 5px hsla(0, 0%, 0%, 0.1);
+}
+
 
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0,100%);
@@ -4562,7 +4571,7 @@ License - nucleoapp.com/license/
 .table>thead>tr>td,
 .table>tbody>tr>td,
 .table>tfoot>tr>td {
-  padding: 12px 7px;
+  padding: 10px 5px;
   vertical-align: middle;
 }
 
