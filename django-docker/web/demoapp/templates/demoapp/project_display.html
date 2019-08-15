@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
             <div class="numbers">
-              <div class="card-category" style="height:60px; cursor:pointer" data-toggle="modal" data-target="#projectModal">
+              <div class="card-category" style="height:60px; cursor:pointer; display:flex; align-items: center; justify-content:center;" data-toggle="modal" data-target="#projectModal">
                 <div style="margin-top:3px; line-height:1.5; padding:7px">
                     {% if task == 'task1' %} {{ tasks.task1.project_name }}
                     {% elif task == 'task2' %} {{ tasks.task2.project_name }}

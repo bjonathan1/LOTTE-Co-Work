@@ -427,7 +427,7 @@ demo = {
     color = 'success';
 
     $.notify({
-      icon: "nc-icon nc-bell-55",
+      icon: "fas fa-bell",
       message: "Task가 이동되었습니다."
 
     }, {

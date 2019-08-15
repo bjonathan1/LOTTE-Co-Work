@@ -230,38 +230,60 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
   <div style="display:flex; flex-direction:row; background-color: #e4e4e4; width: 70%; margin-left: 30px; height:500px; border-radius: 6px; padding: 20px">
-      <div class="drivefile">
-        <i class="far fa-file-pdf" style="color:red; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.pdf </p>
-      </div>
-      <div class="drivefile">
-        <i class="far fa-file-word" style="color:blue; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.docx </p>
-      </div>
-      <div class="drivefile">
-        <i class="far fa-file-powerpoint" style="color:#ff5e5e; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.pptx </p>
-      </div>
-      <div class="drivefile">
-        <i class="far fa-file-excel" style="color:green; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.xlsx </p>
-      </div>
-      <div class="drivefile">
-        <i class="far fa-file-alt" style="color:black; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.txt </p>
-      </div>
-      <div class="drivefile">
-        <i class="far fa-file-image" style="color:#51bcda; font-size: 100px;"></i>
-        <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.jpg </p>
-      </div>
+    <div class="drivefile">
+      <i class="far fa-file-pdf" style="color:red; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.pdf </p>
+    </div>
+    <div class="drivefile">
+      <i class="far fa-file-word" style="color:blue; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.docx </p>
+    </div>
+    <div class="drivefile">
+      <i class="far fa-file-powerpoint" style="color:#ff5e5e; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.pptx </p>
+    </div>
+    <div class="drivefile">
+      <i class="far fa-file-excel" style="color:green; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.xlsx </p>
+    </div>
+    <div class="drivefile">
+      <i class="far fa-file-alt" style="color:black; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.txt </p>
+    </div>
+    <div class="drivefile">
+      <i class="far fa-file-image" style="color:#51bcda; font-size: 100px;"></i>
+      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.jpg </p>
+    </div>
   </div>
 </div>
 
 <div style="text-align: -webkit-right;">
-	<div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
+	<div class="plusbtn" data-toggle="modal" data-target="#uploadModal">
    <i class="fas fa-upload" style="font-size:30px; color:gray; margin-top:8px"></i>
  </div>
 </div>  
+
+<!-- 파일 업로드 팝업창 -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">파일 업로드</h5>
+        <div class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 10px; display: flex; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
+        <div class="list" style="margin: 10px;"></div>
+        <div class="status" style="margin: 10px;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="background-color: gray;">업로드 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer class="footer footer-black  footer-white ">
   <div class="container-fluid">
@@ -294,10 +316,8 @@ The above copyright notice and this permission notice shall be included in all c
 <script src="../../../staticfiles/assets/js/fSelect.js"></script>
 <!-- Folder Tree -->
 <script src="../../../staticfiles/assets/js/file-explore.js"></script> 
-
-
-
-
+<!-- File Drag and Drop -->
+<script src="../../../staticfiles/assets/js/filedragdrop.js"></script> 
 
 <script>
   $(document).ready(function() {
@@ -407,3 +427,6 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </script>
 </body>
 </html>
+div>
+                 <img style="margin-right:15px; width 10px; hegith:10px;"  src="../../../staticfiles/assets/img/ij.png">
+	        </div>

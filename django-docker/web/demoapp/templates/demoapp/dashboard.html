@@ -1,15 +1,11 @@
-<!--
-Pa per Dashboard 2 - v2.0.0
+<!-- 
+ Paper Dashboard 2 - v2.0.0
 =========================================================
-
  Product Page: https://www.creative-tim.com/product/paper-dashboard-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
  Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
-
  Coded by Creative Tim
-
 =========================================================
-
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 
 
@@ -176,19 +172,18 @@ The above copyright notice and this permission notice shall be included in all c
       </nav>
       <!-- End Navbar -->
       <!-- <div class="panel-header panel-header-lg">
-
   <canvas id="bigDashboardChart"></canvas>-->
 
 
       <!-- 바디 부분 -->
       <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
-	<!-- 해야할 일 컬럼 -->
+  <!-- 해야할 일 컬럼 -->
         <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
-	  <div style="padding:10px 15px 10px 25px;">
-		<p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
-	  </div>
+    <div style="padding:10px 15px 10px 25px;">
+    <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
+    </div>
 
-	  <!-- task 블럭 -->
+    <!-- task 블럭 -->
           <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -200,35 +195,29 @@ The above copyright notice and this permission notice shall be included in all c
                   </div>
                 </div>
               </div>
-	      <div style="display:flex; flex-direction:row; justify-content:space-between">
-	        <div class="ss-section ss-featured-grid">
-                  <div class="item item-3">
-                    <div class="icons-wrap" style="padding-top: 15px; padding-left: 15px;">
-                      <div class="sport-img">
-                        <img src="../../../staticfiles/assets/img/ij.jpg" alt="">
-                      </div>
-                    </div>
-                  </div>
-                </div>
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
                 <div class="card-footer" style="display:flex; flex-direction:row;">
-		<div style="display:flex; flex-direction:row;">
+    <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
-		  </div>
-		  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-		    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+      </div>
+      <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                   </div>
-		  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-		    <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
                   </div>
-		</div>
-              </div>	      	      
-	    </div>
-	  </div>
-	</div>
+    </div>
+              </div>
+              <div>
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+              </div>            
+      </div>
+    </div>
+  </div>
 
-	<!-- task 블럭 -->
-	<div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+  <!-- task 블럭 -->
+  <div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -243,7 +232,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -254,14 +243,14 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
               <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
             </div>
           </div>
         </div>
 
-	<!-- task 블럭 -->
-	<div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
+  <!-- task 블럭 -->
+  <div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -276,7 +265,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -287,19 +276,19 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
               <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
             </div>
           </div>
         </div>
         </div>
-	
-	<!-- 진행중 컬럼 -->
-	<div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+  
+  <!-- 진행중 컬럼 -->
+  <div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
     </div>
-	<!-- task 블럭-->
+  <!-- task 블럭-->
           <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -315,7 +304,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
         <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -326,13 +315,13 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
               </div>
         <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
       </div>
     </div>
   </div>
-	<!-- task 블럭 -->
-	  <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+  <!-- task 블럭 -->
+    <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -347,7 +336,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -358,20 +347,20 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
               <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
             </div>
           </div>
         </div>
         </div>
-	
-	<!-- 리뷰 컬럼 -->
-	<div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+  
+  <!-- 리뷰 컬럼 -->
+  <div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
     </div>
-	
-	<!-- task 블럭 -->
+  
+  <!-- task 블럭 -->
           <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -387,7 +376,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
         <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -398,19 +387,19 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
               </div>
         <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
       </div>
     </div>
   </div>
 </div>
-	
-	<!-- 완료 컬럼 -->
-	<div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+  
+  <!-- 완료 컬럼 -->
+  <div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
     <div style="padding:10px 15px 10px 25px;">
      <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
     </div>
-	<!-- task 블럭-->
+  <!-- task 블럭-->
           <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
@@ -426,7 +415,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
     <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
       </div>
       <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
         <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -437,13 +426,13 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
               </div>
         <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
       </div>
     </div>
   </div>
-	<!-- task 블럭 -->
-	  <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+  <!-- task 블럭 -->
+    <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
               <div class="card-body ">
                 <div class="row">
@@ -458,7 +447,7 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card-footer" style="display:flex; flex-direction:row;">
                 <div style="display:flex; flex-direction:row;">
                   <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-bookmark"></i>
+                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                   </div>
                   <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
                     <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
@@ -469,7 +458,7 @@ The above copyright notice and this permission notice shall be included in all c
                 </div>
               </div>
               <div>
-                <img style="margin-right:15px;"  src="../../../staticfiles/assets/img/ik.png">
+                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
               </div>
             </div>
           </div>
@@ -477,14 +466,14 @@ The above copyright notice and this permission notice shall be included in all c
        </div>
       </div>
 
-	<!-- 추가 버튼 -->
+  <!-- 추가 버튼 -->
       <div style="text-align: -webkit-right;">
         <div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
           <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
         </div>
       </div>
 
-	<!-- 하단 저작권 표기 -->
+  <!-- 하단 저작권 표기 -->
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
           <div class="row">
@@ -526,7 +515,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div>
         <select class="test">
         <option value="" selected disabled>선택해주세요.</option>
-	<optgroup label="빅데이터팀">
+  <optgroup label="빅데이터팀">
             <option value="1">박형준</option>
         </optgroup>
         <optgroup label="통합 App Proj. 팀">
@@ -567,7 +556,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">업무 생성하기</h5>
+              <h5 class="modal-title" id="exampleModalLabel">업무</h5>
               <div class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </div>
@@ -750,8 +739,3 @@ $('.bookmark').click(function() {
 </body>
 
 </html>
-               ©
-                <script>
-                  document.write(new Date().getFullYear())
-                </script>, made by 롯데백화점 2019 하계 인턴십 디지털사업부문 3조
-              
