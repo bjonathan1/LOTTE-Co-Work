@@ -432,7 +432,7 @@ demo = {
 
     }, {
       type: color,
-      timer: 800,
+      timer: 12000,
       placement: {
         from: from,
         align: align
