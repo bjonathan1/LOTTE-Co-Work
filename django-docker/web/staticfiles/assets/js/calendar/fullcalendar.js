@@ -2383,7 +2383,7 @@ function BasicView(element, calendar, viewName) {
 			"<div>";
 
 		if (showNumbers) {
-			html += "<div class='fc-day-number'>" + date.getDate() + "</div>";
+			html += "<div data-toggle='modal' data-target='#eventcreateModal' class='fc-day-number'>" + date.getDate() + "</div>";
 		}
 
 		html +=
@@ -5953,7 +5953,7 @@ function OverlayManager() {
 		if (e[0].parentNode != parent[0]) {
 			e.appendTo(parent);
 		}
-		usedOverlays.push(e.css(rect).show());
+		
 		return e;
 	}
 	
@@ -6108,4 +6108,5 @@ function HorizontalPositionCache(getElement) {
 ;;
 
 })(jQuery);
+
 
