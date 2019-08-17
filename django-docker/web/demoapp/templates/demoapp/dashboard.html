@@ -1,5 +1,5 @@
 <!--
- Paper Dashboard 2 - v2.0.0
+ Pa per Dashboard 2 - v2.0.0
 =========================================================
  Product Page: https://www.creative-tim.com/product/paper-dashboard-2
  Copyright 2019 Creative Tim (https://www.creative-tim.com)
@@ -178,7 +178,7 @@ The above copyright notice and this permission notice shall be included in all c
         <!-- 바디 부분 -->
         <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
           <!-- 해야할 일 컬럼 -->
-          <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+          <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event);" ondragenter="return false;" ondragover="return false;" >
             <div style="padding:10px 15px 10px 25px;">
               <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
             </div>
@@ -210,7 +210,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                   </div>
                   <div>
-                    <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    <img data-toggle="modal" data-target="#filereqModal" style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
                   </div>            
                 </div>
               </div>
@@ -284,7 +284,7 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
 
           <!-- 진행중 컬럼 -->
-          <div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+          <div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event);" ondragenter="return false;" ondragover="return false;" >
             <div style="padding:10px 15px 10px 25px;">
              <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
            </div>
@@ -355,7 +355,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
 
         <!-- 리뷰 컬럼 -->
-        <div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+        <div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event);" ondragenter="return false;" ondragover="return false;" >
           <div style="padding:10px 15px 10px 25px;">
            <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
          </div>
@@ -395,7 +395,7 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
 
       <!-- 완료 컬럼 -->
-      <div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+      <div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event);" ondragenter="return false;" ondragover="return false;" >
         <div style="padding:10px 15px 10px 25px;">
          <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
        </div>
@@ -638,6 +638,42 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </div>
 
+  <!-- 자료요청 팝업창 -->
+  <div class="modal fade" id="filereqModal" tabindex="-1" role="dialog" aria-labelledby="filereqModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">자료요청</h5>
+          <div class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div style="display:flex; flex-direction:row; margin-top=5px;">
+
+          </div>
+          <div>
+            <p style="font-size:16px; margin: 5px 0 0 10px;">요청 내용</p>
+            <input class="form-control" type="text" size="20">
+          </div>
+          <div style="display:flex; flex-direction:column;width:100%;">
+              <p style="font-size:16px; margin: 5px 0 0 10px;">기한</p>
+
+              <div class="col-xs-3" style="margin:5px">
+                <div class="controls">
+                  <input class="datepicker form-control"style="margin:0;" type="text"/>
+                </div>
+              </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="background-color: gray;">신청 완료</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 </div>
 <!--   Core JS Files   -->
@@ -759,6 +795,20 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </body>
 
 </html>
-div>
-                 <img style="margin-right:15px; width 10px; hegith:10px;"  src="../../../staticfiles/assets/img/ij.png">
-	        </div>
+ showNotification: function(from, align) {
+    color = 'success';
+
+    $.notify({
+      icon: "nc-icon nc-bell-55",
+      message: "Task가 생성되었습니다."
+
+    }, {
+      type: color,
+      timer: 800,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  },
+

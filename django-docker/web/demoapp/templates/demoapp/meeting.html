@@ -258,19 +258,19 @@ The above copyright notice and this permission notice shall be included in all c
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">회의 신청하기</h5>
+        <h5 class="modal-title" id="exampleModalLabel">보고(회의) 요청하기</h5>
         <div class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </div>
       </div>
       <div class="modal-body">
         <div style="display:flex; flex-direction:column;width:100%">
-          <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
+          <p style="font-size:16px; margin: 5px 0 0 10px;"> 보고(회의)명</p>
           <input class="form-control" type="text" size="20">
         </div>
         <div style="display:flex; flex-direction:row; margin-top=5px;">
           <div style="display:flex; flex-direction:column;width:100%;">
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+            <p style="font-size:16px; margin: 5px 0 0 10px;"> 보고(회의) 일정</p>
 
             <div class="col-xs-3" style="margin:5px">
               <div class="controls">
@@ -280,7 +280,7 @@ The above copyright notice and this permission notice shall be included in all c
 
           </div>
           <div style="display:flex; flex-direction:column;width:100%">
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 멤버</p>
+            <p style="font-size:16px; margin: 5px 0 0 10px;"> 보고(회의) 멤버</p>
             <div>
               <select class="test" multiple="multiple">
                 <optgroup label="빅데이터팀">
@@ -304,12 +304,13 @@ The above copyright notice and this permission notice shall be included in all c
           </div>
         </div>
         <div>
-         <p style="font-size:16px; margin: 5px 0 0 10px;">회의 장소</p>
+         <p style="font-size:16px; margin: 5px 0 0 10px;">보고(회의) 장소</p>
          <input class="form-control" style="padding:10px" type="text">
        </div>
      </div>
      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+      <button type="button" class="btn btn-primary" style="background-color: gray;">보고요청</button>
+      <button type="button" class="btn btn-primary" style="background-color: gray;">회의요청</button>
     </div>
   </div>
 </div>
@@ -332,8 +333,17 @@ The above copyright notice and this permission notice shall be included in all c
             <input value="인턴 프로젝트 아이디어 회의" class="form-control" type="text" size="20">
           </div>
           <div style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
-            <div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
+            <div class="btn-record" id="record" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
               <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+            </div>
+            <div class="btn-cancel" id="pause"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 30px;">
+              <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+            </div>
+            <div id="play" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
+              <i class="fas fa-play" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+            </div>
+            <div id="stop" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
+              <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
             </div>
           </div>
         </div>
@@ -520,7 +530,7 @@ The above copyright notice and this permission notice shall be included in all c
   <script type="text/javascript">
     $(function(){
     $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-      var html = '<div id="ikjun"class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%;">\
+      var html = '<div id=""class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%;">\
       <div class="card card-stats">\
       <div style="text-align: -webkit-right; margin-right: 5px; margin-top: 1.5px;">\
       <i id="btnDel" class="nc-icon nc-simple-remove" ></i>\
@@ -723,29 +733,44 @@ function drop(target, task) {   //드롭시 호출 할 함수
 	});
 
 </script>
+
 <script type="text/javascript">
-  $('.btn-record').click(function() {
-    $(this).replaceWith('<div class="btn-cancel" style="background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 30px;"><i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i></div><div class="btn-cancel" style="background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center"><i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i></div>'); 
+  $('#record').click(function() {
+    $(this).css('display', 'none');
+    $('#pause').css('display', 'block');
+    $('#stop').css('display', 'block');
   });
 </script>
 
 <script type="text/javascript">
   $("#eventModal").on('hidden.bs.modal', function () {
-    $('.btn-cancel:first-child').remove();
-    $('.btn-cancel').replaceWith('<div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center"><i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i></div>');
+    $('#pause').css('display','none');
+    $('#stop').css('display','none');
+    $('#record').css('display', 'block');
   });
 </script>
 
 <script type="text/javascript">
-  $("#eventModal").on('hidden.bs.modal', function () {
-    $('.btn-cancel:first-child').remove();
-    $('.btn-cancel').replaceWith('<div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center"><i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i></div>');
+  $("#pause").click( function () {
+    $('#pause').css('display','none');
+    $('#play').css('display', 'block');
   });
 </script>
 
+<script type="text/javascript">
+  $("#play").click( function () {
+    $('#play').css('display','none');
+    $('#pause').css('display', 'block');
+  });
+</script>
+
+<script type="text/javascript">
+  $("#stop").click( function () {
+    $('#pause').css('display','none');
+    $('#stop').css('display','none');
+    $('#record').css('display', 'block');
+  });
+</script>
 
 </body>
 </html>
-div>
-                 <img style="margin-right:15px; width 10px; hegith:10px;"  src="../../../staticfiles/assets/img/ij.png">
-	        </div>

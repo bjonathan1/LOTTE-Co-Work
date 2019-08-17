@@ -388,24 +388,6 @@ demo = {
     marker.setMap(map);
   },
 
-  showNotification: function(from, align) {
-    color = 'success';
-
-    $.notify({
-      icon: "nc-icon nc-bell-55",
-      message: "Task가 생성되었습니다."
-
-    }, {
-      type: color,
-      timer: 800,
-      placement: {
-        from: from,
-        align: align
-      }
-    });
-  },
-
-
   showDelete: function(from, align) {
     color = 'warning';
 
