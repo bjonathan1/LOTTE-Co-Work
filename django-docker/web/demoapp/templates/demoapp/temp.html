@@ -1,0 +1,402 @@
+{% extends 'demoapp/index.html' %}
+
+<!-------------------------------------------Project 출력-------------------------------------->
+{% block content %}
+
+<!-- 바디 부분 -->
+<div class="content" style="padding:0 30px 15px">
+    <div class="row" id="list1" style="flex-direction:row;">
+        <div id='wrap'>
+            <div id='calendar'></div>
+            <div style='clear:both'></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-------------------------------------------프로젝트 팝업창-------------------------------------->
+{% block content_popup %}
+<!-- 이벤트 모달 -->
+<div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">회의 내용</h5>
+                <div class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
+                    <div style="display:flex; flex-direction:column;width:80%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
+                        <input value="인턴 프로젝트 아이디어 회의" class="form-control" type="text" size="20">
+                    </div>
+                    <div style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
+                        <div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
+                            <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row; margin-top=5px;">
+                    <div style="display:flex; flex-direction:column;width:100%;">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+
+                        <div class="col-xs-3" style="margin:5px">
+                            <div class="controls">
+                                <input value="2019-08-02" class="datepicker form-control"style="margin:0;" type="text"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 멤버</p>
+                        <div>
+                            <select class="test" multiple="multiple">
+                                <optgroup label="빅데이터팀">
+                                    <option value="1" selected>박형준</option>
+                                </optgroup>
+                                <optgroup label="통합 App Proj. 팀">
+                                    <option value="2" selected>박예은</option>
+                                    <option value="3" selected>정용원</option>
+                                </optgroup>
+                                <optgroup label="디지털사업팀">
+                                    <option value="4" selected>김성우</option>
+                                    <option value="5">한석환</option>
+                                </optgroup>
+                                <optgroup label="IT기획팀">
+                                    <option value="6">김동우</option>
+                                    <option value="7" selected>김익준</option>
+                                    <option value="8">김정은</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:16px; margin: 5px 0 0 10px;">회의 장소</p>
+                    <input value="삼성빌딩 회의실1" class="form-control" style="padding:10px" type="text">
+                </div>
+                <div>
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 내용 요약 </p>
+                    <textarea class="form-control" style="height:200px; max-height:200px; width: 100%; padding:10px">롯데백화점 유통업 특성에 어울리는 내부 프로젝트 협업 솔루션 개발. 목적은 롯데 백화점 디지털 부문 사업 확장에 따른 디지털 개발 내부 프로젝트 협업 솔루션 제공 디지털 부문을 제외하고, MD와 유통 경영 관련 프로젝트도 함께 반영할 수 있는 유통 전반적인 협업 솔루션 개발 프로젝트 개발 과정은 기존 프로젝트 매니지먼트 툴 개발 API를 사용하여 대시보드와 일정관리 Flow는 비슷하게 개발 MD 혹은 타 부서들 중 프로젝트를 자주 진행하는 팀의 업무 흐름에 맞게 UI와 대시보드 변경 사항 적용</textarea>
+                </div>
+                <div style="display:flex; flex-direction:row;width:100%">
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;">녹음파일</p>
+                        <input style="width: 225px;"class="form-control" type="file" multiple>
+                    </div>
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;">회의록파일</p>
+                        <input class="form-control" type="file" multiple>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" style="background-color: gray;">회의 삭제</button>
+                <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-------------------------------------------Plus 버튼과 기능-------------------------------------->
+{% block plus %}
+
+<!-- 추가 버튼 -->
+<div style="display:flex; flex-direction:row; justify-content:flex-end">
+    <div style="margin-right: 30px;">
+        <div style="display:flex; flex-direction:row;">
+            <div style="background-color:#c6ebfe;height: 18.4px; margin-right: 20px; width: 149.8px;">
+            </div>
+            <p style="margin-bottom:1px;">회의 진행(예정) 날</p>
+        </div>
+        <div style="display:flex; flex-direction:row;">
+            <div style="background-color:#beffbf;height: 18.4px; margin-right: 20px; width: 149.8px;">
+            </div>
+            <p style="margin-bottom:1px; margin-left: 22px;">회의록 등록 날</p>
+        </div>
+    </div>
+    <div style="text-align: -webkit-right;">
+        <img class="plusbtn" src="../../../staticfiles/assets/img/meeting.png" data-toggle="modal" data-target="#exampleModal">
+    </div>
+</div>
+
+<!-- 회의 신청 모달 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">회의 신청하기</h5>
+                <div class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div style="display:flex; flex-direction:column;width:100%">
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
+                    <input class="form-control" type="text" size="20">
+                </div>
+                <div style="display:flex; flex-direction:row; margin-top=5px;">
+                    <div style="display:flex; flex-direction:column;width:100%;">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+
+                        <div class="col-xs-3" style="margin:5px">
+                            <div class="controls">
+                                <input class="datepicker form-control"style="margin:0;" type="text"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 멤버</p>
+                        <div>
+                            <select class="test" multiple="multiple">
+                                <optgroup label="빅데이터팀">
+                                    <option value="1">박형준</option>
+                                </optgroup>
+                                <optgroup label="통합 App Proj. 팀">
+                                    <option value="2">박예은</option>
+                                    <option value="3">정용원</option>
+                                </optgroup>
+                                <optgroup label="디지털사업팀">
+                                    <option value="4">김성우</option>
+                                    <option value="5">한석환</option>
+                                </optgroup>
+                                <optgroup label="IT기획팀">
+                                    <option value="6">김동우</option>
+                                    <option value="7">김익준</option>
+                                    <option value="8">김정은</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:16px; margin: 5px 0 0 10px;">회의 장소</p>
+                    <input class="form-control" style="padding:10px" type="text">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-------------------------------------------Dashboard Sidebar 호출-------------------------------------->
+{% block sidebar %}
+<li>
+    <a href="../">
+        <i class="nc-icon nc-tile-56"></i>
+        <p>백로그</p>
+    </a>
+</li>
+<li>
+    <a href="/dashboard/">
+        <i class="nc-icon nc-layout-11"></i>
+        <p>대시보드</p>
+    </a>
+</li>
+<li>
+    <a href="/drive/">
+        <i class="nc-icon nc-box-2"></i>
+        <p>드라이브</p>
+    </a>
+</li>
+<li>
+    <a href="/issue/">
+        <i class="nc-icon nc-chat-33"></i>
+        <p>이슈</p>
+    </a>
+</li>
+<li class="active">
+    <a href="/meeting/">
+        <i class="nc-icon nc-paper"></i>
+        <p>회의</p>
+    </a>
+</li>
+<li>
+    <a href="/timeline/">
+        <i class="nc-icon nc-bullet-list-67"></i>
+        <p>타임라인</p>
+    </a>
+</li>
+{% endblock %}
+
+<!-- Tim Calendar -->
+  <!--<script src='../../../staticfiles/assets/js/calendar/jquery-1.10.2.js' type="text/javascript"></script>-->
+  <script src='../../../staticfiles/assets/js/calendar/jquery-ui.custom.min.js' type="text/javascript"></script>
+  <script src='../../../staticfiles/assets/js/calendar/fullcalendar.js' type="text/javascript"></script>
+
+<script>
+
+	$(document).ready(function() {
+	    var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		/*  className colors
+
+		className: default(transparent), important(red), chill(pink), success(green), info(blue)
+
+		*/
+
+
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+
+		$('#external-events div.external-event').each(function() {
+
+			// create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+			// it doesn't need to have a start or end
+			var eventObject = {
+				title: $.trim($(this).text()) // use the element's text as the event title
+			};
+
+			// store the Event Object in the DOM element so we can get to it later
+			$(this).data('eventObject', eventObject);
+
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+
+		});
+
+
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+
+		var calendar =  $('#calendar').fullCalendar({
+			height:500,
+			header: {
+				left: 'title',
+				right: 'prev,next today'
+			},
+			editable: true,
+			firstDay: 0, //  1(Monday) this can be changed to 0(Sunday) for the USA system
+			selectable: true,
+			defaultView: 'month',
+
+			axisFormat: 'h:mm',
+			columnFormat: {
+                month: 'ddd',    // Mon
+                week: 'ddd d', // Mon 7
+                day: 'dddd M/d',  // Monday 9/7
+                agendaDay: 'dddd d'
+            },
+            titleFormat: {
+                month: 'yyyy년 MMMM', // September 2009
+                week: "yyyy년 MMMM", // September 2009
+                day: 'yyyy년 MMMM d ddd'                  // Tuesday, Sep 8, 2009
+            },
+			allDaySlot: false,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			droppable: true, // this allows things to be dropped onto the calendar !!!
+			drop: function(date, allDay) { // this function is called when something is dropped
+
+				// retrieve the dropped element's stored Event Object
+				var originalEventObject = $(this).data('eventObject');
+
+				// we need to copy it, so that multiple events don't have a reference to the same object
+				var copiedEventObject = $.extend({}, originalEventObject);
+
+				// assign it the date that was reported
+				copiedEventObject.start = date;
+				copiedEventObject.allDay = allDay;
+
+				// render the event on the calendar
+				// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+				$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+
+				// is the "remove after drop" checkbox checked?
+				if ($('#drop-remove').is(':checked')) {
+					// if so, remove the element from the "Draggable Events" list
+					$(this).remove();
+				}
+
+			},
+
+			events: [
+			    {
+					title: '',
+					start: new Date(y, m, 6),
+					className: 'info'
+				},
+				{
+					title: '',
+					start: new Date(y, m, 6),
+					className: 'success',
+				},
+				{
+					title: '',
+					start: new Date(y, m, 9),
+					className: 'info'
+				},
+				{
+					title: '',
+					start: new Date(y, m, 10),
+					className: 'info'
+				},
+				{
+                    title: '',
+                    start: new Date(y, m, 10),
+                    className: 'success',
+                                },
+				{
+					title: '',
+					start: new Date(y, m, 13),
+					className: 'info'
+				},
+				{
+					title: '',
+					start: new Date(y, m, 16),
+					className: 'info'
+				}
+			],
+		});
+	});
+
+</script>
+
+<script type="text/javascript">
+  $('.btn-record').click(function() {
+    $(this).replaceWith('<div class="btn-cancel" style="background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 30px;"><i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i></div><div class="btn-cancel" style="background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center"><i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i></div>');
+});
+</script>
+
+<script type="text/javascript">
+    $("#eventModal").on('hidden.bs.modal', function () {
+      $('.btn-cancel:first-child').remove();
+      $('.btn-cancel').replaceWith('<div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center"><i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i></div>');
+    });
+</script>
+
+<script type="text/javascript">
+    $("#eventModal").on('hidden.bs.modal', function () {
+      $('.btn-cancel:first-child').remove();
+      $('.btn-cancel').replaceWith('<div class="btn-record" style="margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center"><i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i></div>');
+    });
+</script>
