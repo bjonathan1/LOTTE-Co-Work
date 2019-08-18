@@ -1,741 +1,483 @@
-<!-- 
- Paper Dashboard 2 - v2.0.0
-=========================================================
- Product Page: https://www.creative-tim.com/product/paper-dashboard-2
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard/blob/master/LICENSE)
- Coded by Creative Tim
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+{% extends 'index.html' %}
 
+<!-------------------------------------------Project 출력-------------------------------------->
+{% block content %}
 
+<!-- 바디 부분 -->
+<div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
+    <!-- 해야할 일 컬럼 -->
+    <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+        <div style="padding:10px 15px 10px 25px;">
+            <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
+        </div>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="../../../staticfiles/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../../../staticfiles/assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    Lotte Co-Work
-  </title>
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css" integrity="sha384-wxqG4glGB3nlqX0bi23nmgwCSjWIW13BdLUEYC4VIMehfbcro/ATkyDsF/AbIOVe" crossorigin="anonymous">
-  <style type="text/css">
-    @font-face{
-    font-family:'Charlotte'; src:url("../../../staticfiles/assets/fonts/Charlotte Text M.ttf")
-    }
-    div, span, html, body, input, textarea {
-      font-family: 'Charlotte', sans-serif !important;
-    }
-  </style>
-  <!-- CSS Files -->
-  <link href="../../../staticfiles/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="../../../staticfiles/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
-  <link href="../../../staticfiles/assets/css/sports.css" rel="stylesheet" /> 
-  <link href="../../../staticfiles/assets/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-  <link href="../../../staticfiles/assets/css/fSelect.css" rel="stylesheet">
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../../../staticfiles/assets/demo/demo.css" rel="stylesheet" />
-</head>
-
-<body class="">
-  <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo"> 
-          <a href="http://lotteintern.shop" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img src="../../../staticfiles/assets/img/logo-small.png">
-          </div>
-        </a>
-        <a href="http://lotteintern.shop" class="simple-text logo-normal">
-          Lotte Co-Work
-          <!-- <div class="logo-image-big">
-            <img src="../../../../staticfiles/assets/img/logo-big.png">
-          </div> -->
-        </a>
-      </div>
-      
-      <!-- 사이드 바 -->
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li>
-            <a href="../">
-              <i class="nc-icon nc-tile-56"></i>
-              <p>백로그</p>
-            </a>
-          </li>
-          <li class="active">
-            <a href="/dashboard/">
-              <i class="nc-icon nc-layout-11"></i>
-              <p>대시보드</p>
-            </a>
-          </li>
-          <li>
-            <a href="/drive/">
-              <i class="nc-icon nc-box-2"></i>
-              <p>드라이브</p>
-            </a>
-          </li>
-          <li>
-            <a href="/issue/">
-              <i class="nc-icon nc-chat-33"></i>
-              <p>이슈</p>
-            </a>
-          </li>
-          <li>
-            <a href="/meeting/">
-              <i class="nc-icon nc-paper"></i>
-              <p>회의</p>
-            </a>
-          </li>
-          <li>
-            <a href="/timeline/">
-              <i class="nc-icon nc-bullet-list-67"></i>
-              <p>타임라인</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="main-panel">
-      
-      <!-- 상단 네비게이션 바 -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
+        <!-- task 블럭 -->
+        <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
+                </div>
             </div>
-            <a class="navbar-brand" href="#pablo">디지털사업부문 디지털사업팀</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input style=" margin: 0;" type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="nc-icon nc-zoom-split"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item btn-rotate dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="nc-icon nc-bell-55"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Some Actions</span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link btn-rotate" href="#pablo">
-                  <i class="nc-icon nc-settings-gear-65"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                  </p>
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </nav>
-      <!-- End Navbar -->
-      <!-- <div class="panel-header panel-header-lg">
-  <canvas id="bigDashboardChart"></canvas>-->
 
-
-      <!-- 바디 부분 -->
-      <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
-  <!-- 해야할 일 컬럼 -->
-        <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
-    <div style="padding:10px 15px 10px 25px;">
-    <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
-    </div>
-
-    <!-- task 블럭 -->
-          <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <!-- task 블럭 -->
+        <div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-                <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-              <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>            
-      </div>
-    </div>
-  </div>
-
-  <!-- task 블럭 -->
-  <div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
                 </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
             </div>
-          </div>
         </div>
 
-  <!-- task 블럭 -->
-  <div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
+        <!-- task 블럭 -->
+        <div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">대시보드 디자인</p>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">대시보드 디자인</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-12 </p>
-                  </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-12 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
                 </div>
-              </div>
-              <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
             </div>
-          </div>
         </div>
+    </div>
+
+    <!-- 진행중 컬럼 -->
+    <div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+        <div style="padding:10px 15px 10px 25px;">
+            <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
         </div>
-  
-  <!-- 진행중 컬럼 -->
-  <div class="row" id="list2" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
-    </div>
-  <!-- task 블럭-->
-          <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <!-- task 블럭-->
+        <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-        <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
-      </div>
-    </div>
-  </div>
-  <!-- task 블럭 -->
-    <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
                 </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
             </div>
-          </div>
         </div>
-        </div>
-  
-  <!-- 리뷰 컬럼 -->
-  <div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
-    </div>
-  
-  <!-- task 블럭 -->
-          <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <!-- task 블럭 -->
+        <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-              </div>
-        <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
-      </div>
+
+    <!-- 리뷰 컬럼 -->
+    <div class="row" id="list3" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+        <div style="padding:10px 15px 10px 25px;">
+            <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
+        </div>
+
+        <!-- task 블럭 -->
+        <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <!-- 완료 컬럼 -->
+    <div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
+        <div style="padding:10px 15px 10px 25px;">
+            <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
+        </div>
+        <!-- task 블럭-->
+        <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- task 블럭 -->
+        <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+            <div class="card card-stats">
+                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                            <div class="numbers" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div class="card-footer" style="display:flex; flex-direction:row;">
+                        <div style="display:flex; flex-direction:row;">
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
+                            </div>
+                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
+                            </div>
+                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
+                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-  
-  <!-- 완료 컬럼 -->
-  <div class="row" id="list4" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event); demo.showMove('bottom','right')" ondragenter="return false;" ondragover="return false;" >
-    <div style="padding:10px 15px 10px 25px;">
-     <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
-    </div>
-  <!-- task 블럭-->
-          <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-    <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-      </div>
-      <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
-        <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-      <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-        <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                  </div>
-    </div>
-              </div>
-        <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
-      </div>
-    </div>
-  </div>
-  <!-- task 블럭 -->
-    <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers" style="cursor:pointer">
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div style="display:flex; flex-direction:row; justify-content:space-between">
-              <div class="card-footer" style="display:flex; flex-direction:row;">
-                <div style="display:flex; flex-direction:row;">
-                  <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                  </div>
-                  <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                    <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                  </div>
-                  <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                    <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-              </div>
-            </div>
-          </div>
-        </div>
-       </div>
-      </div>
+{% endblock %}
 
-  <!-- 추가 버튼 -->
-      <div style="text-align: -webkit-right;">
-        <div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
-          <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
-        </div>
-      </div>
-
-  <!-- 하단 저작권 표기 -->
-      <footer class="footer footer-black  footer-white ">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="credits ml-auto">
-              <span class="copyright"> made by 롯데백화점 2019 하계 인턴십 디지털사업부문  3조</span>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      <!-- 업무 추가 팝업창 -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
+<!-------------------------------------------프로젝트 팝업창-------------------------------------->
+{% block content_popup %}
+<!-- 업무 팝업창 -->
+<div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">업무 생성하기</h5>
-              <div class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </div>
+                <h5 class="modal-title" id="exampleModalLabel">업무</h5>
+                <div class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
             </div>
             <div class="modal-body">
-              <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
-                <input class="form-control" type="text" size="20">
-              </div>
-              <div style="display:flex; flex-direction:row; margin-top=5px;">
-    <div style="display:flex; flex-direction:column;width:100%;">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
-      
-        <div class="col-xs-3" style="margin:5px">
-          <div class="controls">
-                        <input class="datepicker form-control"style="margin:0;" type="text"/>
-          </div>
-        </div>
-   
-    </div>
-    <div style="display:flex; flex-direction:column;width:100%">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
-      <div>
-        <select class="test">
-        <option value="" selected disabled>선택해주세요.</option>
-  <optgroup label="빅데이터팀">
-            <option value="1">박형준</option>
-        </optgroup>
-        <optgroup label="통합 App Proj. 팀">
-            <option value="2">박예은</option>
-            <option value="3">정용원</option>
-        </optgroup>
-        <optgroup label="디지털사업팀">
-            <option value="4">김성우</option>
-            <option value="5">한석환</option>
-        </optgroup>
-        <optgroup label="IT기획팀">
-            <option value="6">김동우</option>
-            <option value="7">김익준</option>
-            <option value="8">김정은</option>
-        </optgroup>
-        </select>
-      </div>
-    </div>
-              </div>
-        <div>
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
-                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
-        </div>
-        <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
-                <input class="form-control" type="file" size="20" multiple>
-              </div>
+                <div style="display:flex; flex-direction:column;width:100%">
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
+                    <input class="form-control" value="개발환경 구축" type="text" size="20">
+                </div>
+                <div style="display:flex; flex-direction:row; margin-top=5px;">
+                    <div style="display:flex; flex-direction:column;width:100%;">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
+
+                        <div class="col-xs-3" style="margin:5px">
+                            <div class="controls">
+                                <input class="datepicker form-control"style="margin:0;" value="2019-08-30" type="text"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
+                        <div>
+                            <select class="test">
+                                <optgroup label="빅데이터팀">
+                                    <option value="1">박형준</option>
+                                </optgroup>
+                                <optgroup label="통합 App Proj. 팀">
+                                    <option value="2">박예은</option>
+                                    <option value="3">정용원</option>
+                                </optgroup>
+                                <optgroup label="디지털사업팀">
+                                    <option value="4">김성우</option>
+                                    <option value="5">한석환</option>
+                                </optgroup>
+                                <optgroup label="IT기획팀">
+                                    <option value="6">김동우</option>
+                                    <option value="7" selected>김익준</option>
+                                    <option value="8">김정은</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
+                    <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">프론트개발, 도메인 생성, UI/UX기반 참고</textarea>
+                </div>
+                <div style="display:flex; flex-direction:column;width:100%">
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
+                    <input class="form-control" type="file" size="20" multiple>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+                <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+                <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
+{% endblock %}
 
-       <!-- 업무 팝업창 -->
-      <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
+<!-------------------------------------------Plus 버튼과 기능-------------------------------------->
+{% block plus %}
+
+<!-- 추가 버튼 -->
+<div style="text-align: -webkit-right;">
+    <div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
+    </div>
+</div>
+<!-- 업무 추가 팝업창 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">업무</h5>
-              <div class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </div>
+                <h5 class="modal-title" id="exampleModalLabel">업무 생성하기</h5>
+                <div class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </div>
             </div>
             <div class="modal-body">
-              <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
-                <input class="form-control" value="개발환경 구축" type="text" size="20">
-              </div>
-              <div style="display:flex; flex-direction:row; margin-top=5px;">
-    <div style="display:flex; flex-direction:column;width:100%;">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
-      
-        <div class="col-xs-3" style="margin:5px">
-          <div class="controls">
-                        <input class="datepicker form-control"style="margin:0;" value="2019-08-30" type="text"/>
-          </div>
-        </div>
-   
-    </div>
-    <div style="display:flex; flex-direction:column;width:100%">
-      <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
-      <div>
-        <select class="test">
-        <optgroup label="빅데이터팀">
-            <option value="1">박형준</option>
-        </optgroup>
-        <optgroup label="통합 App Proj. 팀">
-            <option value="2">박예은</option>
-            <option value="3">정용원</option>
-        </optgroup>
-        <optgroup label="디지털사업팀">
-            <option value="4">김성우</option>
-            <option value="5">한석환</option>
-        </optgroup>
-        <optgroup label="IT기획팀">
-            <option value="6">김동우</option>
-            <option value="7" selected>김익준</option>
-            <option value="8">김정은</option>
-        </optgroup>
-        </select>
-      </div>
-    </div>
-              </div>
-        <div>
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
-                  <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">프론트개발, 도메인 생성, UI/UX기반 참고</textarea>
-        </div>
-        <div style="display:flex; flex-direction:column;width:100%">
-                <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
-                <input class="form-control" type="file" size="20" multiple>
-              </div>
+                <div style="display:flex; flex-direction:column;width:100%">
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
+                    <input class="form-control" type="text" size="20">
+                </div>
+                <div style="display:flex; flex-direction:row; margin-top=5px;">
+                    <div style="display:flex; flex-direction:column;width:100%;">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
+
+                        <div class="col-xs-3" style="margin:5px">
+                            <div class="controls">
+                                <input class="datepicker form-control"style="margin:0;" type="text"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="display:flex; flex-direction:column;width:100%">
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 담당자</p>
+                        <div>
+                            <select class="test">
+                                <option value="" selected disabled>선택해주세요.</option>
+                                <optgroup label="빅데이터팀">
+                                    <option value="1">박형준</option>
+                                </optgroup>
+                                <optgroup label="통합 App Proj. 팀">
+                                    <option value="2">박예은</option>
+                                    <option value="3">정용원</option>
+                                </optgroup>
+                                <optgroup label="디지털사업팀">
+                                    <option value="4">김성우</option>
+                                    <option value="5">한석환</option>
+                                </optgroup>
+                                <optgroup label="IT기획팀">
+                                    <option value="6">김동우</option>
+                                    <option value="7">김익준</option>
+                                    <option value="8">김정은</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
+                    <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
+                </div>
+                <div style="display:flex; flex-direction:column;width:100%">
+                    <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
+                    <input class="form-control" type="file" size="20" multiple>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
-              <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+                <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
             </div>
-          </div>
         </div>
-      </div>
-
     </div>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="../../../staticfiles/assets/js/core/jquery.min.js"></script>
-  <script src="../../../staticfiles/assets/js/core/popper.min.js"></script>
-  <script src="../../../staticfiles/assets/js/core/bootstrap.min.js"></script>
-  <script src="../../../staticfiles/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-   <!-- Chart JS -->
-  <script src="../../../staticfiles/assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../../../staticfiles/assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../../../staticfiles/assets/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
-  <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../../../staticfiles/assets/demo/demo.js"></script>
-  <!-- datepicker js -->
-  <script src="../../../staticfiles/assets/js/datepicker/bootstrap.js" type="text/javascript"></script>
-  <script src="../../../staticfiles/assets/js/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- FSelect-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-  <script src="../../../staticfiles/assets/js/fSelect.js"></script>
+</div>
+{% endblock %}
 
-  <!-- 블럭 추가 기능 -->
-  <script type="text/javascript">
-    $(function(){
-    $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-      var html = '<div id="ikjun"class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%;">\
-            <div class="card card-stats">\
-            <div style="text-align: -webkit-right; margin-right: 5px; margin-top: 1.5px;">\
-                <i id="btnDel" class="nc-icon nc-simple-remove" ></i>\
-              </div>\
-              <div class="card-body ">\
-                <div class="row">\
-                  <div class="col-5 col-md-4">\
-                    <div class="icon-big text-center icon-warning">\
-                      <i class="nc-icon nc-favourite-28 text-primary"></i>\
-                    </div>\
-                  </div>\
-                  <div class="col-7 col-md-8">\
-                    <div class="numbers" style="cursor:pointer">\
-                      <p class="card-category" data-toggle="modal" data-target="#taskModal">Followers</p>\
-                      <p class="card-title">+45K\
-                        <p>\
-                    </div>\
-                  </div>\
-                </div>\
-              </div>\
-              <div class="card-footer ">\
-                <hr>\
-                <div class="stats">\
-                  <i class="fa fa-refresh"></i> Update now\
-                </div>\
-              </div>\
-            </div>\
-          </div>';
-     
-      $("#list").append(html); //list라는 아이디에 html을 추가해라
-  });
-  
-  $("#list").on("click", "#btnDel", function() { //list안의 btnDel을 선택
-      $(this).parent().parent().parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
-  });  
-})
-</script>
-
-<!-- 블럭 카운팅 기능 -->
-<script type="text/javascript">
-  var a = $("#list1").find("[id^=task]").length;
-        var b = $("#list2").find("[id^=task]").length;
-        var c = $("#list3").find("[id^=task]").length;
-        var d = $("#list4").find("[id^=task]").length;
-  $(".counter1").append(a);
-        $(".counter2").append(b);
-        $(".counter3").append(c);
-        $(".counter4").append(d);
-</script>
-
-<!-- 드래그 앤 드랍 기능-->
-<script type="text/javascript">
-function drag(target, task) {   //드래그 시작시 호출 할 함수
-  task.dataTransfer.setData('Text', target.id);
-};
-function drop(target, task) {   //드롭시 호출 할 함수
-  var id = task.dataTransfer.getData('Text');
-  target.appendChild(document.getElementById(id));
-  task.preventDefault();  
-};
-</script>
-
-<!-- 날짜 선택 미니 달력 기능 -->
-<script type="text/javascript">
-   $('.datepicker').datepicker({
-       weekStart:1,
-       color: 'red'
-   });
-</script>
-
-<!-- 다중 선택(팀원)  기능 -->
-<script type="text/javascript">
-(function($) {
-    $(function() {
-        window.fs_test = $('.test').fSelect();
-    });
-})(jQuery);
-</script> 
-
-<!-- 북마크 기능-->
-<script type="text/javascript">
-$('.bookmark').click(function() {
-    if($(this).css('background-color') =='rgb(251, 198, 88)') {
-      $(this).css('background-color', '#e4e4e4');
-    } else {
-      $(this).css('background-color', 'rgb(251, 198, 88)');
-    }
-});
-</script>
-
-
-</body>
-
-</html>
+<!-------------------------------------------Dashboard Sidebar 호출-------------------------------------->
+{% block sidebar %}
+<li>
+    <a href="../">
+        <i class="nc-icon nc-tile-56"></i>
+        <p>백로그</p>
+    </a>
+</li>
+<li class="active">
+    <a href="/dashboard/">
+        <i class="nc-icon nc-layout-11"></i>
+        <p>대시보드</p>
+    </a>
+</li>
+<li>
+    <a href="/drive/">
+        <i class="nc-icon nc-box-2"></i>
+        <p>드라이브</p>
+    </a>
+</li>
+<li>
+    <a href="/issue/">
+        <i class="nc-icon nc-chat-33"></i>
+        <p>이슈</p>
+    </a>
+</li>
+<li>
+    <a href="/meeting/">
+        <i class="nc-icon nc-paper"></i>
+        <p>회의</p>
+    </a>
+</li>
+<li>
+    <a href="/timeline/">
+        <i class="nc-icon nc-bullet-list-67"></i>
+        <p>타임라인</p>
+    </a>
+</li>
+{% endblock %}
