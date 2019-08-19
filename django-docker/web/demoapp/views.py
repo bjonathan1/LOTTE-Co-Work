@@ -68,7 +68,7 @@ def dashboard(request):
 
 def meeting(request):
     context = {}
-    return render(request, 'demoapp/temp.html', context)
+    return render(request, 'demoapp/meeting.html', context)
 
 def issue(request):
     context = {}

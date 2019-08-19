@@ -2397,7 +2397,7 @@ a {
 
 a:hover,
 a:focus {
-  color: #51cbce;
+  text-decoration:none;
 }
 
 h1,
