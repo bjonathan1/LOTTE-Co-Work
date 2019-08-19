@@ -8,13 +8,16 @@
   <div class="row" id="list1" style="flex-direction:row;">
     <div id="{% cycle 'task1' 'task2' 'task3' 'task4' task5%}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
       <div class="card card-stats" style="background-color:#e4e4e4">
-        <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;" id="app"> 프로젝트 {{ forloop.counter }}</div>
+	<div style="display:flex; flex-direction:row; justify-content:space-between">
+          <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;" id="app"> 프로젝트 {{ forloop.counter }}</div>
+	  <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal"> 상세보기 </div>
+	</div>
         <div style="background-color:white; border-radius:6px; margin:10px;">
           <div class="card-body ">
             <div class="row">
               <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                 <div class="numbers">
-                  <div class="card-category" style="height:60px; cursor:pointer; display:flex; align-items: center; justify-content:center;" data-toggle="modal" data-target="#projectModal">
+                  <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
                     <div style="margin-top:3px; line-height:1.5; padding:7px">
                       {% if task == 'task1' %} {{ tasks.task1.project_name }}
                       {% elif task == 'task2' %} {{ tasks.task2.project_name }}
@@ -142,12 +145,12 @@
 {% block plus %}
     <!-- 추가버튼 -->
     <div style="text-align: -webkit-right;">
-      <div class="plusbtn" data-toggle="modal" data-target="#exampleModal">
+      <div class="plusbtn" style="cursor:pointer" data-toggle="modal" data-target="#projectPlusModal">
         <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
       </div>
     </div>
     <!-- 프로젝트 추가 팝업창 -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="projectPlusModal" tabindex="-1" role="dialog" aria-labelledby="projectPlusModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
