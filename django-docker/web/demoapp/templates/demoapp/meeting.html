@@ -746,6 +746,7 @@ function drop(target, task) {   //드롭시 호출 할 함수
   $("#eventModal").on('hidden.bs.modal', function () {
     $('#pause').css('display','none');
     $('#stop').css('display','none');
+    $('#play').css('display','none');
     $('#record').css('display', 'block');
   });
 </script>
@@ -768,6 +769,7 @@ function drop(target, task) {   //드롭시 호출 할 함수
   $("#stop").click( function () {
     $('#pause').css('display','none');
     $('#stop').css('display','none');
+    $('#play').css('display','none');
     $('#record').css('display', 'block');
   });
 </script>
