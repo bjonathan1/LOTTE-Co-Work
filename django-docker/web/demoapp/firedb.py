@@ -61,9 +61,25 @@ def add_project(project_name, project_member, project_createdate, project_enddat
       }
       db.child("Members").child(member_data[keys]).child('project').child(project_name).set(project_key['name'])
 
+def add_task(project_key, task_name, task_content, task_manager, task_enddate, task_attachment="None", task_bookmark="False", task_rank="보통", task_state="해야할일"):
+      data = {
+        "task_name" : task_name,
+        "task_content" : task_content,
+        "task_manager" : task_manager,
+        "task_createdate" : today,
+        "task_enddate" : task_enddate,
+        "task_attachment" : task_attachment,
+        "task_bookmark" : task_bookmark,
+        "task_rank" : task_rank,
+        "task_state" : task_state,
+
+      }
+
+      db.child("Project").child(project_key).child("Task").push(data)
 if __name__ == "__main__":
   #add_project("롯데백화점 협업툴 제작", ["김성우", "김익준", "박예은", "박형준", "정용원"], today, "20190829", "롯데백화점만의 협업 툴 LCW를 제작하기 위한 프로젝트")
   #add_person("박형준", "01099588015", "../../../staticfiles/assets/img/hj.jpg", "담당", "본사", "디지털사업부문", "빅데이터팀")
+  add_task("-LmIXx-2iy62TD4n7iHH", "개발 환경 구축", "작업 환경을 구축하는 작업", "김성우", "20190823")
   #data = db.child("Members").get().val()
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
