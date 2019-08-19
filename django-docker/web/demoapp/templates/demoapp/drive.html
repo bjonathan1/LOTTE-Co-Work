@@ -274,7 +274,14 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
       <div class="modal-body">
-        <div class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 10px; display: flex; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
+        <div style="display:flex; flex-direction:row;">
+          <div id="myPCbtn" class="btn-primary" style="background-color: #34b5b8; margin:5px; padding: 5px; border-radius: 6px; cursor: default;">내 PC에서 불러오기</div>
+          <div id="ddbtn" class="btn-primary" style="background-color: gray; margin:5px; padding: 5px; border-radius: 6px; cursor: pointer;">Drag & Drop</div>
+        </div>
+	      <div>
+	        <input style="width: 225px; display: block;" id="frommyPC" class="form-control" type="file" multiple="">
+	      </div>
+        <div id="filedd" class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 10px; display: none; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
         <div class="list" style="margin: 10px;"></div>
         <div class="status" style="margin: 10px;"></div>
       </div>
@@ -325,48 +332,6 @@ The above copyright notice and this permission notice shall be included in all c
       demo.initChartsPages();
     });
   </script>
-  <script type="text/javascript">
-    $(function(){
-    $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-      var html = '<div id="ikjun"class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%;">\
-      <div class="card card-stats">\
-      <div style="text-align: -webkit-right; margin-right: 5px; margin-top: 1.5px;">\
-      <i id="btnDel" class="nc-icon nc-simple-remove" ></i>\
-      </div>\
-      <div class="card-body ">\
-      <div class="row">\
-      <div class="col-5 col-md-4">\
-      <div class="icon-big text-center icon-warning">\
-      <i class="nc-icon nc-favourite-28 text-primary"></i>\
-      </div>\
-      </div>\
-      <div class="col-7 col-md-8">\
-      <div class="numbers">\
-      <p class="card-category">Followers</p>\
-      <p class="card-title">+45K\
-      <p>\
-      </div>\
-      </div>\
-      </div>\
-      </div>\
-      <div class="card-footer ">\
-      <hr>\
-      <div class="stats">\
-      <i class="fa fa-refresh"></i> Update now\
-      </div>\
-      </div>\
-      </div>\
-      </div>';
-
-      $("#list").append(html); //list라는 아이디에 html을 추가해라
-    });
-
-  $("#list").on("click", "#btnDel", function() { //list안의 btnDel을 선택
-      $(this).parent().parent().parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
-    });  
-})
-</script>
-
 
 <script type="text/javascript">
 	var a = $("#list1").find("[id^=task]").length;
@@ -412,7 +377,6 @@ function drop(target, task) {   //드롭시 호출 할 함수
   });
 </script>
 <script type="text/javascript">
-
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);
   _gaq.push(['_setDomainName', 'jqueryscript.net']);
@@ -423,10 +387,25 @@ function drop(target, task) {   //드롭시 호출 할 함수
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
+
+<script type="text/javascript">
+  $('#ddbtn').click(function() {
+    $(this).css('background-color','#34b5b8').css('cursor','default')
+    $('#myPCbtn').css('background-color','gray').css('cursor','pointer')
+    $('#frommyPC').css('display','none')
+    $('#filedd').css('display','flex')
+  });
+</script>
+
+<script type="text/javascript">
+  $('#myPCbtn').click(function() {
+    $(this).css('background-color','#34b5b8').css('cursor','default')
+    $('#ddbtn').css('background-color','gray').css('cursor','pointer')
+    $('#frommyPC').css('display','block')
+    $('#filedd').css('display','none')
+  });
+</script>
+
 </body>
 </html>
-div>
-                 <img style="margin-right:15px; width 10px; hegith:10px;"  src="../../../staticfiles/assets/img/ij.png">
-	        </div>
