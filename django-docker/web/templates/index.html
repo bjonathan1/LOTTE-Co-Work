@@ -122,11 +122,20 @@ The above copyright notice and this permission notice shall be included in all c
         </div> -->
       </a>
     </div>
-    <div class="sidebar-wrapper">
+    <div class="sidebar-wrapper" style="padding-bottom:0">
       <ul class="nav">
         {% block sidebar %}
         {% endblock %}
       </ul>
+      <div style="display: flex; flex-direction: row;">
+        <div>
+          <img src="staticfiles/assets/img/ij.jpg" style="margin: 230px 0 0 20px; border-radius: 25px; height: 50px; width: 50px;">
+        </div>
+        <div style="display: flex; flex-direction: column; margin: 230px 0 0 10px;">
+          <p style="font-size: 24px; margin-bottom: 0">김익준</p>
+          <p style="font-size: 12px; margin-bottom: 0; margin-left: 3px">디지털사업부문 IT기획팀</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="main-panel">
@@ -164,6 +173,14 @@ The above copyright notice and this permission notice shall be included in all c
               <p>
                 <span class="d-lg-none d-md-block">Stats</span>
               </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a style="font-size: 17px; margin: 0; padding-right: 0; padding-top: 9px;"  class="nav-link btn-rotate" href="#pablo">
+                <i class="far fa-comments"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Account</span>
+                </p>
               </a>
             </li>
             <li class="nav-item btn-rotate dropdown">
