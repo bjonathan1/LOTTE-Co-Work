@@ -10,4 +10,5 @@ urlpatterns = [
     path('issue/', views.issue, name='issue'),
     path('drive/', views.drive, name='drive'),
     path('timeline/', views.timeline, name='timeline'),
+    path('login/', views.login, name='login'),
 ]

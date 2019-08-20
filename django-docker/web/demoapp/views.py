@@ -82,5 +82,9 @@ def timeline(request):
     context = {}
     return render(request, 'demoapp/timeline.html', context)
 
+def login(request):
+    context = {}
+    return render(request, 'demoapp/login.html', context)
+
 if __name__ == "__main__":
     index("a")

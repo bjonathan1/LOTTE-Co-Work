@@ -668,6 +668,29 @@ fieldset[disabled] .navbar .navbar-nav>a.btn.active {
   color: #FFFFFF;
 }
 
+.btn-login {
+  background-color: #a59172;
+  color: #FFFFFF;
+}
+
+
+.btn-login:hover,
+.btn-login:focus,
+.btn-login:active,
+.btn-login.active,
+.btn-login:active:focus,
+.btn-login:active:hover,
+.btn-login.active:focus,
+.btn-login.active:hover,
+.show>.btn-login.dropdown-toggle,
+.show>.btn-login.dropdown-toggle:focus,
+.show>.btn-login.dropdown-toggle:hover {
+  background-color: #c9b79c !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+
 .btn-record:hover,
 .btn-record:focus,
 .btn-record:active,
