@@ -1,6 +1,7 @@
 #from . import tasks
 from django.shortcuts import render
 from demoapp import firedb
+from django.http import HttpRequest
 
 db = firedb.db
 storage = firedb.storage
@@ -50,6 +51,7 @@ def index(request):
             project_urls.append(img_url[members[mem]]['image'])
 
         context[task_num] = {
+                "project_key" : user_projects[keys],
                 "project_name" : project_name,
                 "project_content" : project_content,
                 "project_createdate" : project_createdate,
@@ -64,6 +66,29 @@ def index(request):
 
 def dashboard(request):
     context = {}
+    #project_id = request.POST['msg']
+    #project_id = HttpRequest.readlines()
+    #project_id = request.POST.get('project_key', '')
+    project_id = '-LmIXx-2iy62TD4n7iHH'
+    print(project_id)
+    tasks = db.child("Project").child(project_id).child("Task").get().val()
+    count = 1
+
+    for task in tasks:
+        task_num = "task" + str(count)
+        count += 1
+        context[task_num] = {
+            "task_name" : tasks[task]['task_name'],
+            "task_content" : tasks[task]['task_content'],
+            "task_manager" : tasks[task]['task_manager'],
+            "task_createdate" : tasks[task]['task_createdate'],
+            "task_enddate" : tasks[task]['task_enddate'],
+            "task_attachment" : tasks[task]['task_attachment'],
+            "task_bookmark" : tasks[task]['task_bookmark'],
+            "task_rank" : tasks[task]['task_rank'],
+            "task_state" : tasks[task]['task_state'],
+        }
+    print(context)
     return render(request, 'demoapp/dashboard.html', context)
 
 def meeting(request):
@@ -83,4 +108,4 @@ def timeline(request):
     return render(request, 'demoapp/timeline.html', context)
 
 if __name__ == "__main__":
-    index("a")
+    dashboard("a")

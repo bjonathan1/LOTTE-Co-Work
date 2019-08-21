@@ -1,38 +1,43 @@
 {% extends 'index.html' %}
-
 <!-------------------------------------------Project 출력-------------------------------------->
 {% block content %}
 
 <div class="content">
   {% for task in tasks %}
+  {{ task.project_key }}
   <div class="row" id="list1" style="flex-direction:row;">
     <div id="{% cycle 'task1' 'task2' 'task3' 'task4' task5%}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
       <div class="card card-stats" style="background-color:#e4e4e4">
-	<div style="display:flex; flex-direction:row; justify-content:space-between">
+        <div style="display:flex; flex-direction:row; justify-content:space-between">
           <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;" id="app"> 프로젝트 {{ forloop.counter }}</div>
-	  <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal"> 상세보기 </div>
-	</div>
+          <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal"> 상세보기 </div>
+        </div>
         <div style="background-color:white; border-radius:6px; margin:10px;">
-	 <a href="/dashboard/">
-          <div class="card-body ">
-            <div class="row">
-              <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                <div class="numbers">
-                  <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
-                    <div style="margin-top:3px; line-height:1.5; padding:7px">
-                      {% if task == 'task1' %} {{ tasks.task1.project_name }}
-                      {% elif task == 'task2' %} {{ tasks.task2.project_name }}
-                      {% elif task == 'task3' %} {{ tasks.task3.project_name }}
-                      {% elif task == 'task4' %} {{ tasks.task4.project_name }}
-                      {% elif task == 'task5' %} {{ tasks.task5.project_name }}
-                      {% endif %}
+
+            <div class="card-body " id="project_name">
+              <form action="dashboard" method="post" id="test">
+                {% csrf_token %}
+
+                <div class="row">
+                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                    <div class="numbers">
+                      <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
+                        <div style="margin-top:3px; line-height:1.5; padding:7px">
+
+                          {% if task == 'task1' %}<input type="hidden" name="projectkey" value="{{ tasks.task1.project_key }}" >{{ tasks.task1.project_name }}
+                          {% elif task == 'task2' %}<input type="hidden" name="projectkey" value="{{ tasks.task2.project_key }}" > {{ tasks.task2.project_name }}
+                          {% elif task == 'task3' %} {{ tasks.task3.project_name }}
+                          {% elif task == 'task4' %} {{ tasks.task4.project_name }}
+                          {% elif task == 'task5' %} {{ tasks.task5.project_name }}
+                          <input type="submit" >
+                          {% endif %}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
-	   </a>
-          </div>
           <div style="display:flex; flex-direction:row-reverse; justify-content:space-between">
             <div class="card-footer" style="display:flex; flex-direction:row; padding: 0px 12px 5px 0px;">
               <div style="background-color:#e4e4e4; border-radius:6px;display:flex;height:50%;  margin:5px 0 0 0; flex-direction:row; justify-content:space-evenly;  vertical-align: middle;margin-top: 19px;">
@@ -40,30 +45,29 @@
                 <p style="margin: 6px 3px 2px 3px;">
                   {% if task == 'task1' %} {{ tasks.task1.project_enddate.4 }}{{ tasks.task1.project_enddate.5 }}월 {{ tasks.task1.project_enddate.6 }}{{ tasks.task1.project_enddate.7 }}일
                   {% elif task == 'task2' %} {{ tasks.task2.project_enddate.4 }}{{ tasks.task2.project_enddate.5 }}월 {{ tasks.task2.project_enddate.6 }}{{ tasks.task2.project_enddate.7 }}일
-                  {% elif task == 'task3' %} {{ tasks.task3.project_enddate.4 }}{{ tasks.task3.project_enddate.5 }}월 {{ tasks.task3.project_enddate.6 }}{{ tasks.task3.project_enddate.7 }}일
-                  {% elif task == 'task4' %} {{ tasks.task4.project_enddate.4 }}{{ tasks.task4.project_enddate.5 }}월 {{ tasks.task4.project_enddate.6 }}{{ tasks.task4.project_enddate.7 }}일
-                  {% elif task == 'task5' %} {{ tasks.task5.project_enddate.4 }}{{ tasks.task5.project_enddate.5 }}월 {{ tasks.task5.project_enddate.6 }}{{ tasks.task5.project_enddate.7 }}일
-                  {% endif %}</p>
-              </div>
+                {% elif task == 'task3' %} {{ tasks.task3.project_enddate.4 }}{{ tasks.task3.project_enddate.5 }}월 {{ tasks.task3.project_enddate.6 }}{{ tasks.task3.project_enddate.7 }}일
+                {% elif task == 'task4' %} {{ tasks.task4.project_enddate.4 }}{{ tasks.task4.project_enddate.5 }}월 {{ tasks.task4.project_enddate.6 }}{{ tasks.task4.project_enddate.7 }}일
+                {% elif task == 'task5' %} {{ tasks.task5.project_enddate.4 }}{{ tasks.task5.project_enddate.5 }}월 {{ tasks.task5.project_enddate.6 }}{{ tasks.task5.project_enddate.7 }}일
+                {% endif %}</p>
             </div>
+          </div>
 
-            <div class="ss-section ss-featured-grid">
-              <div class="item item-3">
-                <div class="icons-wrap" style="padding-top: 15px; padding-left: 15px;">
-                  {% if task == 'task1' %}
-                  {% for img in tasks.task1.project_urls %}
-                  <div class="sport-img">
-                    <img src="{{ img }}" alt="">
-                  </div>
-                  {% endfor %}
-                  {% elif task == 'task2' %}
-                  {% for img in tasks.task2.project_urls %}
-                  <div class="sport-img">
-                    <img src="{{ img }}" alt="">
-                  </div>
-                  {% endfor %}
-                  {% endif %}
+          <div class="ss-section ss-featured-grid">
+            <div class="item item-3">
+              <div class="icons-wrap" style="padding-top: 15px; padding-left: 15px;">
+                {% if task == 'task1' %}
+                {% for img in tasks.task1.project_urls %}
+                <div class="sport-img">
+                  <img src="{{ img }}" alt="">
                 </div>
+                {% endfor %}
+                {% elif task == 'task2' %}
+                {% for img in tasks.task2.project_urls %}
+                <div class="sport-img">
+                  <img src="{{ img }}" alt="">
+                </div>
+                {% endfor %}
+                {% endif %}
               </div>
             </div>
           </div>
@@ -71,8 +75,8 @@
       </div>
     </div>
   </div>
-  {% endfor %}
-
+</div>
+{% endfor %}
 </div>
 
 {% endblock %}
@@ -270,3 +274,21 @@ new Vue({
     }
 })
 </script>
+
+{% block script %}
+
+<script>
+                {% csrf_token %}
+
+    $('#project_name').click( function() {
+        console.log('click')
+        $.ajax({
+            url:'/dashboard/',
+            dataType:'json',
+            type:'POST',
+            data:{'msg':$('#msg').val()},
+        });
+    })
+</script>
+
+{% endblock %}

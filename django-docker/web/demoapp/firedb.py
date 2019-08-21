@@ -11,7 +11,7 @@ config = {
   'databaseURL': "https://web-test-f1437.firebaseio.com",
   'projectId': "web-test-f1437",
   'storageBucket': "web-test-f1437.appspot.com",
-  "serviceAccount": "demoapp/web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
+  "serviceAccount": "web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -62,6 +62,7 @@ def add_project(project_name, project_member, project_createdate, project_enddat
       db.child("Members").child(member_data[keys]).child('project').child(project_name).set(project_key['name'])
 
 def add_task(project_key, task_name, task_content, task_manager, task_enddate, task_attachment="None", task_bookmark="False", task_rank="보통", task_state="해야할일"):
+
       data = {
         "task_name" : task_name,
         "task_content" : task_content,
