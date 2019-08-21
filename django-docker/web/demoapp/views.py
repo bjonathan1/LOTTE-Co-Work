@@ -1,6 +1,5 @@
 #from . import tasks
 from django.shortcuts import render
-
 from demoapp import firedb
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
@@ -116,6 +115,9 @@ def timeline(request):
     context = {}
     return render(request, 'demoapp/timeline.html', context)
 
+def login(request):
+    context = {}
+    return render(request, 'demoapp/login.html', context)
 
 if __name__ == "__main__":
-    dashboard("a")
+    index("a")

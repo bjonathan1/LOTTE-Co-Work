@@ -21,7 +21,7 @@ if (window.FileReader) {
       if (e.preventDefault) {
         e.preventDefault();
       } // stops the browser from redirecting off to the image.
-
+      $('#myPCbtn').css('display','none')
       var dt = e.dataTransfer;
       var files = dt.files;
       for (var i = 0; i < files.length; i++) {
@@ -48,10 +48,6 @@ if (window.FileReader) {
               "KB)";
             list.appendChild(newFile);
             //  var fileNumber = list.getElementsByTagName('div').length;
-
-            //	div.status...
-            status.innerHTML =
-              "파일이 업로드할 준비가 되었습니다.";
 
             //status.innerHTML = fileNumber < files.length
             //? 'Loaded 100% of file '+fileNumber+' of '+files.length+'...'

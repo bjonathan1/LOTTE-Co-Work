@@ -56,13 +56,13 @@ The above copyright notice and this permission notice shall be included in all c
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
       -->
       <div class="logo"> 
-        <a href="http://lotteintern.shop" class="simple-text logo-mini">
+        <a href="http://lotteintern.shop/main" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../../../staticfiles/assets/img/logo-small.png">
           </div>
         </a>
-        <a href="http://lotteintern.shop" class="simple-text logo-normal">
-          Lotte Co-Work
+        <a href="http://lotteintern.shop/main" class="simple-text logo-normal" style="font-size:17px;">
+          롯데백화점
           <!-- <div class="logo-image-big">
             <img src="../../../staticfiles/assets/img/logo-big.png">
           </div> -->
@@ -71,7 +71,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
-            <a href="../">
+            <a href="/main/">
               <i class="nc-icon nc-tile-56"></i>
               <p>업무</p>
             </a>
@@ -115,7 +115,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">디지털사업부문 디지털사업팀</a>
+            <a class="navbar-brand" href="#pablo">Lotte Co-Work</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -225,8 +225,8 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
   <div style="display:flex; flex-direction:row; background-color: #e4e4e4; width: 70%; margin-left: 30px; height:500px; border-radius: 6px; padding: 20px">
     <div class="drivefile">
-      <i class="far fa-file-pdf" style="color:red; font-size: 100px;"></i>
-      <p style="font-size: 12px; margin-top: 5px"> Dashboard UI/UX.pdf </p>
+      <i class="far fa-file-pdf" style="color:red; font-size: 100px;" data-toggle="modal" data-target="#previewModal"></i>
+      <p style="font-size: 12px; margin-top: 5px"> 협업툴.pdf </p>
     </div>
     <div class="drivefile">
       <i class="far fa-file-word" style="color:blue; font-size: 100px;"></i>
@@ -269,18 +269,36 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
       <div class="modal-body">
         <div style="display:flex; flex-direction:row;">
-          <div id="myPCbtn" class="btn-primary" style="font-size:12px; height:25px; background-color: #34b5b8; margin:5px; padding: 5px; border-radius: 6px; cursor: default;">내 PC에서 불러오기</div>
-          <div id="ddbtn" class="btn-primary" style="font-size:12px; height:25px; background-color: gray; margin:5px; padding: 5px; border-radius: 6px; cursor: pointer;">Drag & Drop</div>
+          <input type="file" id="myPCbtn" style="display: block; margin-bottom: 5px">
         </div>
-	      <div>
-	        <input style="width: 225px; display: block;" id="frommyPC" class="form-control" type="file" multiple="">
-	      </div>
-        <div id="filedd" class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 10px; display: none; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
+        <div id="filedd" class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 13px 5px 5px 150px;  display: block; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
         <div class="list" style="margin: 10px;"></div>
-        <div class="status" style="margin: 10px;"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" style="background-color: gray;">업로드 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 파일 프리뷰 및 다운로드 팝업 -->
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">파일 미리보기</h5>
+        <div class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; justify-content: center;">
+          <iframe src="../../../staticfiles/assets/doc/협업툴.pdf" style="width: 444px; height: 555px;"></iframe>
+        </div>
+      <div class="modal-footer">
+	<a href="../../../staticfiles/assets/doc/협업툴.pdf">
+          <button type="button" class="btn btn-primary" style="background-color: gray;">파일 다운로드</button>
+	</a>
       </div>
     </div>
   </div>
@@ -384,22 +402,18 @@ function drop(target, task) {   //드롭시 호출 할 함수
 </script>
 
 <script type="text/javascript">
-  $('#ddbtn').click(function() {
-    $(this).css('background-color','#34b5b8').css('cursor','default')
-    $('#myPCbtn').css('background-color','gray').css('cursor','pointer')
-    $('#frommyPC').css('display','none')
-    $('#filedd').css('display','flex')
+  $('#myPCbtn').click(function() {
+    $('#filedd').css('display','none')
   });
 </script>
 
 <script type="text/javascript">
-  $('#myPCbtn').click(function() {
-    $(this).css('background-color','#34b5b8').css('cursor','default')
-    $('#ddbtn').css('background-color','gray').css('cursor','pointer')
-    $('#frommyPC').css('display','block')
-    $('#filedd').css('display','none')
+  $("#uploadModal").on('hidden.bs.modal', function () {
+    $('#myPCbtn').css('display','block');
+    $('#filedd').css('display','block');
   });
 </script>
+
 
 </body>
 </html>
