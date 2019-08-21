@@ -1,7 +1,39 @@
 {% extends 'index.html' %}
 <!-------------------------------------------Project 출력-------------------------------------->
 {% block content %}
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+     // using jQuery
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $(document).ready(function() {
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+      });
+</script>
 <div class="content">
   {% for task in tasks %}
   {{ task.project_key }}
@@ -24,7 +56,7 @@
                       <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
                         <div style="margin-top:3px; line-height:1.5; padding:7px">
 
-                          {% if task == 'task1' %}<input type="hidden" name="projectkey" value="{{ tasks.task1.project_key }}" >{{ tasks.task1.project_name }}
+                          {% if task == 'task1' %}<input type="hidden" id="projectkey" value="{{ tasks.task1.project_key }}" >{{ tasks.task1.project_name }}
                           {% elif task == 'task2' %}<input type="hidden" name="projectkey" value="{{ tasks.task2.project_key }}" > {{ tasks.task2.project_name }}
                           {% elif task == 'task3' %} {{ tasks.task3.project_name }}
                           {% elif task == 'task4' %} {{ tasks.task4.project_name }}
@@ -278,7 +310,6 @@ new Vue({
 {% block script %}
 
 <script>
-                {% csrf_token %}
 
     $('#project_name').click( function() {
         console.log('click')

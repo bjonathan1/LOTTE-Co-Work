@@ -11,7 +11,7 @@ config = {
   'databaseURL': "https://web-test-f1437.firebaseio.com",
   'projectId': "web-test-f1437",
   'storageBucket': "web-test-f1437.appspot.com",
-  "serviceAccount": "web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
+  "serviceAccount": "demoapp/web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
 }
 
 firebase = pyrebase.initialize_app(config)
