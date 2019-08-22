@@ -3,14 +3,6 @@
 <!-------------------------------------------Project 출력-------------------------------------->
 {% block content %}
 
-{% for task in tasks.items %}
-
-    {% for a in task %}
-        <p>{{ a }}</p>
-    {% endfor %}
-
-
-{% endfor %}
 
 <!-- 바디 부분 -->
 <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
@@ -21,20 +13,17 @@
             <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
         </div>
 
-            {% for task in tasks %}
-
-                {% if task == 'task1' %}  {% endif %}
-
-            {% endfor %}
+        {% for key, value in tasks.items %}
+        {% if value.task_state == '해야할일'%}
 
         <!-- task 블럭 -->
-        <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <div id="{{ key }}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                             <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -42,89 +31,35 @@
                 <div style="display:flex; flex-direction:row; justify-content:space-between">
                     <div class="card-footer" style="display:flex; flex-direction:row;">
                         <div style="display:flex; flex-direction:row;">
-                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                            </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                            </div>
-                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- task 블럭 -->
-        <div id='task2' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:row; justify-content:space-between">
-                    <div class="card-footer" style="display:flex; flex-direction:row;">
-                        <div style="display:flex; flex-direction:row;">
+                            {% if value.task_bookmark == 'False' %}
                             <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                             </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                            {% endif %}
+
+                            {% if value.task_attachment == 'None' %}
+                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                             </div>
+                            {% endif %}
+
+
                             <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
+                                <p style="margin: 2px 5px 0 5px;"> D-{{ value.task_ddate}} </p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- task 블럭 -->
-        <div id='task3' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">대시보드 디자인</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:row; justify-content:space-between">
-                    <div class="card-footer" style="display:flex; flex-direction:row;">
-                        <div style="display:flex; flex-direction:row;">
-                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                            </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                            </div>
-                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-12 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endif %}
+        {% endfor %}
+
     </div>
 
     <!-- 진행중 컬럼 -->
@@ -132,46 +67,18 @@
         <div style="padding:10px 15px 10px 25px;">
             <p class='counter2'  style="font-size:16px; font-weight:280; margin:0px;">진행중 </p>
         </div>
-        <!-- task 블럭-->
-        <div id='task4' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:row; justify-content:space-between">
-                    <div class="card-footer" style="display:flex; flex-direction:row;">
-                        <div style="display:flex; flex-direction:row;">
-                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                            </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                            </div>
-                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        {% for key, value in tasks.items %}
+        {% if value.task_state == '진행중'%}
+
         <!-- task 블럭 -->
-        <div id='task5' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <div id="{{ key }}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
+                            <div class="numbers" style="cursor:pointer" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -179,23 +86,34 @@
                 <div style="display:flex; flex-direction:row; justify-content:space-between">
                     <div class="card-footer" style="display:flex; flex-direction:row;">
                         <div style="display:flex; flex-direction:row;">
+
+                            {% if value.task_bookmark == 'False' %}
                             <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                             </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
+                            {% endif %}
+
+                            {% if value.task_attachment == 'None' %}
+                            <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                             </div>
+                            {% endif %}
+
+
                             <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
+                                <p style="margin: 2px 5px 0 5px;"> D-{{ value.task_ddate}} </p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
         </div>
+
+        {% endif %}
+        {% endfor %}
     </div>
 
     <!-- 리뷰 컬럼 -->
@@ -204,14 +122,17 @@
             <p class='counter3'  style="font-size:16px; font-weight:300; margin:0px;">리뷰 </p>
         </div>
 
+        {% for key, value in tasks.items %}
+        {% if value.task_state == '리뷰'%}
+
         <!-- task 블럭 -->
-        <div id='task6' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+        <div id="{{ key }}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            <div class="numbers" style="cursor:pointer" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -219,23 +140,34 @@
                 <div style="display:flex; flex-direction:row; justify-content:space-between">
                     <div class="card-footer" style="display:flex; flex-direction:row;">
                         <div style="display:flex; flex-direction:row;">
-                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
+
+                            {% if value.task_bookmark == 'False' %}
+                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                             </div>
+                            {% endif %}
+
+                            {% if value.task_attachment == 'None' %}
                             <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                             </div>
+                            {% endif %}
+
+
                             <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                                <p style="margin: 2px 5px 0 5px;"> D-{{ value.task_ddate}} </p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
         </div>
+
+        {% endif %}
+        {% endfor %}
     </div>
 
     <!-- 완료 컬럼 -->
@@ -243,14 +175,18 @@
         <div style="padding:10px 15px 10px 25px;">
             <p class='counter4'  style="font-size:16px; font-weight:300; margin:0px;">완료 </p>
         </div>
-        <!-- task 블럭-->
-        <div id='task7' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
+
+        {% for key, value in tasks.items %}
+        {% if value.task_state == '완료'%}
+
+        <!-- task 블럭 -->
+        <div id="{{ key }}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
             <div class="card card-stats">
                 <div class="card-body ">
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">개발환경 구축</p>
+                            <div class="numbers" style="cursor:pointer" style="cursor:pointer">
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -258,55 +194,35 @@
                 <div style="display:flex; flex-direction:row; justify-content:space-between">
                     <div class="card-footer" style="display:flex; flex-direction:row;">
                         <div style="display:flex; flex-direction:row;">
+
+                            {% if value.task_bookmark == 'False' %}
                             <div class="bookmark" style="text-align: center; width: 25px; background-color: #e4e4e4; height: 25px; border-radius: 6px;margin-right:5px">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
                             </div>
+                            {% endif %}
+
+                            {% if value.task_attachment == 'None' %}
                             <div class="stats" style="text-align: center; width: 25px; background:#e4e4e4; height: 25px; border-radius: 6px; margin-right:5px;">
                                 <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
                             </div>
+                            {% endif %}
+
+
                             <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-30 </p>
+                                <p style="margin: 2px 5px 0 5px;"> D-{{ value.task_ddate}} </p>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
         </div>
-        <!-- task 블럭 -->
-        <div id='task8' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row">
-                        <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                            <div class="numbers" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">회의록 개발</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="display:flex; flex-direction:row; justify-content:space-between">
-                    <div class="card-footer" style="display:flex; flex-direction:row;">
-                        <div style="display:flex; flex-direction:row;">
-                            <div class="bookmark" style="text-align: center; width: 25px; background-color: #fbc658; height: 25px; border-radius: 6px;margin-right:5px">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px;" class="fa fa-star"></i>
-                            </div>
-                            <div class="stats" style="text-align: center; width: 25px; background:green; height: 25px; border-radius: 6px; margin-right:5px;">
-                                <i style="color:#ffffff;font-size:15px;margin: 5px 5px 5px 5px" class="fas fa-paperclip"></i>
-                            </div>
-                            <div style="background-color:#e4e4e4; border-radius:6px; vertical-align: middle;">
-                                <p style="margin: 2px 5px 0 5px;"> D-4 </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        {% endif %}
+        {% endfor %}
+
     </div>
 </div>
 {% endblock %}
@@ -504,4 +420,14 @@ $('.bookmark').click(function() {
 });
 </script>
 
+<script type="text/javascript">
+  var a = $("#list1").find("[id^=task]").length;
+  var b = $("#list2").find("[id^=task]").length;
+  var c = $("#list3").find("[id^=task]").length;
+  var d = $("#list4").find("[id^=task]").length;
+  $(".counter1").append(a);
+  $(".counter2").append(b);
+  $(".counter3").append(c);
+  $(".counter4").append(d);
+</script>
 {% endblock %}
