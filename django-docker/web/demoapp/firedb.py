@@ -16,7 +16,7 @@ config = {
   'databaseURL': "https://web-test-f1437.firebaseio.com",
   'projectId': "web-test-f1437",
   'storageBucket': "web-test-f1437.appspot.com",
-  "serviceAccount": "web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
+  "serviceAccount": "demoapp/web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -89,9 +89,6 @@ if __name__ == "__main__":
   #data = db.child("Members").get().val()
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
-  task_key = db.child('Project').child('project_key').child('Dashboard').child('dashboard_key').get().val()
-  print(task_key)
-  db.child('Project').child('project_key').set(task_key)
 
   '''
   img = "1.png"

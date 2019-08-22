@@ -3,14 +3,29 @@
 <!-------------------------------------------Project 출력-------------------------------------->
 {% block content %}
 
+{% for task in tasks.items %}
+
+    {% for a in task %}
+        <p>{{ a }}</p>
+    {% endfor %}
+
+
+{% endfor %}
+
 <!-- 바디 부분 -->
-<h1>{{ task1 }}</h1>
 <div class="content" style="display:flex; justify-content:space-evenly; flex-direction: row;">
     <!-- 해야할 일 컬럼 -->
+
     <div class="row" id="list1" style="flex-direction:column; width: 280px; background-color: #e4e4e4; border-radius:6px;" ondrop="drop(this, event);" ondragenter="return false;" ondragover="return false;" >
         <div style="padding:10px 15px 10px 25px;">
             <p class='counter1'  style="font-size:16px; font-weight:300; margin:0px;">해야할 일 </p>
         </div>
+
+            {% for task in tasks %}
+
+                {% if task == 'task1' %}  {% endif %}
+
+            {% endfor %}
 
         <!-- task 블럭 -->
         <div id='task1' class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20%" draggable="true" ondragstart="drag(this, event)">

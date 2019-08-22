@@ -72,7 +72,9 @@ def index(request):
 
 def dashboard(request):
     context = {}
-    project_id = request.POST['msg']
+    if request.method == 'POST':
+        request.session['_old_post'] = request.POST['msg']
+    project_id = request.session.get('_old_post')
     tasks = db.child("Project").child(project_id).child("Task").get().val()
     count = 1
 
@@ -91,7 +93,7 @@ def dashboard(request):
             "task_state" : tasks[task]['task_state'],
         }
     print(context)
-    return render(request, 'demoapp/dashboard.html', context)
+    return render(request, 'demoapp/dashboard.html', {'tasks' : context})
 
 def meeting(request):
     context = {}
@@ -112,6 +114,7 @@ def timeline(request):
 def login(request):
     context = {}
     return render(request, 'demoapp/login.html', context)
+
 
 if __name__ == "__main__":
     #index("a")
