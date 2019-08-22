@@ -45,31 +45,32 @@
           <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal"> 상세보기 </div>
         </div>
         <div style="background-color:white; border-radius:6px; margin:10px;">
+          <form action="/dashboard/" method="post" id="test">
 
             <div class="card-body " id="project_name">
-              <form action="dashboard" method="post" id="test">
                 {% csrf_token %}
 
                 <div class="row">
                   <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                     <div class="numbers">
+
                       <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
                         <div style="margin-top:3px; line-height:1.5; padding:7px">
 
-                          {% if task == 'task1' %}<input type="hidden" id="projectkey" value="{{ tasks.task1.project_key }}" >{{ tasks.task1.project_name }}
+                          {% if task == 'task1' %}<input type="hidden" id="projectkey" value="{{ tasks.task2.project_key }}" >{{ tasks.task1.project_name }}
                           {% elif task == 'task2' %}<input type="hidden" name="projectkey" value="{{ tasks.task2.project_key }}" > {{ tasks.task2.project_name }}
                           {% elif task == 'task3' %} {{ tasks.task3.project_name }}
                           {% elif task == 'task4' %} {{ tasks.task4.project_name }}
                           {% elif task == 'task5' %} {{ tasks.task5.project_name }}
-                          <input type="submit" >
                           {% endif %}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </form>
             </div>
+                              </form>
+
           <div style="display:flex; flex-direction:row-reverse; justify-content:space-between">
             <div class="card-footer" style="display:flex; flex-direction:row; padding: 0px 12px 5px 0px;">
               <div style="background-color:#e4e4e4; border-radius:6px;display:flex;height:50%;  margin:5px 0 0 0; flex-direction:row; justify-content:space-evenly;  vertical-align: middle;margin-top: 19px;">
@@ -317,8 +318,11 @@ new Vue({
             url:'/dashboard/',
             dataType:'json',
             type:'POST',
-            data:{'msg':$('#msg').val()},
+            data:{'msg': $('#projectkey').val()},
+
         });
+        window.location = /dashboard/
+
     })
 </script>
 

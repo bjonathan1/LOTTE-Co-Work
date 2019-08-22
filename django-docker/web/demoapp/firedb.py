@@ -4,14 +4,19 @@ from datetime import datetime
 import os
 import json
 
-
+'''
+Database 주의할 점
+push - Unique Key가 해당 위치에 생기며 그 하위에 넣고자 하는 정보 들어감
+set - Unique Key가 생기지 않고 바로 해당 위치 아래에 정보가 들어가나
+    #해당 위치의 모든 정보가 사라지고 넣은 정보로 대체됨
+'''
 config = {
   'apiKey': "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
   'authDomain': "web-test-f1437.firebaseapp.com",
   'databaseURL': "https://web-test-f1437.firebaseio.com",
   'projectId': "web-test-f1437",
   'storageBucket': "web-test-f1437.appspot.com",
-  "serviceAccount": "demoapp/web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
+  "serviceAccount": "web-test-f1437-firebase-adminsdk-0mv2u-06bd4466ee.json", #에러나면 여기에 demoapp/를 넣어줌
 }
 
 firebase = pyrebase.initialize_app(config)
@@ -80,11 +85,13 @@ def add_task(project_key, task_name, task_content, task_manager, task_enddate, t
 if __name__ == "__main__":
   #add_project("롯데백화점 협업툴 제작", ["김성우", "김익준", "박예은", "박형준", "정용원"], today, "20190829", "롯데백화점만의 협업 툴 LCW를 제작하기 위한 프로젝트")
   #add_person("박형준", "01099588015", "../../../staticfiles/assets/img/hj.jpg", "담당", "본사", "디지털사업부문", "빅데이터팀")
-  add_task("-LmIXx-2iy62TD4n7iHH", "개발 환경 구축", "작업 환경을 구축하는 작업", "김성우", "20190823")
+  #add_task("-LmIXx-2iy62TD4n7iHH", "개발 환경 구축", "작업 환경을 구축하는 작업", "김성우", "20190823")
   #data = db.child("Members").get().val()
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
-
+  task_key = db.child('Project').child('project_key').child('Dashboard').child('dashboard_key').get().val()
+  print(task_key)
+  db.child('Project').child('project_key').set(task_key)
 
   '''
   img = "1.png"

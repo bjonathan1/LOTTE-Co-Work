@@ -2,9 +2,9 @@
 from django.shortcuts import render
 from demoapp import firedb
 from django.views.decorators.csrf import csrf_exempt
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+import requests, json
 
-@csrf_exempt
 def public_api(request):
     if request.method=='POST':
        return HttpResponse('API hit with post method')
@@ -72,12 +72,7 @@ def index(request):
 
 def dashboard(request):
     context = {}
-    #project_id = request.POST['msg']
-    #project_id = HttpRequest.readlines()
-    project_id = request.POST.get('project_key', '')
-    # project_id = '-LmIXx-2iy62TD4n7iHH'
-    print(project_id)
-    '''
+    project_id = request.POST['msg']
     tasks = db.child("Project").child(project_id).child("Task").get().val()
     count = 1
 
@@ -96,7 +91,6 @@ def dashboard(request):
             "task_state" : tasks[task]['task_state'],
         }
     print(context)
-    '''
     return render(request, 'demoapp/dashboard.html', context)
 
 def meeting(request):
@@ -120,4 +114,5 @@ def login(request):
     return render(request, 'demoapp/login.html', context)
 
 if __name__ == "__main__":
-    index("a")
+    #index("a")
+    dashboard("a")
