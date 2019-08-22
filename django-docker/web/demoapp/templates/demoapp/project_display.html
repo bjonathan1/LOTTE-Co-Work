@@ -35,9 +35,11 @@
       });
 </script>
 <div class="content">
-  {% for key, value in tasks.items %}
   <div class="row" id="list1" style="flex-direction:row;">
-    <div id="{% cycle 'task1' 'task2' 'task3' 'task4' task5%}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
+
+    {% for key, value in tasks.items %}
+
+    <div id="{{ key }}" class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%; max-height:20% " draggable="true" ondragstart="drag(this, event)">
       <div class="card card-stats" style="background-color:#e4e4e4">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
           <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;" id="app"> 프로젝트 {{ forloop.counter }}</div>
@@ -46,37 +48,37 @@
         <div style="background-color:white; border-radius:6px; margin:10px;">
           <form action="/dashboard/" method="post" id="test">
 
-            <div class="card-body " id="project_name">
-                {% csrf_token %}
+            <div class="card-body " id="{{ value.project_key }}">
+              {% csrf_token %}
 
-                <div class="row">
-                  <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
-                    <div class="numbers">
+              <div class="row">
+                <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
+                  <div class="numbers">
 
-                      <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
-                        <div style="margin-top:3px; line-height:1.5; padding:7px">
+                    <div class="card-category" style="height:60px; display:flex; align-items: center; justify-content:center;">
+                      <div style="margin-top:3px; line-height:1.5; padding:7px">
 
-                          <input type="hidden" id="projectkey" value="{{ value.project_key }}" >{{ value.project_name }}
+                        <input type="hidden" class="projectkey" value="{{ value.project_key }}" >{{ value.project_name }}
 
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
-                              </form>
+          </form>
 
           <div style="display:flex; flex-direction:row-reverse; justify-content:space-between">
             <div class="card-footer" style="display:flex; flex-direction:row; padding: 0px 12px 5px 0px;">
               <div style="background-color:#e4e4e4; border-radius:6px;display:flex;height:50%;  margin:5px 0 0 0; flex-direction:row; justify-content:space-evenly;  vertical-align: middle;margin-top: 19px;">
                 <i style="color:black;font-size:15px;margin: 8px 5px 5px 5px;" class="far fa-clock"></i>
                 <p style="margin: 6px 3px 2px 3px;">
-                  {{ value.project_enddate.4 }}{{ value.project_enddate.5 }}월 {{ value.project_enddate.6 }}{{ value.project_enddate.7 }}일
-                  </p>
+                  {{ value.project_enddate.4 }}{{ value.project_enddate.5 }}/{{ value.project_enddate.6 }}{{ value.project_enddate.7 }}
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div class="ss-section ss-featured-grid">
+            <div class="ss-section ss-featured-grid">
             <div class="item item-3">
               <div class="icons-wrap" style="padding-top: 15px; padding-left: 15px;">
                 {% for img in value.project_urls %}
@@ -91,8 +93,8 @@
       </div>
     </div>
   </div>
+    {% endfor %}
 </div>
-{% endfor %}
 </div>
 
 {% endblock %}
@@ -295,14 +297,13 @@ new Vue({
 
 <script>
 
-    $('#project_name').click( function() {
+    $('.card-body').click( function() {
         console.log('click')
         $.ajax({
             url:'/dashboard/',
             dataType:'json',
             type:'POST',
-            data:{'msg': $('#projectkey').val()},
-
+            data:{'msg': $(this).attr('id')},
         });
         window.location = /dashboard/
 
