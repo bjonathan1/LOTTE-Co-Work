@@ -54,6 +54,8 @@ The above copyright notice and this permission notice shall be included in all c
   <!--Tim Calendar CSS -->
   <link href='../staticfiles/assets/css/calendar/fullcalendar.css' rel='stylesheet' />
   <link href='../staticfiles/assets/css/calendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+  <!-- Notification Drop Down -->
+  <link href='../staticfiles/assets/css/notidd.css' rel='stylesheet' />
   <style>
 	#wrap {
 		width: 1100px;
@@ -178,26 +180,37 @@ The above copyright notice and this permission notice shall be included in all c
               </a>
             </li>
             <li class="nav-item">
-              <a style="font-size: 17px; margin: 0; padding-right: 0; padding-top: 9px;"  class="nav-link btn-rotate" href="#pablo">
+              <a style="font-size: 17px; margin: 0; margin-left:14px;  padding-right: 0; padding-top: 9px;"  class="nav-link btn-rotate" href="#pablo">
                 <i class="far fa-comments"></i>
                 <p>
                   <span class="d-lg-none d-md-block">Account</span>
                 </p>
               </a>
             </li>
-            <li class="nav-item btn-rotate dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="nc-icon nc-bell-55"></i>
-                <p>
-                  <span class="d-lg-none d-md-block">Some Actions</span>
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+            <div class="nwrapper" style="border:0; max-width: 0; min-height: 0; overflow: visible; margin-left: 20px; margin-right: 40px;">
+	      <div class="nnav-bar" style="height: 0; border-bottom: 0">
+	        <ul style="list-style: none; padding-left: 0; margin: 0; position: relative;">
+		  <li>
+		    <div class="dropdowns-nwrapper">
+		      <div class="dropdown-container">
+		        <div class="notifications dropdown dd-trigger" id="bellClick" style="margin-left: 6px; margin-top: 8px;">
+		          <span class="count animated" id="notifications-count">0</span>
+			  <i class="far fa-bell" style="font-size: 18px;"></i>
+		        </div>
+		        <div class="dropdown-menu animated fadeInDown" id="notification-dropdown" style="display: block;">
+		          <div class="dropdown-header">
+			    <span class="triangle"></span>
+			    <span class="heading">Notifications</span>
+			    <span class="count ng-binding" id="dd-notifications-count">0</span>
+			  </div>
+			  <div class="dropdown-body">
+			  </div>
+		        </div>
+		    </div>  
+	          </li>
+	        </ul>
               </div>
-            </li>
+	    </div>
             <li class="nav-item">
               <a class="nav-link btn-rotate" href="#pablo">
                 <i class="nc-icon nc-settings-gear-65"></i>
@@ -265,59 +278,19 @@ The above copyright notice and this permission notice shall be included in all c
   <!--<script src='../staticfiles/assets/js/calendar/jquery-1.10.2.js' type="text/javascript"></script>-->
   <script src='../staticfiles/assets/js/calendar/jquery-ui.custom.min.js' type="text/javascript"></script>
   <script src='../staticfiles/assets/js/calendar/fullcalendar.js' type="text/javascript"></script>
+  <!-- Notification Drop Down -->
+  <script src='../staticfiles/assets/js/notidd.js' type="text/javascript"></script>
 
-
-<script>
-    $(document).ready(function() {
-      // Javascript method's body can be found in assets//assets/-for-demo/js/demo.js
-      demo.initChartsPages();
-    });
-  </script>
 <script type="text/javascript">
-    $(function(){
-    $("#btnAdd").click(function(){ //btnAdd라는 버튼을 눌렀을때 ->이벤트 등록
-      var html = '<div id="ikjun"class="col-lg-3 col-md-6 col-sm-6" style="max-width: 100%;">\
-            <div class="card card-stats">\
-            <div style="text-align: -webkit-right; margin-right: 5px; margin-top: 1.5px;">\
-                <i id="btnDel" class="nc-icon nc-simple-remove" ></i>\
-              </div>\
-              <div class="card-body ">\
-                <div class="row">\
-                  <div class="col-5 col-md-4">\
-                    <div class="icon-big text-center icon-warning">\
-                      <i class="nc-icon nc-favourite-28 text-primary"></i>\
-                    </div>\
-                  </div>\
-                  <div class="col-7 col-md-8">\
-                    <div class="numbers">\
-                      <p class="card-category">Followers</p>\
-                      <p class="card-title">+45K\
-                        <p>\
-                    </div>\
-                  </div>\
-                </div>\
-              </div>\
-              <div class="card-footer ">\
-                <hr>\
-                <div class="stats">\
-                  <i class="fa fa-refresh"></i> Update now\
-                </div>\
-              </div>\
-            </div>\
-          </div>';
-     
-      $("#list").append(html); //list라는 아이디에 html을 추가해라
-  });
-  
-  $("#list").on("click", "#btnDel", function() { //list안의 btnDel을 선택
-      $(this).parent().parent().parent().remove(); //this(btnDel)의 부모(td)의 부모(tr)를 삭제
-  });  
-})
+	var a = $("#list1").find("[id^=task]").length;
+	var b = $("#list2").find("[id^=task]").length;
+	var c = $("#list3").find("[id^=task]").length;
+	var d = $("#list4").find("[id^=task]").length;
+	$(".counter1").append(a);
+	$(".counter2").append(b);
+	$(".counter3").append(c);
+	$(".counter4").append(d);
 </script>
-
-
-
-
 
 <script type="text/javascript">
 function drag(target, task) {   //드래그 시작시 호출 할 함수
