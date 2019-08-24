@@ -1,13 +1,9 @@
 #from . import tasks
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from demoapp import firedb
-from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse
 from django.http import HttpResponseRedirect
-import requests, json
-
-def public_api(request):
-    if request.method=='POST':
-       return HttpResponse('API hit with post method')
+from django.views.decorators.csrf import csrf_exempt
 
 db = firedb.db
 storage = firedb.storage
@@ -34,46 +30,52 @@ def index(request):
         project members
         project members img url
     '''
+    context = {}
+
+    # user_key = request.session.get('_user')
+    user_key = '-LmIbfB8R2DNLjwMkXjm'
+
+    user_projects = db.child("Members").child(user_key).child('project').get().val()
 
     count = 1
     img_url = db.child("Members").get().val()
-    context = {}
+    if user_projects:
+        for keys in user_projects:
+            task_num = "task" + str(count) #task
+            count += 1
+            project_name = keys #proj name
+            project = db.child("Project").child(user_projects[keys]).get().val()
+            project_content = project['project_content'] #content
+            project_createdate = project['project_createdate'] #createdate
+            project_enddate = project['project_enddate'] #enddate
 
-    for keys in user_projects:
-        task_num = "task" + str(count) #task
-        count += 1
-        project_name = keys #proj name
-        project = db.child("Project").child(user_projects[keys]).get().val()
-        project_content = project['project_content'] #content
-        project_createdate = project['project_createdate'] #createdate
-        project_enddate = project['project_enddate'] #enddate
+            #각 멤버들이 이름과 이미지 위치 출력
+            members = project['project_member']
+            project_members = [] #members
+            project_urls = [] #img_urls
+            for mem in members:
+                project_members.append(mem)
+                project_urls.append(img_url[members[mem]]['image'])
 
-        #각 멤버들이 이름과 이미지 위치 출력
-        members = project['project_member']
-        project_members = [] #members
-        project_urls = [] #img_urls
-        for mem in members:
-            project_members.append(mem)
-            project_urls.append(img_url[members[mem]]['image'])
-
-        context[task_num] = {
-                "project_key" : user_projects[keys],
-                "project_name" : project_name,
-                "project_content" : project_content,
-                "project_createdate" : project_createdate,
-                "project_enddate" : project_enddate,
-                "project_members" : project_members,
-                "project_urls" : project_urls
-            }
+            context[task_num] = {
+                    "project_key" : user_projects[keys],
+                    "project_name" : project_name,
+                    "project_content" : project_content,
+                    "project_createdate" : project_createdate,
+                    "project_enddate" : project_enddate,
+                    "project_members" : project_members,
+                    "project_urls" : project_urls
+                }
 
 
-        print(context)
+    print(context)
     return render(request, 'demoapp/project_display.html', {"tasks": context})
 
 def dashboard(request):
     context = {}
     if request.method == 'POST':
         request.session['_old_post'] = request.POST['msg']
+        return redirect('/dashboard/')
     project_id = request.session.get('_old_post')
 
     members = db.child("Members").get().val()
@@ -118,7 +120,18 @@ def login(request):
     context = {}
     return render(request, 'demoapp/login.html', context)
 
+def login_ok(request):
+    context = {}
+    if request.method == 'POST':
+        id = request.POST['id']
+        pw = request.POST['pw']
+
+        members = db.child('Members').get().val()
+        for member in members:
+            if members[member]['name'] == id and members[member]['pw'] == pw:
+                request.session['_user'] = member
+    return redirect('/main/')
+
 
 if __name__ == "__main__":
-    #index("a")
-    dashboard("a")
+    index("a")
