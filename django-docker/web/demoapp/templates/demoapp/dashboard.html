@@ -410,6 +410,7 @@
 
 {% block script %}
 
+
 <script type="text/javascript">
 $('.bookmark').click(function() {
     if($(this).css('background-color') =='rgb(251, 198, 88)') {
@@ -421,13 +422,32 @@ $('.bookmark').click(function() {
 </script>
 
 <script type="text/javascript">
-  var a = $("#list1").find("[id^=task]").length;
-  var b = $("#list2").find("[id^=task]").length;
-  var c = $("#list3").find("[id^=task]").length;
-  var d = $("#list4").find("[id^=task]").length;
-  $(".counter1").append(a);
-  $(".counter2").append(b);
-  $(".counter3").append(c);
-  $(".counter4").append(d);
+    $(".content").change(function(){
+        var a = $("#list1").find("[id^=task]").length;
+        var b = $("#list2").find("[id^=task]").length;
+        var c = $("#list3").find("[id^=task]").length;
+        var d = $("#list4").find("[id^=task]").length;
+        $("select option:selected").each(function(){
+                str += $(this).text() + " ";
+            });
+            $("div").text(str);
+        }).change();
+        $(".counter1").append(a);
+        $(".counter2").append(b);
+        $(".counter3").append(c);
+        $(".counter4").append(d);
+        }).change();
+</script>
+
+
+<script type="text/javascript">
+function drag(target, task) {   //드래그 시작시 호출 할 함수
+  task.dataTransfer.setData('Text', target.id);
+};
+function drop(target, task) {   //드롭시 호출 할 함수
+  var id = task.dataTransfer.getData('Text');
+  target.appendChild(document.getElementById(id));
+  task.preventDefault();
+};
 </script>
 {% endblock %}

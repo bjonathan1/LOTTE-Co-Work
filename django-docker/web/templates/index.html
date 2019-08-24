@@ -47,7 +47,7 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="../staticfiles/assets/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
   <link href="../staticfiles/assets/css/sports.css" rel="stylesheet" />
   <link href="../staticfiles/assets/css/bootstrap-datepicker.css" rel="stylesheet" />
-
+  <link href="../../../staticfiles/assets/css/file-explore.css" rel="stylesheet">
   <link href="../staticfiles/assets/css/fSelect.css" rel="stylesheet">
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../staticfiles/assets/demo/demo.css" rel="stylesheet" />
@@ -133,11 +133,11 @@ The above copyright notice and this permission notice shall be included in all c
       </ul>
       <div style="display: flex; flex-direction: row;">
         <div>
-          <img src="../staticfiles/assets/img/ij.jpg" style="margin: 230px 0 0 20px; border-radius: 25px; height: 50px; width: 50px;">
+          <img src="../staticfiles/assets/img/sw.jpg" style="margin: 230px 0 0 20px; border-radius: 25px; height: 50px; width: 50px;">
         </div>
         <div style="display: flex; flex-direction: column; margin: 230px 0 0 10px;">
-          <p style="font-size: 24px; margin-bottom: 0">김익준</p>
-          <p style="font-size: 12px; margin-bottom: 0; margin-left: 3px">디지털사업부문 IT기획팀</p>
+          <p style="font-size: 24px; margin-bottom: 0">김성우</p>
+          <p style="font-size: 12px; margin-bottom: 0; margin-left: 3px">디지털사업부문 디지털사업팀</p>
         </div>
       </div>
     </div>
@@ -274,34 +274,20 @@ The above copyright notice and this permission notice shall be included in all c
 <!-- FSelect-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
 <script src="../staticfiles/assets/js/fSelect.js"></script>
-  <!-- Tim Calendar -->
-  <!--<script src='../staticfiles/assets/js/calendar/jquery-1.10.2.js' type="text/javascript"></script>-->
-  <script src='../staticfiles/assets/js/calendar/jquery-ui.custom.min.js' type="text/javascript"></script>
-  <script src='../staticfiles/assets/js/calendar/fullcalendar.js' type="text/javascript"></script>
-  <!-- Notification Drop Down -->
-  <script src='../staticfiles/assets/js/notidd.js' type="text/javascript"></script>
-
-<script type="text/javascript">
-	var a = $("#list1").find("[id^=task]").length;
-	var b = $("#list2").find("[id^=task]").length;
-	var c = $("#list3").find("[id^=task]").length;
-	var d = $("#list4").find("[id^=task]").length;
-	$(".counter1").append(a);
-	$(".counter2").append(b);
-	$(".counter3").append(c);
-	$(".counter4").append(d);
-</script>
-
-<script type="text/javascript">
-function drag(target, task) {   //드래그 시작시 호출 할 함수
-  task.dataTransfer.setData('Text', target.id);
-};
-function drop(target, task) {   //드롭시 호출 할 함수
-  var id = task.dataTransfer.getData('Text');
-  target.appendChild(document.getElementById(id));
-  task.preventDefault();  
-};
-</script>
+<!-- Tim Calendar -->
+<!--<script src='../staticfiles/assets/js/calendar/jquery-1.10.2.js' type="text/javascript"></script>-->
+<script src='../staticfiles/assets/js/calendar/jquery-ui.custom.min.js' type="text/javascript"></script>
+<script src='../staticfiles/assets/js/calendar/fullcalendar.js' type="text/javascript"></script>
+<!-- Timeline -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="../../../staticfiles/assets/js/timeline.js"></script>
+<!-- Notification Drop Down -->
+<script src='../staticfiles/assets/js/notidd.js' type="text/javascript"></script>
+<!-- Folder Tree -->
+<script src="../../../staticfiles/assets/js/file-explore.js"></script>
+<!-- File Drag and Drop -->
+<script src="../../../staticfiles/assets/js/filedragdrop.js"></script>
 
 <script type="text/javascript">
 	 $('.datepicker').datepicker({

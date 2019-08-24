@@ -8,8 +8,14 @@ from django.views.decorators.csrf import csrf_exempt
 db = firedb.db
 storage = firedb.storage
 
+'''
+
 #임의로 김성우로 지정
-user_name = "김성우"
+
+'''
+
+
+user_name = "김성우" #사람을 변경하고 싶다면 여기에 이름 바
 user_key = ""
 user_projects = {}
 
@@ -21,22 +27,9 @@ for keys in session:
 user_projects = db.child("Members").child(user_key).child('project').get().val()
 
 def index(request):
-    '''
-    넘겨야 하는 내용들:
-        task
-        project name
-        project enddate
-        project content
-        project members
-        project members img url
-    '''
     context = {}
 
     # user_key = request.session.get('_user')
-    user_key = '-LmIbfB8R2DNLjwMkXjm'
-
-    user_projects = db.child("Members").child(user_key).child('project').get().val()
-
     count = 1
     img_url = db.child("Members").get().val()
     if user_projects:
