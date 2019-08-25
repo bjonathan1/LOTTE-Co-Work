@@ -107,7 +107,24 @@ def drive(request):
 
 def timeline(request):
     context = {}
-    return render(request, 'demoapp/timeline.html', context)
+
+    user_projects = db.child("Members").child(user_key).child('project').get().val()
+    projects = db.child("Project").get().val()
+
+    for project in user_projects.keys():
+        project_name = project
+        project_key = user_projects[project]
+        tasks = projects[project_key]['Task']
+        temp = {}
+        for task in tasks:
+            task_info = {}
+            task_info['start'] = tasks[task]['task_createdate']
+            task_info['end'] = tasks[task]['task_enddate']
+            temp[tasks[task]['task_name']] = task_info
+
+        context[project_name] = temp
+        print(context)
+    return render(request, 'demoapp/timeline.html', {"context": context})
 
 def login(request):
     context = {}
@@ -127,4 +144,5 @@ def login_ok(request):
 
 
 if __name__ == "__main__":
-    index("a")
+    #index("a")
+    timeline("a")
