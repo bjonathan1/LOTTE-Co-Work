@@ -59,12 +59,14 @@ def add_project(project_name, project_member, project_createdate, project_enddat
     "project_content" : project_content,
   }
   project_key = db.child("Project").push(data)
+  db.child("Project").child(project_key).child("Issued").set({"TF": "False", "issued_date": "None"})
 
   for keys in member_data:
       pj_data = {
         "project" : {project_name : project_key['name']}
       }
       db.child("Members").child(member_data[keys]).child('project').child(project_name).set(project_key['name'])
+
 
 def add_task(project_key, task_name, task_content, task_manager, task_enddate, task_attachment="None", task_bookmark="False", task_rank="보통", task_state="해야할일"):
 
@@ -85,12 +87,21 @@ def add_task(project_key, task_name, task_content, task_manager, task_enddate, t
 
   }
 
-  db.child("Project").child(project_key).child("Task").push(data)
+  task_key = db.child("Project").child(project_key).child("Task").push(data)
+  db.child("Project").child(project).child("Task").child(task_key).child("Issued").set(
+    {"TF": "False", "issued_date": "None"})
+
+
 if __name__ == "__main__":
   # add_project("인천터미널점 오더나우 활성화", ["김성우", "박예은", "정용원"], "20190823", "20190911", "인천터미널점 오더나우를 활성화하고, 이를 통해 고객의 오프라인 매장 방문 유도")
   #add_person("박형준", "01099588015", "../../../staticfiles/assets/img/hj.jpg", "담당", "본사", "디지털사업부문", "빅데이터팀")
   #add_task("-Ln1gTOcWncu_RXsr3yv", "오더나우 앱 메인화면 버그개선", " ", "김성우", "20190826")
-  #data = db.child("Members").get().val()
+  data = db.child("Project").get().val()
+  for project in data.keys():
+    tasks = db.child("Project").child(project).child("Task").get().val()
+
+    for task in tasks.keys():
+      db.child("Project").child(project).child("Task").child(task).child("Issued").set({"TF": "False", "issued_date": "None"})
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
 

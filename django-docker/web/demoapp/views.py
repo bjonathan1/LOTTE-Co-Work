@@ -99,6 +99,36 @@ def meeting(request):
 
 def issue(request):
     context = {}
+
+    projects = db.child('Project').get().val()
+    project_context = {}
+    task_context = {}
+    for project in user_projects.keys():
+        project_name = project
+        project_key = user_projects[project]
+        project_issue = projects[project_key]['Issued']
+        if project_issue['TF'] == 'True':
+            issued_date = project_issue['issued_date']
+            issued_content = project_issue['issued_content']
+            project_context[project_name] = {"issued_date": issued_date, "issued_content": issued_content}
+            continue
+
+        tasks = projects[project_key]['Task']
+        for task in tasks.keys():
+            task_name = tasks[task]['task_name']
+            task_issue = tasks[task]['Issued']
+            if task_issue['TF'] == 'True':
+                task_issued_date = task_issue['issued_date']
+                task_issued_content = task_issue['issued_content']
+                task_context[task_name] = {"project_name": project_name,"issued_date": task_issued_date, "issued_content": task_issued_content}
+
+    context['project'] = project_context
+    context['task'] = task_context
+
+    print(project_context)
+    print(task_context)
+    print(context)
+
     return render(request, 'demoapp/issue.html', context)
 
 def drive(request):
@@ -114,9 +144,13 @@ def timeline(request):
     for project in user_projects.keys():
         project_name = project
         project_key = user_projects[project]
+        if projects[project_key]['Issued']['TF'] == 'True':
+            continue
         tasks = projects[project_key]['Task']
         temp = {}
         for task in tasks:
+            if tasks[task]['Issued']['TF'] == 'True':
+                continue
             task_info = {}
             task_info['start'] = tasks[task]['task_createdate']
             task_info['end'] = tasks[task]['task_enddate']
@@ -145,4 +179,5 @@ def login_ok(request):
 
 if __name__ == "__main__":
     #index("a")
-    timeline("a")
+    # timeline("a")
+    issue("a")

@@ -45,61 +45,20 @@
               <div class="card-body" style="padding: 0px 5px 5px 5px;">
                   <table class="table" style="text-align:center; padding: 10px; margin:5px" >
                     <thead class=" text-primary">
-                      <th>
-                        번호
-                      </th>
-                      <th>
-                        프로젝트명
-                      </th>
-                      <th>
-                        이슈등록 날짜 
-                      </th>
+                    <th>번호</th>
+                    <th>프로젝트명</th>
+                    <th>이슈등록 날짜</th>
                     </thead>
                     <tbody>
+
+                      {% for key,value in project.items %}
                       <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          롯데백화점 협업툴 제작
-                        </td>
-                        <td>
-                          2019-08-30
-                        </td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ key }}</td>
+                        <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
                       </tr>
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          스마트 옷걸이
-                        </td>
-                        <td>
-                          2019-08-20
-                        </td>
-                      </tr>
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          스마트 푸드코트 운영
-                        </td>
-                        <td>
-                          2019-08-15
-                        </td>
-                      </tr>
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
-                        <td>
-                          4
-                        </td>
-                        <td>
-                          AI 상품추천
-                        </td>
-                        <td>
-                          2019-08-11
-                        </td>
-                      </tr>
+                      {% endfor %}
+
                     </tbody>
                   </table>
               </div>
@@ -114,62 +73,20 @@
               <div class="card-body" style="padding: 0px 5px 5px 5px;">
                   <table class="table" style="text-align:center; padding: 10px; margin:5px" >
                     <thead class=" text-primary">
-                      <th>
-                        번호
-                      </th>
-                      <th>
-                        프로젝트명
-                      </th>
-                      <th>
-                        업무명
-                      </th>
-                      <th>
-                        이슈등록 날짜 
-                      </th>
+                      <th>번호</th>
+                      <th>프로젝트명</th>
+                      <th>업무명</th>
+                      <th>이슈등록 날짜 </th>
                     </thead>
                     <tbody>
+                      {% for key, value in task.items %}
                       <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
-                        <td>
-                          1
-                        </td>
-                        <td>
-                          PUSH 알람 서비스
-                        </td>
-                        <td>
-                          UI/UX 디자인
-                        </td>
-                        <td>
-                          2019-08-30
-                        </td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ value.project_name }}</td>
+                        <td>{{ key }}</td>
+                        <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
                       </tr>
-                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
-                        <td>
-                          2
-                        </td>
-                        <td>
-                          PUSH 알람 서비스
-                        </td>
-                        <td>
-                          프론트 개발
-                        </td>
-                        <td>
-                          2019-08-20
-                        </td>
-                      </tr>
-                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
-                        <td>
-                          3
-                        </td>
-                        <td>
-                          주차장 공유 서비스
-                        </td>
-                        <td>
-                          기획안 제출
-                        </td>
-                        <td>
-                          2019-08-15
-                        </td>
-                      </tr> 
+                      {% endfor %}
                     </tbody>
                   </table>
               </div>
