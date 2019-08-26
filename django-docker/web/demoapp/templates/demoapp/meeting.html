@@ -35,27 +35,28 @@
           </div>
 </div>
 	  <div style="display:flex; flex-direction:column;">
-	  <p style="font-size:16px; margin: 5px 0 0 10px;">회의녹음</p>
-          <div style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
-            <div class="btn-record" id="record" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
-              <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+	    <p style="font-size:16px; margin: 5px 0 0 10px;">회의녹음</p>
+      	      <div style="display:flex; flex-direction:row;justify-content: start;">
+                <div id="controls" style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
+                  <div class="btn-record" id="recordButton" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
+                    <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                  <div class="btn-cancel" id="pauseButton"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 15px; margin-bottom:15px;">
+                    <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                  <div id="stopButton" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 15px; margin-bottom:15px;  text-align: center">
+                    <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                </div>
+                <ul id="recordingsList" style="color: #ffffff; margin: 5px 0 0 0;"></ul>
+              </div>
+              <div id="formats" style="display: none">Format: start recording to see sample rate</div>
             </div>
-            <div class="btn-cancel" id="pause"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 30px;">
-              <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-            <div id="play" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
-              <i class="fas fa-play" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-            <div id="stop" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
-              <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:row; margin-top=5px;">
-          <div style="display:flex; flex-direction:column;width:100%;">
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+            <div style="display:flex; flex-direction:row; margin-top=5px;">
+            <div style="display:flex; flex-direction:column;width:100%;">
+              <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
 
-            <div class="col-xs-3" style="margin:5px">
+              <div class="col-xs-3" style="margin:5px">
               <div class="controls">
                 <input value="2019-08-02" class="datepicker form-control"style="margin:0;" type="text"/>
               </div>  
@@ -481,43 +482,31 @@
 </script>
 
 <script type="text/javascript">
-  $('#record').click(function() {
+  $('#recordButton').click(function() {
     $(this).css('display', 'none');
-    $('#pause').css('display', 'block');
-    $('#stop').css('display', 'block');
+    $('#pauseButton').css('display', 'block');
+    $('#stopButton').css('display', 'block');
   });
 </script>
 
 <script type="text/javascript">
   $("#eventModal").on('hidden.bs.modal', function () {
-    $('#pause').css('display','none');
-    $('#stop').css('display','none');
-    $('#play').css('display','none');
-    $('#record').css('display', 'block');
+    $('#pauseButton').css('display','none');
+    $('#stopButton').css('display','none');
+    $('#recordButton').css('display', 'block');
   });
 </script>
 
 <script type="text/javascript">
-  $("#pause").click( function () {
-    $('#pause').css('display','none');
-    $('#play').css('display', 'block');
+  $("#stopButton").click( function () {
+    $('#pauseButton').css('display','none');
+    $('#stopButton').css('display','none');
+    $('#recordButton').css('display', 'block');
   });
 </script>
 
-<script type="text/javascript">
-  $("#play").click( function () {
-    $('#play').css('display','none');
-    $('#pause').css('display', 'block');
-  });
-</script>
-
-<script type="text/javascript">
-  $("#stop").click( function () {
-    $('#pause').css('display','none');
-    $('#stop').css('display','none');
-    $('#play').css('display','none');
-    $('#record').css('display', 'block');
-  });
-</script>
+<!-- Record -->
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="../../../staticfiles/assets/js/app.js"></script>
 
 {% endblock %}
