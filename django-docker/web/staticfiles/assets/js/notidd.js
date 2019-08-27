@@ -17,9 +17,10 @@ $(document).ready(function() {
   var data = [{ image: "Bob", name: "김익준님", status: "이 회의를 신청했습니다." }];
   console.log(data);
   var notification = "";
+/*
   setInterval(function() {
     //code goes here that will be run every 5 seconds.
-    for (var i = 0; i < data.length; i++) {
+    for (var i = 0; i < 2; i++) {
       var cnt = document.getElementById("notifications-count").innerHTML;
       console.log(cnt);
       if (cnt == 0) {
@@ -40,5 +41,7 @@ $(document).ready(function() {
     $("#notifications-count").html(count);
     $("#dd-notifications-count").html(count);
   }, 5000);
+*/
+
 });
 

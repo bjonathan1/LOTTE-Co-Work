@@ -3,6 +3,43 @@
 
 {% block content %}
 
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+     // using jQuery
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $(document).ready(function() {
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+      });
+</script>
+
+
+
 <div class="content" style="padding:0 30px 15px">
   <div class="row" id="list1" style="flex-direction:row;">
     <div id='wrap'>
@@ -28,31 +65,39 @@
         </div>
       </div>
       <div class="modal-body">
-        <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
-          <div style="display:flex; flex-direction:column;width:80%">
+	  <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
+          <div style="display:flex; flex-direction:column;width:100%">
             <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
             <input value="인턴 프로젝트 아이디어 회의" class="form-control" type="text" size="20">
           </div>
-          <div style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
-            <div class="btn-record" id="record" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
-              <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+</div>
+	  <div style="display:flex; flex-direction:column;">
+	    <p style="font-size:16px; margin: 5px 0 0 10px;">회의녹음</p>
+      	      <div style="display:flex; flex-direction:row;justify-content: start;">
+                <div id="controls" style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
+                  <div class="btn-record" id="recordButton" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
+                    <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                  <div class="btn-cancel" id="pauseButton"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 15px; margin-bottom:15px;">
+                    <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                  <div id="stopButton" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 15px; margin-bottom:15px;  text-align: center">
+                    <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                  </div>
+                </div>
+                <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
+		<div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center;">
+		{% csrf_token %}
+		  <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
+		</div>
+              </div>
+              <div id="formats" style="display: none">Format: start recording to see sample rate</div>
             </div>
-            <div class="btn-cancel" id="pause"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 30px;">
-              <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-            <div id="play" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
-              <i class="fas fa-play" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-            <div id="stop" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 30px; text-align: center">
-              <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex; flex-direction:row; margin-top=5px;">
-          <div style="display:flex; flex-direction:column;width:100%;">
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+            <div style="display:flex; flex-direction:row; margin-top=5px;">
+            <div style="display:flex; flex-direction:column;width:100%;">
+              <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
 
-            <div class="col-xs-3" style="margin:5px">
+              <div class="col-xs-3" style="margin:5px">
               <div class="controls">
                 <input value="2019-08-02" class="datepicker form-control"style="margin:0;" type="text"/>
               </div>  
@@ -89,7 +134,7 @@
         </div>
         <div>
           <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 내용 요약 </p>
-          <textarea class="form-control" style="height:200px; max-height:200px; width: 100%; padding:10px">롯데백화점 유통업 특성에 어울리는 내부 프로젝트 협업 솔루션 개발. 목적은 롯데 백화점 디지털 부문 사업 확장에 따른 디지털 개발 내부 프로젝트 협업 솔루션 제공 디지털 부문을 제외하고, MD와 유통 경영 관련 프로젝트도 함께 반영할 수 있는 유통 전반적인 협업 솔루션 개발 프로젝트 개발 과정은 기존 프로젝트 매니지먼트 툴 개발 API를 사용하여 대시보드와 일정관리 Flow는 비슷하게 개발 MD 혹은 타 부서들 중 프로젝트를 자주 진행하는 팀의 업무 흐름에 맞게 UI와 대시보드 변경 사항 적용</textarea>
+          <textarea class="form-control" style="height:200px; max-height:100px; width: 100%; padding:10px">롯데백화점 유통업 특성에 어울리는 내부 프로젝트 협업 솔루션 개발. 목적은 롯데 백화점 디지털 부문 사업 확장에 따른 디지털 개발 내부 프로젝트 협업 솔루션 제공 디지털 부문을 제외하고, MD와 유통 경영 관련 프로젝트도 함께 반영할 수 있는 유통 전반적인 협업 솔루션 개발</textarea>
         </div>
         <div style="display:flex; flex-direction:row;width:100%">
           <div style="display:flex; flex-direction:column;width:100%">
@@ -202,7 +247,7 @@
 
 <div style="display:flex; flex-direction:row; justify-content:flex-end">
   <div style="text-align: -webkit-right; ">
-    <img class="plusbtn" src="../../../staticfiles/assets/img/meeting.png" data-toggle="modal" data-target="#exampleModal">
+    <img style="cursor:pointer;"  class="plusbtn" src="../../../staticfiles/assets/img/meeting.png" data-toggle="modal" data-target="#exampleModal">
   </div>
 </div>
 
@@ -226,8 +271,9 @@
             <p style="font-size:16px; margin: 5px 0 0 10px;"> 보고(회의) 일정</p>
 
             <div class="col-xs-3" style="margin:5px">
-              <div class="controls">
-                <input class="datepicker form-control"style="margin:0;" type="text"/>
+              <div class="controls" style="display:flex; flex-direction:row;">
+                <input class="datepicker form-control"style="margin: 0 5px 0 0;" type="text"/>
+	        <input class="form-control" style="margin:0;" type="time"/>
               </div>
             </div>
 
@@ -478,43 +524,35 @@
 </script>
 
 <script type="text/javascript">
-  $('#record').click(function() {
+  $('#recordButton').click(function() {
     $(this).css('display', 'none');
-    $('#pause').css('display', 'block');
-    $('#stop').css('display', 'block');
+    $('#pauseButton').css('display', 'block');
+    $('#stopButton').css('display', 'block');
+    $('#uploadButton').css('display', 'none');
+    $('#recordingsList').children().remove();
   });
 </script>
 
 <script type="text/javascript">
   $("#eventModal").on('hidden.bs.modal', function () {
-    $('#pause').css('display','none');
-    $('#stop').css('display','none');
-    $('#play').css('display','none');
-    $('#record').css('display', 'block');
+    $('#pauseButton').css('display','none');
+    $('#stopButton').css('display','none');
+    $('#recordButton').css('display', 'block');
+    $('#uploadButton').css('display', 'none');
   });
 </script>
 
 <script type="text/javascript">
-  $("#pause").click( function () {
-    $('#pause').css('display','none');
-    $('#play').css('display', 'block');
+  $("#stopButton").click( function () {
+    $('#pauseButton').css('display','none');
+    $('#stopButton').css('display','none');
+    $('#recordButton').css('display', 'block');
+    $('#uploadButton').css('display', 'block');
   });
 </script>
 
-<script type="text/javascript">
-  $("#play").click( function () {
-    $('#play').css('display','none');
-    $('#pause').css('display', 'block');
-  });
-</script>
-
-<script type="text/javascript">
-  $("#stop").click( function () {
-    $('#pause').css('display','none');
-    $('#stop').css('display','none');
-    $('#play').css('display','none');
-    $('#record').css('display', 'block');
-  });
-</script>
+<!-- Record -->
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="../../../staticfiles/assets/js/app.js"></script>
 
 {% endblock %}

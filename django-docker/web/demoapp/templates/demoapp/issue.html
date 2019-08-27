@@ -52,7 +52,7 @@
                     <tbody>
 
                       {% for key,value in project.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
+                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ key }}</td>
                         <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
@@ -83,6 +83,9 @@
                       <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
                         <td >{{ forloop.counter }}</td>
                         <td id="project_name">{{ value.project_name }}</td>
+                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal" style="cursor:pointer">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ value.project_name }}</td>
                         <td>{{ key }}</td>
                         <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
                       </tr>
@@ -140,7 +143,7 @@
 	     <div style="display:flex; flex-direction: row; width:100%">	
               <div style="display:flex; flex-direction:column;width:100%">
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> 고쳐야함 </p>
+                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> PUSH 알람 서비스</p>
               </div>
 	      <div style="display:flex; flex-direction:column;width:100%" >
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
