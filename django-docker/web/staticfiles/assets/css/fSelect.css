@@ -20,6 +20,7 @@
     -ms-user-select: none;
     user-select: none;
     border-radius:4px;
+    height: 34px;
 }
 
 .fs-label-wrap .fs-label {
@@ -59,6 +60,8 @@
 .fs-dropdown .fs-options {
     max-height: 200px;
     overflow: auto;
+    background-color: white;
+    border-radius: 6px;
 }
 
 .fs-search input {

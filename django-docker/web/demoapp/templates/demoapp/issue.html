@@ -52,7 +52,7 @@
                     <tbody>
 
                       {% for key,value in project.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal">
+                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ key }}</td>
                         <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
@@ -80,7 +80,7 @@
                     </thead>
                     <tbody>
                       {% for key, value in task.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
+                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal" style="cursor:pointer">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ value.project_name }}</td>
                         <td>{{ key }}</td>

@@ -55,8 +55,8 @@
   </div>
   <div style="display:flex; flex-direction:row; background-color: #e4e4e4; width: 70%; margin-left: 30px; height:500px; border-radius: 6px; padding: 20px">
     <div class="drivefile">
-      <i class="far fa-file-pdf" style="color:red; font-size: 100px;" data-toggle="modal" data-target="#previewModal"></i>
-      <p style="font-size: 12px; margin-top: 5px"> 협업툴.pdf </p>
+      <i class="far fa-file-pdf" style="color:red; font-size: 100px" data-toggle="modal" data-target="#previewModal"></i>
+      <p style="font-size: 12px; margin-top: 5px;"> 협업툴.pdf </p>
     </div>
     <div class="drivefile">
       <i class="far fa-file-word" style="color:blue; font-size: 100px;"></i>
@@ -116,7 +116,7 @@
 {% block plus %}
 
 <div style="text-align: -webkit-right;">
-  <div class="plusbtn" data-toggle="modal" data-target="#uploadModal">
+  <div class="plusbtn" data-toggle="modal" data-target="#uploadModal" style="cursor:pointer;">
     <i class="fas fa-upload" style="font-size:30px; color:gray; margin-top:8px"></i>
   </div>
 </div>
@@ -134,7 +134,7 @@
       </div>
       <div class="modal-body">
         <div style="display:flex; flex-direction:row;">
-          <input type="file" id="myPCbtn" style="display: block; margin-bottom: 5px">
+          <input type="file" id="myPCbtn" style="display: block; margin-bottom: 5px; cursor:pointer">
         </div>
         <div id="filedd" class="drop" style="min-height: 50px; width: 100%; border: 1px solid black; padding: 13px 5px 5px 150px;  display: block; justify-content: center; align-items: center;">파일을 Drag & Drop 해주세요.</div>
         <div class="list" style="margin: 10px;"></div>

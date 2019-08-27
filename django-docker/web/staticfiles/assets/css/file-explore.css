@@ -70,6 +70,7 @@ li.folder-root.open>ul{
    width: 80px;
    height:140px;
    border-radius:6px;
+   cursor:pointer;
 }
 
 .drivefile:hover{

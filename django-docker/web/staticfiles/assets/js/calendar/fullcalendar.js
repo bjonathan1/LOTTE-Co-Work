@@ -2383,7 +2383,7 @@ function BasicView(element, calendar, viewName) {
 			"<div>";
 
 		if (showNumbers) {
-            html += "<div class='fc-day-number'>" + date.getDate() + "</div>";
+            html += "<div class='fc-day-number' style='cursor:pointer;'  data-toggle='modal' data-target='#eventcreateModal'>" + date.getDate() + "</div>";
             		}
 
 		html +=

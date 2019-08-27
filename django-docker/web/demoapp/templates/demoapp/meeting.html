@@ -206,7 +206,7 @@
 
 <div style="display:flex; flex-direction:row; justify-content:flex-end">
   <div style="text-align: -webkit-right; ">
-    <img class="plusbtn" src="../../../staticfiles/assets/img/meeting.png" data-toggle="modal" data-target="#exampleModal">
+    <img style="cursor:pointer;"  class="plusbtn" src="../../../staticfiles/assets/img/meeting.png" data-toggle="modal" data-target="#exampleModal">
   </div>
 </div>
 
@@ -230,8 +230,9 @@
             <p style="font-size:16px; margin: 5px 0 0 10px;"> 보고(회의) 일정</p>
 
             <div class="col-xs-3" style="margin:5px">
-              <div class="controls">
-                <input class="datepicker form-control"style="margin:0;" type="text"/>
+              <div class="controls" style="display:flex; flex-direction:row;">
+                <input class="datepicker form-control"style="margin: 0 5px 0 0;" type="text"/>
+	        <input class="form-control" style="margin:0;" type="time"/>
               </div>
             </div>
 
