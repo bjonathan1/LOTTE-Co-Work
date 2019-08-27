@@ -173,7 +173,11 @@
         <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
       </div>
     </div>
+
+
     <!-- 프로젝트 추가 팝업창 -->
+<form name="myForm" onsubmit="return validateForm()" method="post">
+
     <div class="modal fade" id="projectPlusModal" tabindex="-1" role="dialog" aria-labelledby="projectPlusModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -186,7 +190,7 @@
           <div class="modal-body">
             <div style="display:flex; flex-direction:column;width:100%">
               <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-              <input class="form-control" type="text" size="20">
+              <input class="form-control" id="project_name" type="text" size="20">
             </div>
             <div style="display:flex; flex-direction:row; margin-top=5px;">
               <div style="display:flex; flex-direction:column;width:100%;">
@@ -194,7 +198,7 @@
 
                 <div class="col-xs-3" style="margin:5px">
                   <div class="controls">
-                    <input class="datepicker form-control"style="margin:0;" type="text"/>
+                    <input class="datepicker form-control" id="end_date" style="margin:0;" type="text"/>
                   </div>
                 </div>
 
@@ -202,7 +206,7 @@
               <div style="display:flex; flex-direction:column;width:100%">
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 멤버</p>
                 <div>
-                  <select class="test" multiple="multiple">
+                  <select class="test" id="members" multiple="multiple">
                     <optgroup label="빅데이터팀">
                       <option value="1">박형준</option>
                     </optgroup>
@@ -225,15 +229,17 @@
             </div>
             <div>
               <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
-              <textarea class="form-control" style="height:200px; max-height:200px; padding:10px"></textarea>
+              <textarea class="form-control" id="content" style="height:200px; max-height:200px; padding:10px"></textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" style="background-color: gray;">완료</button>
+            <button type="button" onclick="addProject()" class="btn btn-primary" style="background-color: gray;">완료</button>
           </div>
         </div>
       </div>
     </div>
+  </form>
+
 {% endblock %}
 
 
@@ -308,6 +314,21 @@ new Vue({
         window.location = /dashboard/
 
     })
+
 </script>
 
+<script>
+  function addProject(){
+    var project_name = document.getElementById("project_name").value;
+    var end_date = document.getElementById("end_date").value;
+    var members = document.getElementById("members").value;
+    var content = document.getElementById("content").value;
+    console.log(members)
+    console.log(project_name + end_date + members + content)
+  }
+</script>
+
+<script>
+    $('')
+</script>
 {% endblock %}

@@ -228,6 +228,8 @@
 {% endblock %}
 
 <!-------------------------------------------프로젝트 팝업창-------------------------------------->
+<!--Todo 프로젝트 팝업창 및 변경하-->
+
 {% block content_popup %}
 <!-- 업무 팝업창 -->
 <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
@@ -246,7 +248,7 @@
                 </div>
                 <div style="display:flex; flex-direction:row; margin-top=5px;">
                     <div style="display:flex; flex-direction:column;width:100%;">
-                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜</p>
+                        <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 마감 날짜 </p>
 
                         <div class="col-xs-3" style="margin:5px">
                             <div class="controls">
@@ -295,10 +297,14 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 <!-------------------------------------------Plus 버튼과 기능-------------------------------------->
 {% block plus %}
+
+ <!--Todo 프로젝트 생성, 이슈로 보내기 -->
 
 <!-- 추가 버튼 -->
 <div style="text-align: -webkit-right;">
@@ -307,7 +313,9 @@
     </div>
 </div>
 <!-- 업무 추가 팝업창 -->
+<form name="myForm" onsubmit="return validateForm()" method="post">
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form id="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -371,7 +379,9 @@
             </div>
         </div>
     </div>
+    </form>
 </div>
+</form>
 {% endblock %}
 
 <!-------------------------------------------Dashboard Sidebar 호출-------------------------------------->
@@ -449,5 +459,30 @@ function drop(target, task) {   //드롭시 호출 할 함수
   target.appendChild(document.getElementById(id));
   task.preventDefault();
 };
+</script>
+
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
+    authDomain: "web-test-f1437.firebaseapp.com",
+    databaseURL: "https://web-test-f1437.firebaseio.com",
+    projectId: "web-test-f1437",
+    storageBucket: "web-test-f1437.appspot.com",
+    messagingSenderId: "147985162974",
+    appId: "1:147985162974:web:0772d3ad436a42f5"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.database().ref()
+
+    var user_projects = db.child("Members").child("{{ user_key}}").child("project");
+    var all_projects = db.child("Project")
+
+    console.log(.form-control)
+
+function validateForm(){
+    var proj_name = document.forms["myForm"][""]
+}
 </script>
 {% endblock %}

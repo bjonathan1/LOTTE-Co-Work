@@ -56,6 +56,9 @@ $(document).ready(function() {
 <script src="https://www.amcharts.com/lib/4/core.js"></script>
 <script src="https://www.amcharts.com/lib/4/charts.js"></script>
 
+
+
+<!-- Todo 차트에 이름 넣기 익준이에게 물어보기 -->
 <script>
 
 var chart = am4core.create("chartdiv", am4charts.XYChart);
@@ -78,6 +81,7 @@ var project_count = 0;
         var task = "{{ key }}";
         var start = "{{ values.start }}";
         var end = "{{ values.end }}";
+        var name = "{{ values.manager }}"
 
         start = start[0] + start[1] + start[2] + start[3] + '-' + start[4] + start[5] + '-' + start[6] +  start[7]
         end = end[0] + end[1] + end[2] + end[3] + '-' + end[4] + end[5] + '-' + end[6] +  end[7]
@@ -86,7 +90,8 @@ var project_count = 0;
             "start": start,
             "end": end,
             "color": colorSet.getIndex(project_count).brighten(task_count),
-            "task": task
+            "task": task,
+            "name": name,
              });
          task_count += 0.2;
     {% endfor %}

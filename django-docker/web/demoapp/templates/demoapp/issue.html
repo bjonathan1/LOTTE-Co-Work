@@ -80,6 +80,9 @@
                     </thead>
                     <tbody>
                       {% for key, value in task.items %}
+                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
+                        <td >{{ forloop.counter }}</td>
+                        <td id="project_name">{{ value.project_name }}</td>
                       <tr class="tabletr" data-toggle="modal" data-target="#taskModal" style="cursor:pointer">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ value.project_name }}</td>
@@ -97,7 +100,8 @@
 {% endblock %}
 
 {% block content_popup %}
-	
+	<!-- Todo 프로젝트와 Task 팝업창 정보 전달 익준이에게 물어보기 -->
+
       <!-- 프로젝트 이슈 팝업창 -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
