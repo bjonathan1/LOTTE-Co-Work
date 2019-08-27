@@ -208,20 +208,20 @@
                 <div>
                   <select class="test" id="members" multiple="multiple">
                     <optgroup label="빅데이터팀">
-                      <option value="1">박형준</option>
+                      <option value="박형준">박형준</option>
                     </optgroup>
                     <optgroup label="통합 App Proj. 팀">
-                      <option value="2">박예은</option>
-                      <option value="3">정용원</option>
+                      <option value="박예은">박예은</option>
+                      <option value="정용원">정용원</option>
                     </optgroup>
                     <optgroup label="디지털사업팀">
-                      <option value="4">김성우</option>
-                      <option value="5">한석환</option>
+                      <option value="김성우">김성우</option>
+                      <option value="한석환">한석환</option>
                     </optgroup>
                     <optgroup label="IT기획팀">
-                      <option value="6">김동우</option>
-                      <option value="7">김익준</option>
-                      <option value="8">김정은</option>
+                      <option value="김동우">김동우</option>
+                      <option value="김익준">김익준</option>
+                      <option value="김정은">김정은</option>
                     </optgroup>
                   </select>
                 </div>
@@ -303,6 +303,44 @@ new Vue({
 
 <script>
 
+  var firebaseConfig = {
+    apiKey: "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
+    authDomain: "web-test-f1437.firebaseapp.com",
+    databaseURL: "https://web-test-f1437.firebaseio.com",
+    projectId: "web-test-f1437",
+    storageBucket: "web-test-f1437.appspot.com",
+    messagingSenderId: "147985162974",
+    appId: "1:147985162974:web:0772d3ad436a42f5"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+
+  var db = firebase.database().ref();
+  function writeNewPost(uid, username, picture, title, body) {
+  // A post entry.
+  var postData = {
+    author: username,
+    uid: uid,
+    body: body,
+    title: title,
+    starCount: 0,
+    authorPic: picture
+  };
+
+  // Get a key for a new Post.
+  var newPostKey = firebase.database().ref().child('posts').push().key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  var updates = {};
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+  return firebase.database().ref().update(updates);
+}
+</script>
+
+<script>
+
     $('.card-body').click( function() {
         console.log('click')
         $.ajax({
@@ -318,17 +356,21 @@ new Vue({
 </script>
 
 <script>
-  function addProject(){
-    var project_name = document.getElementById("project_name").value;
-    var end_date = document.getElementById("end_date").value;
-    var members = document.getElementById("members").value;
-    var content = document.getElementById("content").value;
-    console.log(members)
-    console.log(project_name + end_date + members + content)
+function addProject(){
+  var member_list = [];
+  var members = document.getElementById("members");
+  var date = Date().dateFormat("yyyy-mm-dd");
+  var project_name = document.getElementById("project_name").value;
+  var end_date = document.getElementById("end_date").value;
+  var content = document.getElementById("content").value;
+  for (var i=0,cnt=members.options.length;i<cnt;i++) {
+    if (members.options[i].selected == true){
+      member_list.push(members.options[i].value);
+    }
   }
+  console.log(member_list)
+  console.log(project_name + end_date + content + date)
+}
 </script>
 
-<script>
-    $('')
-</script>
 {% endblock %}
