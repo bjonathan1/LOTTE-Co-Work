@@ -3,6 +3,43 @@
 
 {% block content %}
 
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+     // using jQuery
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $(document).ready(function() {
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+      });
+</script>
+
+
+
 <div class="content" style="padding:0 30px 15px">
   <div class="row" id="list1" style="flex-direction:row;">
     <div id='wrap'>
@@ -28,7 +65,7 @@
         </div>
       </div>
       <div class="modal-body">
-        <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
+	  <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
           <div style="display:flex; flex-direction:column;width:100%">
             <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
             <input value="인턴 프로젝트 아이디어 회의" class="form-control" type="text" size="20">
@@ -48,7 +85,11 @@
                     <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
                   </div>
                 </div>
-                <ul id="recordingsList" style="color: #ffffff; margin: 5px 0 0 0;"></ul>
+                <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
+		<div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center;">
+		{% csrf_token %}
+		  <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
+		</div>
               </div>
               <div id="formats" style="display: none">Format: start recording to see sample rate</div>
             </div>
@@ -487,6 +528,8 @@
     $(this).css('display', 'none');
     $('#pauseButton').css('display', 'block');
     $('#stopButton').css('display', 'block');
+    $('#uploadButton').css('display', 'none');
+    $('#recordingsList').children().remove();
   });
 </script>
 
@@ -495,6 +538,7 @@
     $('#pauseButton').css('display','none');
     $('#stopButton').css('display','none');
     $('#recordButton').css('display', 'block');
+    $('#uploadButton').css('display', 'none');
   });
 </script>
 
@@ -503,6 +547,7 @@
     $('#pauseButton').css('display','none');
     $('#stopButton').css('display','none');
     $('#recordButton').css('display', 'block');
+    $('#uploadButton').css('display', 'block');
   });
 </script>
 
