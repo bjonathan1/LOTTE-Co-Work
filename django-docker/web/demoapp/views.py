@@ -74,30 +74,29 @@ def dashboard(request):
         request.session['_old_post'] = request.POST['msg']
         return redirect('/dashboard/')
     project_id = request.session.get('_old_post')
-
     members = db.child("Members").get().val()
     tasks = db.child("Project").child(project_id).child("Task").get().val()
     count = 1
-
-    for task in tasks:
-        if tasks[task]['Issued']['TF'] == 'True':
-            continue
-        task_num = "task" + str(count)
-        count += 1
-        context[task_num] = {
-            "task_name" : tasks[task]['task_name'],
-            "task_content" : tasks[task]['task_content'],
-            "task_manager" : members[tasks[task]['task_manager']]['name'],
-            "task_managerurl": members[tasks[task]['task_manager']]['image'],
-            "task_createdate" : tasks[task]['task_createdate'],
-            "task_enddate" : tasks[task]['task_enddate'],
-            "task_ddate" : str(int(tasks[task]['task_enddate']) - int(tasks[task]['task_createdate'])),
-            "task_attachment" : tasks[task]['task_attachment'],
-            "task_bookmark" : tasks[task]['task_bookmark'],
-            "task_state" : tasks[task]['task_state'],
-        }
+    if (tasks):
+        for task in tasks:
+            if tasks[task]['Issued']['TF'] == 'True':
+                continue
+            task_num = "task" + str(count)
+            count += 1
+            context[task_num] = {
+                "task_name" : tasks[task]['task_name'],
+                "task_content" : tasks[task]['task_content'],
+                "task_manager" : members[tasks[task]['task_manager']]['name'],
+                "task_managerurl": members[tasks[task]['task_manager']]['image'],
+                "task_createdate" : tasks[task]['task_createdate'],
+                "task_enddate" : tasks[task]['task_enddate'],
+                "task_ddate" : str(int(tasks[task]['task_enddate']) - int(tasks[task]['task_createdate'])),
+                "task_attachment" : tasks[task]['task_attachment'],
+                "task_bookmark" : tasks[task]['task_bookmark'],
+                "task_state" : tasks[task]['task_state'],
+            }
     print(context)
-    return render(request, 'demoapp/dashboard.html', {'tasks' : context})
+    return render(request, 'demoapp/dashboard.html', {'tasks' : context, 'projectkey': project_id})
 
 def meeting(request):
     context = {}
@@ -185,6 +184,7 @@ def login_ok(request):
 
 
 if __name__ == "__main__":
-    #index("a")
-    timeline("a")
+    # index("a")
+    dashboard("a")
+    # timeline("a")
     # issue("a")

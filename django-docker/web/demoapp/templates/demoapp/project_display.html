@@ -301,43 +301,8 @@ new Vue({
 
 {% block script %}
 
-<script>
-
-  var firebaseConfig = {
-    apiKey: "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
-    authDomain: "web-test-f1437.firebaseapp.com",
-    databaseURL: "https://web-test-f1437.firebaseio.com",
-    projectId: "web-test-f1437",
-    storageBucket: "web-test-f1437.appspot.com",
-    messagingSenderId: "147985162974",
-    appId: "1:147985162974:web:0772d3ad436a42f5"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-
-  var db = firebase.database().ref();
-  function writeNewPost(uid, username, picture, title, body) {
-  // A post entry.
-  var postData = {
-    author: username,
-    uid: uid,
-    body: body,
-    title: title,
-    starCount: 0,
-    authorPic: picture
-  };
-
-  // Get a key for a new Post.
-  var newPostKey = firebase.database().ref().child('posts').push().key;
-
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  var updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-  return firebase.database().ref().update(updates);
-}
-</script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
 
 <script>
 
@@ -356,21 +321,129 @@ new Vue({
 </script>
 
 <script>
-function addProject(){
-  var member_list = [];
-  var members = document.getElementById("members");
-  var date = Date().dateFormat("yyyy-mm-dd");
-  var project_name = document.getElementById("project_name").value;
-  var end_date = document.getElementById("end_date").value;
-  var content = document.getElementById("content").value;
-  for (var i=0,cnt=members.options.length;i<cnt;i++) {
-    if (members.options[i].selected == true){
-      member_list.push(members.options[i].value);
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
+    authDomain: "web-test-f1437.firebaseapp.com",
+    databaseURL: "https://web-test-f1437.firebaseio.com",
+    projectId: "web-test-f1437",
+    storageBucket: "web-test-f1437.appspot.com",
+    messagingSenderId: "147985162974",
+    appId: "1:147985162974:web:0772d3ad436a42f5"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.database().ref()
+
+</script>
+
+
+<script>
+
+  function addProject(){
+
+    var member_list = [];
+    var members = document.getElementById("members");
+    var project_createdate = new Date();
+    project_createdate = getDate(project_createdate);
+
+    var project_name = document.getElementById("project_name").value;
+    var project_enddate = document.getElementById("end_date").value;
+    project_enddate = yyyymmdd(project_enddate);
+    project_enddate = project_enddate + "";
+
+    var content = document.getElementById("content").value;
+    for (var i=0,cnt=members.options.length;i<cnt;i++) {
+      if (members.options[i].selected == true){
+        member_list.push(members.options[i].value);
+      }
     }
+
+
+    if (project_name == ""){
+      alert("프로젝트명 비어있음");
+      return;
+    }
+    if (project_enddate.length != 8){
+      alert("날짜를 확인 하시오");
+      return;
+    }
+    finaldata = {
+    "project_name" : project_name,
+    "project_createdate" : project_createdate,
+    "project_enddate" : project_enddate,
+    "project_content" : content,
+    "Issued": {"TF": "False", "issued_date": "None"}
+    }
+
+    var all_members = db.child("Members")
+
+
+    //Database에세 데이터 가져옴
+    var mem_data = all_members
+      .once('value')
+      .then(function(data){
+        var members = data.val();
+        console.log(members);
+
+        var project_member = {}
+        for (i in members) {
+          console.log(members[i]['name']);
+          if(member_list.includes(members[i]['name'])){
+            project_member[members[i]['name']] = i;
+
+          }
+        }
+        finaldata['project_member'] = project_member
+        console.log(finaldata);
+
+
+        // Get a key for a new Post.
+        var newPostKey = firebase.database().ref().child('Project').push().key;
+        console.log(newPostKey);
+
+        // Write the new post's data simultaneously in the posts list and the user's post list.
+        var updates = {};
+        updates['/Project/' + newPostKey] = finaldata;
+        firebase.database().ref().update(updates);
+
+        for (i in project_member){
+          firebase.database().ref().child('Members').child(project_member[i]).child('project').child(project_name).set(newPostKey);
+
+        }
+
+
+        console.log(updates);
+
+
+        var resetform = document.getElementById("projectPlusModal");
+        resetform.reset();
+
+
+
+    });
+
+    console.log(mem_data)
+
+
   }
-  console.log(member_list)
-  console.log(project_name + end_date + content + date)
-}
+
+  function getDate(date) {
+    var mm = date.getMonth() + 1; // getMonth() is zero-based
+    var dd = date.getDate();
+
+    return [date.getFullYear(),
+            (mm>9 ? '' : '0') + mm,
+            (dd>9 ? '' : '0') + dd
+           ].join('');
+  };
+
+  function yyyymmdd(date) {
+    return [date[0] + date[1] + date[2] + date[3] + date[5] + date[6] + date[8] + date[9]]
+  }
+
+
+
 </script>
 
 {% endblock %}
