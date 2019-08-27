@@ -8,9 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 db = firedb.db
 storage = firedb.storage
 
+
 '''
 
 #임의로 김성우로 지정
+
 
 '''
 
@@ -38,6 +40,8 @@ def index(request):
             count += 1
             project_name = keys #proj name
             project = db.child("Project").child(user_projects[keys]).get().val()
+            if project['Issued']['TF'] == "True":
+                continue
             project_content = project['project_content'] #content
             project_createdate = project['project_createdate'] #createdate
             project_enddate = project['project_enddate'] #enddate
@@ -76,6 +80,8 @@ def dashboard(request):
     count = 1
 
     for task in tasks:
+        if tasks[task]['Issued']['TF'] == 'True':
+            continue
         task_num = "task" + str(count)
         count += 1
         context[task_num] = {
@@ -154,6 +160,7 @@ def timeline(request):
             task_info = {}
             task_info['start'] = tasks[task]['task_createdate']
             task_info['end'] = tasks[task]['task_enddate']
+            task_info['manager'] = db.child("Members").child(tasks[task]['task_manager']).child('name').get().val()
             temp[tasks[task]['task_name']] = task_info
 
         context[project_name] = temp
@@ -179,5 +186,5 @@ def login_ok(request):
 
 if __name__ == "__main__":
     #index("a")
-    # timeline("a")
-    issue("a")
+    timeline("a")
+    # issue("a")

@@ -35,7 +35,7 @@ dateAxis.renderer.tooltipLocation = 0;
 
 var series1 = chart.series.push(new am4charts.ColumnSeries());
 series1.columns.template.height = am4core.percent(70);
-series1.columns.template.tooltipText = "{task}: [bold]{openDateX}[/] - [bold]{dateX}[/]";
+series1.columns.template.tooltipText = "{task}: [bold]{openDateX}[/] - [bold]{dateX}[/] {name}";
 
 series1.dataFields.openDateX = "start";
 series1.dataFields.dateX = "end";
