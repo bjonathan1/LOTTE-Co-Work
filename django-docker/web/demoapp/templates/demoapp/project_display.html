@@ -178,7 +178,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" onclick="addIssue('{{value.project_key}}')" class="btn btn-issue" style="background-color: gray;" data-dismiss="modal">이슈로 보내기</button>
-	    <button type="button" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">프로젝트 삭제</button>
+	        <button type="button" onclick="deleteProject('{{ value.project_key }}', '{{ value.project_name }}')" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">프로젝트 삭제</button>
             <button type="button" onclick="updateProject()" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
           </div>
         </div>
@@ -456,6 +456,26 @@ new Vue({
     updates['/Project/' + projectkey + '/Issued/issued_date'] = today;
     console.log(updates)
     firebase.database().ref().update(updates);
+
+  }
+
+  function deleteProject(projectkey, projectname) {
+
+    console.log(projectkey);
+    console.log(projectname);
+    firebase.database().ref().child('Project').child(projectkey).remove();
+
+    Members = firebase.database().ref().child('Members');
+    Members.once('value').then(function(data){
+        member = data.val();
+        console.log(member)
+        for (i in member){
+            firebase.database().ref().child('Members').child(i).child('project').child(projectname).remove();
+
+        }
+
+    });
+    location.reload();
 
   }
 

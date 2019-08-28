@@ -355,7 +355,7 @@
             	</div>
             <div class="modal-footer">
                 <button type="button" onclick="addIssue('{{value.task_key}}')" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
-		        <button type="button" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">업무 삭제</button>
+		        <button type="button" onclick="deleteTask('{{ value.task_key }}')" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">업무 삭제</button>
                 <button type="button" onclick="updateTask()" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
             </div>
         </div>
@@ -611,7 +611,7 @@ var firebaseConfig = {
         // Write the new post's data simultaneously in the posts list and the user's post list.
         var updates = {};
         updates['/Project/{{projectkey}}/Task/' + newPostKey] = finaldata;
-        //firebase.database().ref().update(updates);
+        firebase.database().ref().update(updates);
 
 
 
@@ -632,6 +632,14 @@ var firebaseConfig = {
     updates['/Project/{{ projectkey }}/Task/' + taskkey + '/Issued/issued_date'] = today;
     console.log(updates)
     firebase.database().ref().update(updates);
+
+    location.reload();
+  }
+
+  function deleteTask(taskkey){
+    console.log(taskkey)
+
+    firebase.database().ref().child('Project').child('{{ projectkey }}').child('Task').child(taskkey).remove();
 
     location.reload();
   }
