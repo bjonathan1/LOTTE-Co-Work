@@ -1348,7 +1348,7 @@ body {
 .ss-featured-grid  .item:first-child:last-child {
   float: none;
   margin: 0;
-  width: 150px;
+  width: 180px;
   height: 70px;
 }
 
