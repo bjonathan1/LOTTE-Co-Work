@@ -98,10 +98,12 @@ if __name__ == "__main__":
   #add_task("-Ln1gTOcWncu_RXsr3yv", "오더나우 앱 메인화면 버그개선", " ", "김성우", "20190826")
   data = db.child("Project").get().val()
   for project in data.keys():
+    db.child("Project").child(project).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
     tasks = db.child("Project").child(project).child("Task").get().val()
 
-    for task in tasks.keys():
-      db.child("Project").child(project).child("Task").child(task).child("Issued").set({"TF": "False", "issued_date": "None"})
+    if (tasks):
+      for task in tasks.keys():
+        db.child("Project").child(project).child("Task").child(task).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
 

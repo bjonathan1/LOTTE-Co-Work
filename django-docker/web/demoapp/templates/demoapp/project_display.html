@@ -160,7 +160,11 @@
                     </optgroup>
                     <optgroup label="IT기획팀">
                       <option value="김동우">김동우</option>
-                      <option value="김익준">김익준</option>
+                      {% if "김익준" in value.project_members %}
+                        <option value="김익준" selected>김익준</option>
+                      {% else %}
+                        <option value="김익준">김익준</option>
+                      {% endif %}
                       <option value="김정은">김정은</option>
                     </optgroup>
                   </select>
@@ -173,7 +177,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" onclick="addIssue()" class="btn btn-issue" style="background-color: gray;" data-dismiss="modal">이슈로 보내기</button>
+            <button type="button" onclick="addIssue('{{value.project_key}}')" class="btn btn-issue" style="background-color: gray;" data-dismiss="modal">이슈로 보내기</button>
             <button type="button" onclick="updateProject()" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
           </div>
         </div>
@@ -392,7 +396,7 @@ new Vue({
     "project_createdate" : project_createdate,
     "project_enddate" : project_enddate,
     "project_content" : content,
-    "Issued": {"TF": "False", "issued_date": "None"}
+    "Issued": {"TF": "False", "issued_date": "None", "issued_content" : ""}
     }
 
     var all_members = db.child("Members")
@@ -445,8 +449,17 @@ new Vue({
     console.log(mem_data)
   }
 
-  function addIssue() {
+  function addIssue(projectkey) {
 
+    var today = new Date();
+    var today = getDate(today);
+
+    console.log(projectkey);
+    updates = {};
+    updates['/Project/' + projectkey + '/Issued/TF'] = "True";
+    updates['/Project/' + projectkey + '/Issued/issued_date'] = today;
+    console.log(updates)
+    firebase.database().ref().update(updates);
 
   }
 
