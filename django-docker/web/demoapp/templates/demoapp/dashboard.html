@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px; cursor:pointer;" data-toggle="modal" data-target="#filerequestModal"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px; cursor:pointer;" data-toggle="modal" data-target="#filerequestModal"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px; cursor:pointer" data-toggle="modal" data-target="#filerequestModal" src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
@@ -214,7 +214,7 @@
                         </div>
                     </div>
                     <div>
-                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px"  src="{{ value.task_managerurl }}">
+                        <img style="margin-right:15px; width: 35px; height:35px; border-radius: 20px; cursor:pointer;" data-toggle="modal" data-target="#filerequestModal"  src="{{ value.task_managerurl }}">
                     </div>
                 </div>
             </div>
@@ -231,6 +231,29 @@
 <!--Todo 프로젝트 팝업창 및 변경하기 이슈로 보내기 -->
 
 {% block content_popup %}
+<!-- 자료 요청 팝업창 -->
+<div class="modal fade" id="filerequestModal" tabindex="-1" role="dialog" aria-labelledby="filerequestModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">자료 요청하기</h5>
+        <div class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; flex-direction:column;width:100%">
+          <p style="font-size:16px; margin: 5px 0 0 10px;">요청 내용</p>
+          <input class="form-control" type="text" size="20">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="background-color: gray;">요청 완료</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 업무 팝업창 -->
 <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -289,7 +312,26 @@
                     <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
                     <input class="form-control" type="file" size="20" multiple>
                 </div>
-            </div>
+		<div style="display:flex; flex-direction:column;width:100%">
+            	  <p style="font-size:16px; margin: 5px 0 0 10px;"> 댓글</p>
+            	  <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+              	    <img style="margin-left:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/ij.jpg">
+              	    <input class="form-control" type="text" size="20">
+              	    <button type="button" class="btn btn-primary" style="background-color: gray; width: 50px; height: 29.2px; padding: 5px;">등록</button>
+		  </div>
+		  <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; background-color: #e4e4e4; margin: 0 0 10px 35px; border-radius: 6px;">
+              	    <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+                      <img style="margin-left:15px; width: 35px; height:35px; border-radius: 20px"  src="../../../staticfiles/assets/img/sw.jpg">
+                      <div style="display: flex; flex-direction: column;">
+                        <hr style="margin:0 0 5px 5px; border-color: #e4e4e4">
+                  	<p style="font-size:12px; margin: 0 0 0 10px;">김성우</p>
+                  	<p style="font-size:14px; margin: 0 0 0 10px;">개발을 하고 Git에 Push 하는 것을 생활화 해주세요!</p>
+                  	<p style="font-size:9px; margin: 2px 0 0 10px;">2019.08.16 14:23</p>
+                  	<hr style="margin:0 0 5px 5px; border-color: #e4e4e4">
+                      </div>
+                    </div>
+                  </div>
+            	</div>
             <div class="modal-footer">
                 <button type="button" onclick="addIssue()" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
                 <button type="button" onclick="updateTask()" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
@@ -310,6 +352,7 @@
         <i class="fas fa-plus" style="font-size:35px; color:gray; margin-top:8px"></i>
     </div>
 </div>
+
 <!-- 업무 추가 팝업창 -->
 <form name="myForm" onsubmit="return validateForm()" method="post">
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -373,7 +416,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="addTask()" style="background-color: gray;">완료</button>
+                <button type="button" class="btn btn-primary" onclick="addTask()" style="background-color: gray;" data-dismiss="modal">완료</button>
             </div>
         </div>
     </div>

@@ -2327,7 +2327,7 @@ function BasicView(element, calendar, viewName) {
 			if (showWeekNumbers) {
 				date = cellToDate(row, 0);
 				html +=
-					"<td class='fc-week-number " + contentClass + "'>" +
+					"<td class='fc-week-number style='cursor:pointer' data-toggle='modal' data-target='#eventcreateModal' " + contentClass + "'>" +
 					"<div>" +
 					htmlEscape(formatDate(date, weekNumberFormat)) +
 					"</div>" +
@@ -2383,7 +2383,7 @@ function BasicView(element, calendar, viewName) {
 			"<div>";
 
 		if (showNumbers) {
-            html += "<div class='fc-day-number' style='cursor:pointer;'  data-toggle='modal' data-target='#eventcreateModal'>" + date.getDate() + "</div>";
+            		html += "<div class='fc-day-number' style='cursor:pointer;'  data-toggle='modal' data-target='#eventcreateModal'>" + date.getDate() + "</div>";
             		}
 
 		html +=
@@ -5953,7 +5953,6 @@ function OverlayManager() {
 		if (e[0].parentNode != parent[0]) {
 			e.appendTo(parent);
 		}
-        usedOverlays.push(e.css(rect).show());
 		return e;
 	}
 	
