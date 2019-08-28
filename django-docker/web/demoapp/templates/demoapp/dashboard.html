@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                             <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal{{ key }}">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                             <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal{{ key }}">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                             <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal{{ key }}">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                     <div class="row">
                         <div class="col-7 col-md-8" style="flex:0 0 100%;  max-width:100%;">
                             <div class="numbers" style="cursor:pointer" style="cursor:pointer">
-                                <p class="card-category" data-toggle="modal" data-target="#taskModal">{{ value.task_name }}</p>
+                                <p class="card-category" data-toggle="modal" data-target="#taskModal{{ key }}">{{ value.task_name }}</p>
                             </div>
                         </div>
                     </div>
@@ -255,7 +255,8 @@
 </div>
 
 <!-- 업무 팝업창 -->
-<div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+{% for key, value in tasks.items %}
+<div class="modal fade" id="taskModal{{ key }}" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -267,7 +268,7 @@
             <div class="modal-body">
                 <div style="display:flex; flex-direction:column;width:100%">
                     <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
-                    <input class="form-control" value="개발환경 구축" type="text" size="20">
+                    <input class="form-control" value="{{ value.task_name }}" type="text" size="20">
                 </div>
                 <div style="display:flex; flex-direction:row; margin-top=5px;">
                     <div style="display:flex; flex-direction:column;width:100%;">
@@ -275,7 +276,7 @@
 
                         <div class="col-xs-3" style="margin:5px">
                             <div class="controls">
-                                <input class="datepicker form-control"style="margin:0;" value="2019-08-30" type="text"/>
+                                <input class="datepicker form-control"style="margin:0;" value="{{ value.task_enddate.0 }}{{ value.task_enddate.1 }}{{ value.task_enddate.2 }}{{ value.task_enddate.3 }}-{{ value.task_enddate.4 }}{{ value.task_enddate.5 }}-{{ value.task_enddate.6 }}{{ value.task_enddate.7 }}" type="text"/>
                             </div>
                         </div>
 
@@ -285,20 +286,40 @@
                         <div>
                             <select class="test">
                                 <optgroup label="빅데이터팀">
-                                    <option value="1">박형준</option>
+                                  {% if value.task_manager == "박형준" %}
+                                    <option value="박형준" selected>박형준</option>
+                                  {% else %}
+                                    <option value="박형준">박형준</option>
+                                  {% endif %}
                                 </optgroup>
                                 <optgroup label="통합 App Proj. 팀">
-                                    <option value="2">박예은</option>
-                                    <option value="3">정용원</option>
+                                  {% if value.task_manager == "박예은" %}
+                                    <option value="박예은" selected>박예은</option>
+                                  {% else %}
+                                    <option value="박예은">박예은</option>
+                                  {% endif %}
+                                  {% if value.task_manager == "정용원" %}
+                                    <option value="정용원" selected>정용원</option>
+                                  {% else %}
+                                    <option value="정용원">정용원</option>
+                                  {% endif %}
                                 </optgroup>
                                 <optgroup label="디지털사업팀">
-                                    <option value="4">김성우</option>
-                                    <option value="5">한석환</option>
+                                  {% if value.task_manager == "김성우" %}
+                                    <option value="김성우" selected>김성우</option>
+                                  {% else %}
+                                    <option value="김성우">김성우</option>
+                                  {% endif %}
+                                  <option value="한석환">한석환</option>
                                 </optgroup>
                                 <optgroup label="IT기획팀">
-                                    <option value="6">김동우</option>
-                                    <option value="7" selected>김익준</option>
-                                    <option value="8">김정은</option>
+                                  <option value="김동우">김동우</option>
+                                  {% if value.task_manager == "김익준" %}
+                                    <option value="김익준" selected>김익준</option>
+                                  {% else %}
+                                    <option value="김익준">김익준</option>
+                                  {% endif %}
+                                  <option value="김정은">김정은</option>
                                 </optgroup>
                             </select>
                         </div>
@@ -306,7 +327,7 @@
                 </div>
                 <div>
                     <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무 내용</p>
-                    <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">프론트개발, 도메인 생성, UI/UX기반 참고</textarea>
+                    <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">{{ value.task_content }}</textarea>
                 </div>
                 <div style="display:flex; flex-direction:column;width:100%">
                     <p style="font-size:16px; margin: 5px 0 0 10px;"> 첨부파일</p>
@@ -333,13 +354,14 @@
                   </div>
             	</div>
             <div class="modal-footer">
-                <button type="button" onclick="addIssue()" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+                <button type="button" onclick="addIssue('{{value.task_key}}')" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
                 <button type="button" onclick="updateTask()" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
             </div>
         </div>
     </div>
 </div>
 </div>
+{% endfor %}
 
 {% endblock %}
 
@@ -554,6 +576,7 @@ var firebaseConfig = {
         for (i in members){
             if (i == manager) {task_manager = members[i];}
         }
+        console.log(task_manager);
         if (task_manager == ""){
             alert("프로젝트 미참여 인원");
             return;
@@ -577,7 +600,7 @@ var firebaseConfig = {
             "task_rank" : "보통",
             "task_bookmark" : "False",
             "task_attachment" : attachment,
-            "Issued": {"TF": "False", "issued_date": "None"}
+            "Issued": {"TF": "False", "issued_date": "None", "issued_content" : ""}
         }
         console.log(finaldata);
 
@@ -587,14 +610,31 @@ var firebaseConfig = {
         // Write the new post's data simultaneously in the posts list and the user's post list.
         var updates = {};
         updates['/Project/{{projectkey}}/Task/' + newPostKey] = finaldata;
-        firebase.database().ref().update(updates);
+        //firebase.database().ref().update(updates);
 
 
 
     });
+    location.reload();
 
 
   }
+
+  function addIssue(taskkey) {
+
+    var today = new Date();
+    var today = getDate(today);
+
+    console.log(taskkey);
+    updates = {};
+    updates['/Project/{{ projectkey }}/Task/'+ taskkey +'/Issued/TF'] = "True";
+    updates['/Project/{{ projectkey }}/Task/' + taskkey + '/Issued/issued_date'] = today;
+    console.log(updates)
+    firebase.database().ref().update(updates);
+
+    location.reload();
+  }
+
 
   function getDate(date) {
     var mm = date.getMonth() + 1; // getMonth() is zero-based

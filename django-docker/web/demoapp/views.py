@@ -94,6 +94,7 @@ def dashboard(request):
                 "task_attachment" : tasks[task]['task_attachment'],
                 "task_bookmark" : tasks[task]['task_bookmark'],
                 "task_state" : tasks[task]['task_state'],
+                "task_key" : task,
             }
     print(context)
     return render(request, 'demoapp/dashboard.html', {'tasks' : context, 'projectkey': project_id})
