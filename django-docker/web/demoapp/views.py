@@ -118,14 +118,15 @@ def issue(request):
             project_context[project_name] = {"issued_date": issued_date, "issued_content": issued_content}
             continue
 
-        tasks = projects[project_key]['Task']
-        for task in tasks.keys():
-            task_name = tasks[task]['task_name']
-            task_issue = tasks[task]['Issued']
-            if task_issue['TF'] == 'True':
-                task_issued_date = task_issue['issued_date']
-                task_issued_content = task_issue['issued_content']
-                task_context[task_name] = {"project_name": project_name,"issued_date": task_issued_date, "issued_content": task_issued_content}
+        tasks = db.child("Project").child(project_key).child("Task").get().val()
+        if(tasks):
+            for task in tasks.keys():
+                task_name = tasks[task]['task_name']
+                task_issue = tasks[task]['Issued']
+                if task_issue['TF'] == 'True':
+                    task_issued_date = task_issue['issued_date']
+                    task_issued_content = task_issue['issued_content']
+                    task_context[task_name] = {"project_name": project_name,"issued_date": task_issued_date, "issued_content": task_issued_content}
 
     context['project'] = project_context
     context['task'] = task_context
@@ -151,16 +152,17 @@ def timeline(request):
         project_key = user_projects[project]
         if projects[project_key]['Issued']['TF'] == 'True':
             continue
-        tasks = projects[project_key]['Task']
+        tasks = db.child("Project").child(project_key).child("Task").get().val()
         temp = {}
-        for task in tasks:
-            if tasks[task]['Issued']['TF'] == 'True':
-                continue
-            task_info = {}
-            task_info['start'] = tasks[task]['task_createdate']
-            task_info['end'] = tasks[task]['task_enddate']
-            task_info['manager'] = db.child("Members").child(tasks[task]['task_manager']).child('name').get().val()
-            temp[tasks[task]['task_name']] = task_info
+        if (tasks):
+            for task in tasks:
+                if tasks[task]['Issued']['TF'] == 'True':
+                    continue
+                task_info = {}
+                task_info['start'] = tasks[task]['task_createdate']
+                task_info['end'] = tasks[task]['task_enddate']
+                task_info['manager'] = db.child("Members").child(tasks[task]['task_manager']).child('name').get().val()
+                temp[tasks[task]['task_name']] = task_info
 
         context[project_name] = temp
         print(context)
@@ -185,6 +187,6 @@ def login_ok(request):
 
 if __name__ == "__main__":
     # index("a")
-    dashboard("a")
+    timeline("a")
     # timeline("a")
     # issue("a")
