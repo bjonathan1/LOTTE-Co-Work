@@ -3,44 +3,7 @@
 <!-------------------------------------------Project 출력-------------------------------------->
 
 {% block content %}
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-<script>
-     // using jQuery
-      function getCookie(name) {
-        var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
-          var cookies = document.cookie.split(';');
-          for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
-          }
-        }
-        return cookieValue;
-      }
-      function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
-        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-      }
-      $(document).ready(function() {
-        var csrftoken = getCookie('csrftoken');
-        $.ajaxSetup({
-          beforeSend: function(xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-              xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
-          }
-        });
-      });
-</script>
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <div class="content" style="padding:0 30px 15px">
   <div class="row" id="list1" style="flex-direction:row;">
@@ -89,7 +52,6 @@
                 </div>
                 <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
 		<div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center; cursor:pointer;">
-		{% csrf_token %}
 		  <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
 		</div>
               </div>
@@ -550,7 +512,7 @@
     $('#pauseButton').css('display', 'block');
     $('#stopButton').css('display', 'block');
     $('#uploadButton').css('display', 'none');
-    $('#recordingsList').children().remove();
+    //$('#recordingsList').children().remove();
   });
 </script>
 
@@ -560,7 +522,7 @@
     $('#stopButton').css('display','none');
     $('#recordButton').css('display', 'block');
     $('#uploadButton').css('display', 'none');
-    $('#recordingsList').children().remove();
+    //$('#recordingsList').children().remove();
   });
 </script>
 
