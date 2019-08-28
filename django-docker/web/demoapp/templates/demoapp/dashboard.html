@@ -228,7 +228,7 @@
 {% endblock %}
 
 <!-------------------------------------------프로젝트 팝업창-------------------------------------->
-<!--Todo 프로젝트 팝업창 및 변경하-->
+<!--Todo 프로젝트 팝업창 및 변경하기 이슈로 보내기 -->
 
 {% block content_popup %}
 <!-- 업무 팝업창 -->
@@ -291,8 +291,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
-                <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+                <button type="button" onclick="addIssue()" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+                <button type="button" onclick="updateTask()" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
             </div>
         </div>
     </div>
@@ -303,8 +303,6 @@
 
 <!-------------------------------------------Plus 버튼과 기능-------------------------------------->
 {% block plus %}
-
- <!--Todo 프로젝트 생성, 이슈로 보내기 -->
 
 <!-- 추가 버튼 -->
 <div style="text-align: -webkit-right;">

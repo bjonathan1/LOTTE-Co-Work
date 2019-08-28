@@ -43,7 +43,7 @@
       <div class="card card-stats" style="background-color:#e4e4e4">
         <div style="display:flex; flex-direction:row; justify-content:space-between">
           <div style="font-size:16px; font-weight:600; margin: 10px 10px 0px 10px;" id="app"> 프로젝트 {{ forloop.counter }}</div>
-          <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal"> 상세보기 </div>
+          <div style="font-size: 13px; display: flex; align-items: center; margin: 10px 10px 0 0; cursor:pointer" data-toggle="modal" data-target="#projectModal{{ forloop.counter }}"> 상세보기 </div>
         </div>
         <div style="background-color:white; border-radius:6px; margin:10px;">
           <form action="/dashboard/" method="post" id="test">
@@ -101,11 +101,12 @@
 
 <!-------------------------------------------프로젝트 팝업창-------------------------------------->
 {% block content_popup %}
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
+{% for key, value in tasks.items %}
+    <div class="modal fade" id="projectModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">프로젝트 1</h5>
+            <h5 class="modal-title" id="exampleModalLabel">프로젝트 {{ forloop.counter }}</h5>
             <div class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </div>
@@ -113,7 +114,7 @@
           <div class="modal-body">
             <div style="display:flex; flex-direction:column;width:100%">
               <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-              <input class="form-control" value="롯데백화점 협업 툴 제작" type="text" size="20">
+              <input class="form-control" value="{{ value.project_name }}" type="text" size="20">
             </div>
             <div style="display:flex; flex-direction:row; margin-top=5px;">
               <div style="display:flex; flex-direction:column;width:100%;">
@@ -121,7 +122,7 @@
 
                 <div class="col-xs-3" style="margin:5px">
                   <div class="controls">
-                    <input class="datepicker form-control"style="margin:0;" value="2019-08-29" type="text"/>
+                    <input class="datepicker form-control"style="margin:0;" value="{{ value.project_enddate.0 }}{{ value.project_enddate.1 }}{{ value.project_enddate.2 }}{{ value.project_enddate.3 }}-{{ value.project_enddate.4 }}{{ value.project_enddate.5 }}-{{ value.project_enddate.6 }}{{ value.project_enddate.7 }}" type="text"/>
                   </div>
                 </div>
 
@@ -131,20 +132,36 @@
                 <div>
                   <select class="test" multiple="multiple">
                     <optgroup label="빅데이터팀">
-                      <option value="1" selected>박형준</option>
+                      {% if "박형준" in value.project_members %}
+                        <option value="박형준" selected>박형준</option>
+                      {% else %}
+                        <option value="박형준">박형준</option>
+                      {% endif %}
                     </optgroup>
                     <optgroup label="통합 App Proj. 팀">
-                      <option value="2" selected>박예은</option>
-                      <option value="3" selected>정용원</option>
+                      {% if "박예은" in value.project_members %}
+                        <option value="박예은" selected>박예은</option>
+                      {% else %}
+                        <option value="박예은">박예은</option>
+                      {% endif %}
+                      {% if "정용원" in value.project_members %}
+                        <option value="정용원" selected>정용원</option>
+                      {% else %}
+                        <option value="정용원">정용원</option>
+                      {% endif %}
                     </optgroup>
                     <optgroup label="디지털사업팀">
-                      <option value="4" selected>김성우</option>
-                      <option value="5">한석환</option>
+                      {% if "김성우" in value.project_members %}
+                        <option value="김성우" selected>김성우</option>
+                      {% else %}
+                        <option value="김성우">김성우</option>
+                      {% endif %}
+                      <option value="한석환">한석환</option>
                     </optgroup>
                     <optgroup label="IT기획팀">
-                      <option value="6">김동우</option>
-                      <option value="7">김익준</option>
-                      <option value="8">김정은</option>
+                      <option value="김동우">김동우</option>
+                      <option value="김익준">김익준</option>
+                      <option value="김정은">김정은</option>
                     </optgroup>
                   </select>
                 </div>
@@ -152,16 +169,18 @@
             </div>
             <div>
               <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트 내용</p>
-              <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">롯데백화점만의 협업 툴 LCW를 제작하기 위한 프로젝트</textarea>
+              <textarea class="form-control" style="height:200px; max-height:200px; padding:10px">{{ value.project_content }}</textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
-            <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+            <button type="button" onclick="addIssue()" class="btn btn-issue" style="background-color: gray;">이슈로 보내기</button>
+            <button type="button" onclick="updateProject()" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
           </div>
         </div>
       </div>
     </div>
+
+{% endfor %}
 {% endblock %}
 
 
@@ -424,6 +443,9 @@ new Vue({
     });
 
     console.log(mem_data)
+  }
+
+  function addIssue() {
 
 
   }
