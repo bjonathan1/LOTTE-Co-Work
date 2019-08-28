@@ -80,7 +80,7 @@
                     </thead>
                     <tbody>
                       {% for key, value in task.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal">
+                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal" style="cursor:pointer">
                         <td >{{ forloop.counter }}</td>
                         <td id="project_name">{{ value.project_name }}</td>
                         <td>{{ value.project_name }}</td>
@@ -121,7 +121,7 @@
 	      </div>
             </div>
             <div class="modal-footer" style="padding:5px">
-              <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+              <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
             </div>
           </div>
         </div>
@@ -154,7 +154,7 @@
               </div>
             </div>
             <div class="modal-footer" style="padding:5px">
-              <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+              <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
             </div>
           </div>
         </div>

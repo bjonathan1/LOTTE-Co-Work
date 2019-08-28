@@ -3,7 +3,10 @@
 <!-------------------------------------------Project 출력-------------------------------------->
 
 {% block content %}
-<script src="http://coduery.com/jquery-latest.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
 <script>
      // using jQuery
       function getCookie(name) {
@@ -149,8 +152,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-cancel" style="background-color: gray;">회의 삭제</button>
-        <button type="button" class="btn btn-primary" style="background-color: gray;">수정 완료</button>
+        <button type="button" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">회의 삭제</button>
+        <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
       </div>
     </div>
   </div>
@@ -252,7 +255,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" style="background-color: gray;">생성 완료</button>
+        <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">생성 완료</button>
       </div>
     </div>
   </div>
@@ -326,8 +329,8 @@
        </div>
      </div>
      <div class="modal-footer">
-      <button type="button" class="btn btn-primary" style="background-color: gray;">보고요청</button>
-      <button type="button" class="btn btn-primary" style="background-color: gray;">회의요청</button>
+      <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">보고요청</button>
+      <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">회의요청</button>
     </div>
   </div>
 </div>
