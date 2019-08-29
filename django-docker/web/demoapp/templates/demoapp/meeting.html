@@ -65,7 +65,7 @@
 	  <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
           <div style="display:flex; flex-direction:column;width:100%">
             <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
-            <input value="인턴 프로젝트 아이디어 회의" class="form-control" type="text" size="20">
+            <input value="데이터베이스 진행 상황" class="form-control" type="text" size="20">
           </div>
 </div>
 	  <div style="display:flex; flex-direction:column;">
@@ -95,7 +95,7 @@
 
               <div class="col-xs-3" style="margin:5px">
               <div class="controls">
-                <input value="2019-08-02" class="datepicker form-control"style="margin:0; height:34px;" type="text"/>
+                <input value="2019-08-30" class="datepicker form-control"style="margin:0; height:34px;" type="text"/>
               </div>  
             </div>
 
@@ -108,8 +108,8 @@
                   <option value="1" selected>박형준</option>
                 </optgroup>
                 <optgroup label="통합 App Proj. 팀">
-                  <option value="2" selected>박예은</option>
-                  <option value="3" selected>정용원</option>
+                  <option value="2">박예은</option>
+                  <option value="3">정용원</option>
                 </optgroup>
                 <optgroup label="디지털사업팀">
                   <option value="4" selected>김성우</option>
@@ -117,7 +117,7 @@
                 </optgroup>
                 <optgroup label="IT기획팀">
                   <option value="6">김동우</option>
-                  <option value="7" selected>김익준</option>
+                  <option value="7">김익준</option>
                   <option value="8">김정은</option>
                 </optgroup>
               </select>
@@ -126,11 +126,11 @@
         </div>
         <div>
           <p style="font-size:16px; margin: 5px 0 0 10px;">회의 장소</p>
-          <input value="삼성빌딩 회의실1" class="form-control" style="padding:10px" type="text">
+          <input value="롯데 리테일 아카데미 5호" class="form-control" style="padding:10px" type="text">
         </div>
         <div>
           <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 내용 요약 </p>
-          <textarea class="form-control" style="height:200px; max-height:100px; width: 100%; padding:10px">롯데백화점 유통업 특성에 어울리는 내부 프로젝트 협업 솔루션 개발. 목적은 롯데 백화점 디지털 부문 사업 확장에 따른 디지털 개발 내부 프로젝트 협업 솔루션 제공 디지털 부문을 제외하고, MD와 유통 경영 관련 프로젝트도 함께 반영할 수 있는 유통 전반적인 협업 솔루션 개발</textarea>
+          <textarea class="form-control" style="height:200px; max-height:100px; width: 100%; padding:10px">{{ summary }}</textarea>
         </div>
         <div style="display:flex; flex-direction:row;width:100%">
           <div style="display:flex; flex-direction:column;width:100%">
@@ -140,14 +140,16 @@
           <div style="display:flex; flex-direction:column;width:100%">
             <p style="font-size:16px; margin: 5px 0 0 10px;">회의록파일</p>
             <div class="form-control" style="height: 35.2px; display:flex; align-items:center">
-	      <p style="margin:0; cursor:pointer">회의록.txt</p>
+	        <a href="../../../staticfiles/assets/wavfile/textfile.txt">
+                <p style="margin:0; cursor:pointer">회의록.txt</p>
+            </a>
 	    </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-cancel" style="background-color: gray;" data-dismiss="modal">회의 삭제</button>
-        <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
+        <button type="button" onclick="Refresh()" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">수정 완료</button>
       </div>
     </div>
   </div>
@@ -249,7 +251,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">생성 완료</button>
+        <button type="button" onclick="Refresh()" class="btn btn-primary" style="background-color: gray;" data-dismiss="modal">생성 완료</button>
       </div>
     </div>
   </div>
@@ -387,7 +389,24 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.database().ref();
-var storage = firebase.storage().ref().child('files');
+
+var today = new Date();
+
+today = getDate(today);
+
+var storage = firebase.storage().ref().child('wav').child('files');
+
+function getDate(date) {
+var mm = date.getMonth() + 1; // getMonth() is zero-based
+var dd = date.getDate();
+
+return [date.getFullYear(),
+        (mm>9 ? '' : '0') + mm,
+        (dd>9 ? '' : '0') + dd
+       ].join('');
+}
+
+
 
 console.log(storage);
 </script>
@@ -557,7 +576,7 @@ console.log(storage);
    });
 
 
-	});
+});
 
 </script>
 
@@ -590,6 +609,12 @@ console.log(storage);
   });
 </script>
 
+<script>
+    function Refresh() {
+        console.log("reloaded");
+        location.reload();
+    }
+</script>
 <!-- Record -->
 <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 <script src="../../../staticfiles/assets/js/app.js"></script>
