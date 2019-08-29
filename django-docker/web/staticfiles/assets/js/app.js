@@ -53,7 +53,7 @@ function startRecording() {
 		audioContext = new AudioContext({
 			latencyHint: 'interactive',
   			sampleRate: 16000,
-			});	
+			});
 	
 		//update the format 
 		document.getElementById("formats").innerHTML="Format: 1 channel pcm @ "+audioContext.sampleRate/1000+"kHz"
@@ -130,6 +130,9 @@ function createDownloadLink(blob) {
 	//name of .wav file to use during upload and download (without extendion)
 	var filename = new Date().toISOString();
 
+	console.log(filename);
+	console.log(url);
+
 	//add controls to the <audio> element
 	au.controls = true;
 	au.src = url;
@@ -141,7 +144,7 @@ function createDownloadLink(blob) {
 
 	//add the new audio element to li
 	li.appendChild(au);
-		
+	li.appendChild(link);
 	//upload link
 	var upload = document.createElement('a');
 	upload.href="#";
@@ -158,7 +161,10 @@ function createDownloadLink(blob) {
 		  xhr.open("POST","../../../staticfiles/assets/php/upload.php",true);
 		  xhr.send(fd);
 	})
-
+    li.appendChild(upload);
 	//add the li element to the ol
+	var recList = $('#recordingsList')
 	$('#recordingsList').append(li);
+
+
 }

@@ -18,7 +18,39 @@
 
 <!-------------------------------------------프로젝트 팝업창-------------------------------------->
 {% block content_popup %}
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+     // using jQuery
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $(document).ready(function() {
+        var csrftoken = getCookie('csrftoken');
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+      });
+</script>
 <!-- 이벤트 모달 -->
 <div class="modal fade" id="eventModal" tabindex="-1" role="dialog" aria-labelledby="eventModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -51,9 +83,9 @@
                   </div>
                 </div>
                 <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
-		<div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center; cursor:pointer;">
-		  <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
-		</div>
+                <div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center; cursor:pointer;">
+                  <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
+                </div>
               </div>
               <div id="formats" style="display: none">Format: start recording to see sample rate</div>
             </div>
@@ -132,39 +164,39 @@
         </div>
       </div>
       <div class="modal-body">
-    <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
-          <div style="display:flex; flex-direction:column;width:100%">
-            <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
-            <input class="form-control" type="text" size="20">
+          <div style="display:flex; flex-direction:row;width:100%; justify-content: space-between;">
+              <div style="display:flex; flex-direction:column;width:100%">
+                  <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의명</p>
+                  <input class="form-control" type="text" size="20">
+              </div>
           </div>
-</div>
-    <div style="display:flex; flex-direction:column;">
-      <p style="font-size:16px; margin: 5px 0 0 10px;">회의녹음</p>
+          <div style="display:flex; flex-direction:column;">
+              <p style="font-size:16px; margin: 5px 0 0 10px;">회의녹음</p>
               <div style="display:flex; flex-direction:row;justify-content: start;">
-                <div id="controls" style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
-                  <div class="btn-record" id="recordButton" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
-                    <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+                  <div id="controls" style="display:flex; flex-direction:row;justify-content: space-between; width: 80px;">
+                      <div class="btn-record" id="recordButton" style="display:block; margin:10px; background-color:gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center">
+                          <i class="fas fa-microphone-alt" style="font-size:35px; color:#fffff; margin-top:8px"></i>
+                      </div>
+                      <div class="btn-cancel" id="pauseButton"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 15px; margin-bottom:15px;">
+                          <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                      </div>
+                      <div id="stopButton" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 15px; margin-bottom:15px;  text-align: center">
+                          <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                      </div>
                   </div>
-                  <div class="btn-cancel" id="pauseButton"  style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; text-align: center; margin-top: 15px; margin-bottom:15px;">
-                    <i class="fas fa-pause" style="font-size:20px; color:#fffff; margin-top:8px"></i>
+                  <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
+                  <div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center;">
+                      {% csrf_token %}
+                      <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
                   </div>
-                  <div id="stopButton" class="btn-cancel" style="display:none; background-color:gray; width: 35px; height: 35px; border: transparent; border-radius: 25px; margin-top: 15px; margin-bottom:15px;  text-align: center">
-                    <i class="fas fa-square" style="font-size:20px; color:#fffff; margin-top:8px"></i>
-                  </div>
-                </div>
-                <ul id="recordingsList" style="color: #ffffff; margin: 8px 0 0 0; padding-left: 0px; padding-right: 8px;"></ul>
-    <div id="uploadButton" class="btn-primary" style="display:none ; margin: 10px; background-color: gray; width: 50px; height: 50px; border: transparent; border-radius: 25px; text-align: center;">
-    {% csrf_token %}
-      <i class="fas fa-chart-line" style="font-size:33px; color:#ffffff; margin-top: 8px;"></i>
-    </div>
               </div>
               <div id="formats" style="display: none">Format: start recording to see sample rate</div>
-            </div>
-            <div style="display:flex; flex-direction:row; margin-top=5px;">
-            <div style="display:flex; flex-direction:column;width:100%;">
-              <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
+          </div>
+          <div style="display:flex; flex-direction:row; margin-top=5px;">
+              <div style="display:flex; flex-direction:column;width:100%;">
+                  <p style="font-size:16px; margin: 5px 0 0 10px;"> 회의 일정</p>
 
-              <div class="col-xs-3" style="margin:5px">
+                  <div class="col-xs-3" style="margin:5px">
               <div class="controls">
                 <input class="datepicker form-control"style="margin:0; height:34px" type="text"/>
               </div>  
@@ -336,6 +368,22 @@
 
 
 {% block script %}
+
+<script>
+var firebaseConfig = {
+    apiKey: "AIzaSyAD9cgR44bN3rFqgQ_UDSJDMi4Krv2q58k",
+    authDomain: "web-test-f1437.firebaseapp.com",
+    databaseURL: "https://web-test-f1437.firebaseio.com",
+    projectId: "web-test-f1437",
+    storageBucket: "web-test-f1437.appspot.com",
+    messagingSenderId: "147985162974",
+    appId: "1:147985162974:web:0772d3ad436a42f5"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    var db = firebase.database().ref()
+</script>
 
   <script type="text/javascript">
     $(function(){
