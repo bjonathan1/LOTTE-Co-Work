@@ -494,8 +494,4 @@
   animation-name: zoomOut;
 }
 
-		alert(error); //오류내용
-	        }rror: function(xhr, option, error){
-		alert(xhr.status); //오류코드
-		alert(error); //오류내용
-	        }
+		
