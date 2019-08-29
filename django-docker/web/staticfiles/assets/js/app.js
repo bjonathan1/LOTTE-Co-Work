@@ -132,7 +132,11 @@ function createDownloadLink(blob) {
 
 	console.log(filename);
 	console.log(url);
-
+    var file = blob // use the Blob or File API
+    console.log(file);
+    storage.put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
 	//add controls to the <audio> element
 	au.controls = true;
 	au.src = url;

@@ -368,6 +368,10 @@
 
 
 {% block script %}
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+
 
 <script>
 var firebaseConfig = {
@@ -380,9 +384,12 @@ var firebaseConfig = {
     appId: "1:147985162974:web:0772d3ad436a42f5"
     };
 
-    firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-    var db = firebase.database().ref()
+var db = firebase.database().ref();
+var storage = firebase.storage().ref().child('files');
+
+console.log(storage);
 </script>
 
   <script type="text/javascript">
