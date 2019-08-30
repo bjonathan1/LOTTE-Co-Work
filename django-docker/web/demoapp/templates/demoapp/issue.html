@@ -52,7 +52,7 @@
                     <tbody>
 
                       {% for key,value in project.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal" style="cursor:pointer">
+                      <tr class="tabletr" data-toggle="modal" data-target="#exampleModal{{ forloop.counter }}" style="cursor:pointer">
                         <td>{{ forloop.counter }}</td>
                         <td>{{ key }}</td>
                         <td>{{ value.issued_date.0 }}{{ value.issued_date.1 }}{{ value.issued_date.2 }}{{ value.issued_date.3 }}-{{ value.issued_date.4 }}{{ value.issued_date.5 }}-{{ value.issued_date.6 }}{{ value.issued_date.7 }}</td>
@@ -80,7 +80,7 @@
                     </thead>
                     <tbody>
                       {% for key, value in task.items %}
-                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal" style="cursor:pointer">
+                      <tr class="tabletr" data-toggle="modal" data-target="#taskModal{{ forloop.counter }}" style="cursor:pointer">
                         <td >{{ forloop.counter }}</td>
                         <td id="project_name">{{ value.project_name }}</td>
                         <td>{{ key }}</td>
@@ -99,8 +99,9 @@
 {% block content_popup %}
 	<!-- Todo 프로젝트와 Task 팝업창 정보 전달 익준이에게 물어보기 -->
 
+      {% for key,value in project.items %}
       <!-- 프로젝트 이슈 팝업창 -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -112,11 +113,11 @@
             <div class="modal-body">
               <div style="display:flex; flex-direction:column;width:100%">
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> 롯데백화점 협업툴 제작</p> 
+                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> {{ key }}</p>
               </div>
 	      <div>
 	      	<p style="font-size:16px; margin: 5px 0 0 10px;">이슈 사유 </p>
-               	<input value="기술적 결함에 따른 지연" class="form-control" type="text" size="20">
+               	<input value="{{ value.issued_content }}" class="form-control" type="text" size="20">
 	      </div>
             </div>
             <div class="modal-footer" style="padding:5px">
@@ -125,9 +126,11 @@
           </div>
         </div>
       </div>
+      {% endfor %}
 
+      {% for key, value in task.items %}
       <!-- 업무 이슈 팝업창 -->
-      <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+      <div class="modal fade" id="taskModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -140,16 +143,16 @@
 	     <div style="display:flex; flex-direction: row; width:100%">	
               <div style="display:flex; flex-direction:column;width:100%">
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 프로젝트명</p>
-                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> PUSH 알람 서비스</p>
+                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;">{{ value.project_name }}</p>
               </div>
 	      <div style="display:flex; flex-direction:column;width:100%" >
                 <p style="font-size:16px; margin: 5px 0 0 10px;"> 업무명</p>
-                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> 프론트 개발</p>
+                <p style="font-size:18px; font-weight:400;  margin: 5px 0 0 10px;"> {{ key }}</p>
               </div>
 	     </div>
              <div>
                 <p style="font-size:16px; margin: 5px 0 0 10px;">이슈 사유 </p>
-                <input value="기술적 결함에 따른 지연" class="form-control" type="text" size="20">
+                <input value="{{ value.task_issued_content }}" class="form-control" type="text" size="20">
               </div>
             </div>
             <div class="modal-footer" style="padding:5px">
@@ -158,6 +161,7 @@
           </div>
         </div>
       </div>
+      {% endfor %}
 
 {% endblock %}
 
