@@ -96,16 +96,17 @@ if __name__ == "__main__":
   # add_project("인천터미널점 오더나우 활성화", ["김성우", "박예은", "정용원"], "20190823", "20190911", "인천터미널점 오더나우를 활성화하고, 이를 통해 고객의 오프라인 매장 방문 유도")
   #add_person("박형준", "01099588015", "../../../staticfiles/assets/img/hj.jpg", "담당", "본사", "디지털사업부문", "빅데이터팀")
   #add_task("-Ln1gTOcWncu_RXsr3yv", "오더나우 앱 메인화면 버그개선", " ", "김성우", "20190826")
-  data = db.child("Project").get().val()
-  for project in data.keys():
-    db.child("Project").child(project).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
-    tasks = db.child("Project").child(project).child("Task").get().val()
-
-    if (tasks):
-      for task in tasks.keys():
-        db.child("Project").child(project).child("Task").child(task).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
+  # data = db.child("Project").get().val()
+  # for project in data.keys():
+  #   db.child("Project").child(project).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
+  #   tasks = db.child("Project").child(project).child("Task").get().val()
+  #
+  #   if (tasks):
+  #     for task in tasks.keys():
+  #       db.child("Project").child(project).child("Task").child(task).child("Issued").set({"TF": "False", "issued_date": "", "issued_content": ""})
   #for i in data:
   #  db.child("Members").child(i).child("image").set("../../../staticfiles/assets/img/.jpg")
+  storage.child('wav').child('files').put('/Users/jonmac/Downloads/files.wav')
 
   '''
   img = "1.png"

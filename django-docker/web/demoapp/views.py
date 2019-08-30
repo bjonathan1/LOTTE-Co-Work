@@ -129,9 +129,9 @@ def meeting(request):
     try:
         data2 = {'apiId': 'skku-api-id', 'apiKey': '5fe8577c35784d07a840e0783bda56c7'}
 
-        link = storage.child('wav').child('files.wav').get_url(1)
+        link = storage.child('wav').child('files').get_url(1)
 
-        storage.child("wav").child('files.wav').download("staticfiles/assets/wavfile/file.wav")
+        storage.child("wav").child('files').download("staticfiles/assets/wavfile/file.wav")
 
         response = urllib.request.urlopen(link)
         print(response)
